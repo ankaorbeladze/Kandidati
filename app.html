@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kandidati</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23121826'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='18' fill='white' text-anchor='middle'%3Ek%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Georgian:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#F6F7FA; --surface:#fff; --ink:#0F1522; --muted:#5D6677; --line:#E4E7EE;
+  --accent:#2347D6; --accent-soft:#EEF2FF; --ok:#16794F; --ok-soft:#E4F5EC; --warn:#B86E00; --warn-soft:#FFF3E2; --bad:#B42318; --bad-soft:#FDECEA;
+  --font:"Inter","Noto Sans Georgian",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+h1{font-size:28px;letter-spacing:-.02em;line-height:1.2}
+h2{font-size:20px;letter-spacing:-.01em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+
+/* top bar */
+.top{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.top .in{max-width:1180px;margin:0 auto;padding:0 20px;height:64px;display:flex;align-items:center;gap:24px}
+.logo{font-weight:700;font-size:20px;letter-spacing:-.03em;text-decoration:none}
+.logo span{color:var(--accent)}
+.tabs{display:flex;gap:4px;flex:1}
+.tabs a{padding:8px 14px;border-radius:999px;text-decoration:none;color:var(--muted);font-weight:500;font-size:14px}
+.tabs a:hover{color:var(--ink)}
+.tabs a[aria-current="page"]{background:var(--ink);color:#fff}
+.me{display:flex;align-items:center;gap:12px;font-size:14px}
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px}
+
+main{max-width:1180px;margin:0 auto;padding:32px 20px 64px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.head p{margin-top:6px}
+
+/* elements */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border-radius:10px;border:1px solid transparent;font:inherit;font-weight:600;font-size:14px;cursor:pointer;text-decoration:none;background:var(--ink);color:#fff;transition:background .15s}
+.btn:hover{background:#000}
+.btn.blue{background:var(--accent)}.btn.blue:hover{background:#1A38B3}
+.btn.ghost{background:var(--surface);color:var(--ink);border-color:var(--line)}.btn.ghost:hover{border-color:var(--ink)}
+.btn.sm{padding:7px 12px;font-size:13px;border-radius:8px}
+.btn:disabled{opacity:.55;cursor:default}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px}
+.grid{display:grid;gap:14px}
+.form{display:grid;gap:14px}
+.form .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:grid;gap:6px;font-size:13px;font-weight:600}
+input,select,textarea{font:inherit;font-weight:400;font-size:15px;padding:11px 13px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink);width:100%}
+textarea{resize:vertical;min-height:90px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.check{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:14px}
+.check input{width:auto;margin-top:3px}
+.msg{padding:12px 14px;border-radius:10px;font-size:14px}
+.msg.err{background:var(--bad-soft);color:var(--bad)}
+.msg.ok{background:var(--ok-soft);color:var(--ok)}
+.badge{display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.b-new{background:var(--accent-soft);color:var(--accent)}
+.b-viewed{background:#EEF0F4;color:#3A4354}
+.b-interview{background:var(--warn-soft);color:var(--warn)}
+.b-offer,.b-hired{background:var(--ok-soft);color:var(--ok)}
+.b-rejected{background:var(--bad-soft);color:var(--bad)}
+.b-closed{background:#EEF0F4;color:var(--muted)}
+.empty{text-align:center;padding:48px 20px;color:var(--muted)}
+.spin{display:grid;place-items:center;padding:60px;color:var(--muted)}
+
+/* auth */
+.auth{max-width:440px;margin:40px auto}
+.auth .card{padding:30px}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--bg);border-radius:12px;padding:4px;margin-bottom:22px}
+.seg button{border:0;background:none;font:inherit;font-weight:600;padding:10px;border-radius:9px;cursor:pointer;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(15,21,34,.1)}
+.roles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.role{border:1.5px solid var(--line);border-radius:12px;padding:14px;cursor:pointer;font-weight:400}
+.role b{display:block;font-size:15px}
+.role small{color:var(--muted);font-size:13px}
+.role:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+.role input{position:absolute;opacity:0;pointer-events:none}
+
+/* jobs */
+.toolbar{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.toolbar input{max-width:360px}
+.job{display:flex;justify-content:space-between;gap:16px;align-items:center;text-decoration:none;transition:border-color .15s}
+.job:hover{border-color:var(--ink)}
+.job h3{font-size:17px}
+.meta{display:flex;gap:14px;flex-wrap:wrap;margin-top:4px;font-size:14px;color:var(--muted)}
+.detail{display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start}
+.prose{white-space:pre-wrap}
+.section h3{font-size:15px;margin:22px 0 8px}
+
+/* timeline */
+.timeline{list-style:none;padding:0;margin:14px 0 0;display:flex;gap:0;flex-wrap:wrap}
+.timeline li{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin-right:18px;padding:4px 0}
+.timeline .d{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.timeline li.on{color:var(--ink)}
+.timeline li.on .d{background:var(--ok)}
+.timeline li.cur .d{background:var(--warn);box-shadow:0 0 0 4px var(--warn-soft)}
+.timeline li.no .d{background:var(--bad)}
+
+/* board */
+.board{display:grid;grid-template-columns:repeat(6,minmax(200px,1fr));gap:12px;overflow-x:auto;padding-bottom:8px}
+.col{background:#EEF0F4;border-radius:14px;padding:10px;min-height:200px}
+.col h4{margin:4px 6px 10px;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);display:flex;justify-content:space-between}
+.cc{background:#fff;border-radius:10px;padding:12px;margin-bottom:8px;cursor:pointer;border:1px solid transparent;box-shadow:0 1px 2px rgba(15,21,34,.06);text-align:left;width:100%;font:inherit}
+.cc:hover{border-color:var(--ink)}
+.cc b{display:block;font-size:14px}
+.cc small{color:var(--muted);font-size:12px}
+
+/* drawer */
+.scrim{position:fixed;inset:0;background:rgba(15,21,34,.35);z-index:30}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);background:#fff;z-index:31;overflow-y:auto;padding:26px;box-shadow:-20px 0 40px -20px rgba(15,21,34,.3)}
+.drawer .x{position:absolute;top:16px;right:16px;border:0;background:var(--bg);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px}
+.kv{display:grid;grid-template-columns:130px 1fr;gap:8px 12px;font-size:14px;margin-top:16px}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+.moves{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.vac{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.count{font-size:28px;font-weight:700;letter-spacing:-.02em}
+
+@media (max-width:800px){
+  .detail{grid-template-columns:1fr}
+  .form .two{grid-template-columns:1fr}
+  .top .in{height:auto;padding-block:12px;flex-wrap:wrap;gap:10px}
+  .tabs{order:3;width:100%;overflow-x:auto}
+  .me .name{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="in">
+    <a class="logo" href="index.html">kandi<span>dati</span></a>
+    <nav class="tabs" id="tabs" aria-label="მენიუ"></nav>
+    <div class="me" id="me" hidden>
+      <span class="name" id="meName"></span>
+      <span class="avatar" id="meAv"></span>
+      <button class="btn ghost sm" id="logout">გასვლა</button>
+    </div>
+  </div>
+</header>
+
+<main id="view"><div class="spin">იტვირთება…</div></main>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-modal="true" role="dialog"></aside>
+
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// ---------- setup ----------
+const CFG = window.KANDIDATI_CONFIG || {};
+const view = document.getElementById('view');
+const configured = CFG.SUPABASE_URL && !CFG.SUPABASE_URL.startsWith('PASTE');
+const sb = configured && window.supabase ? window.supabase.createClient(CFG.SUPABASE_URL, CFG.SUPABASE_ANON_KEY) : null;
+
+const STATUS = {
+  new:{ka:'ახალი'}, viewed:{ka:'ნანახია'}, interview:{ka:'გასაუბრება'},
+  offer:{ka:'შეთავაზება'}, hired:{ka:'აყვანილია'}, rejected:{ka:'უარი'}
+};
+const FLOW = ['new','viewed','interview','offer','hired'];
+const TYPES = {full_time:'სრული განაკვეთი', part_time:'ნახევარი განაკვეთი', internship:'სტაჟირება', remote:'დისტანციური'};
+
+let me = null;        // {id, email, role, full_name, phone, city}
+let company = null;   // employer's company
+
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmtDate = d => new Date(d).toLocaleDateString('ka-GE', {day:'numeric', month:'short'});
+const badge = st => `<span class="badge b-${st}">${STATUS[st]?.ka || esc(st)}</span>`;
+const err = e => `<div class="msg err">${esc(e?.message || e || 'შეცდომა. სცადეთ თავიდან.')}</div>`;
+const go = h => { if (location.hash === h) route(); else location.hash = h; };
+function set(html){ view.innerHTML = html; window.scrollTo(0,0); }
+function initials(n){ return (n || '?').trim().split(/\s+/).map(w=>w[0]).slice(0,2).join('').toUpperCase(); }
+
+// ---------- auth state ----------
+async function loadMe(){
+  const { data:{ session } } = await sb.auth.getSession();
+  if (!session) { me = null; company = null; return; }
+  const { data, error } = await sb.from('profiles').select('*').eq('id', session.user.id).single();
+  if (error) { me = null; return; }
+  me = { ...data, email: session.user.email };
+  company = null;
+  if (me.role === 'employer') {
+    const r = await sb.from('companies').select('*').eq('owner_id', me.id).maybeSingle();
+    company = r.data;
+  }
+}
+
+function renderChrome(){
+  const tabs = document.getElementById('tabs');
+  const box = document.getElementById('me');
+  if (!me) { tabs.innerHTML = ''; box.hidden = true; return; }
+  const items = me.role === 'candidate'
+    ? [['#jobs','ვაკანსიები'],['#applications','ჩემი განაცხადები'],['#profile','პროფილი']]
+    : [['#vacancies','ვაკანსიები'],['#new-vacancy','ახალი ვაკანსია'],['#company','კომპანია']];
+  const h = location.hash.slice(1);
+  const cur = h.startsWith('job-') ? '#jobs' : (h.startsWith('board-') || h.startsWith('edit-')) ? '#vacancies' : '#' + h;
+  tabs.innerHTML = items.map(([href,t]) => `<a href="${href}" ${cur === href ? 'aria-current="page"' : ''}>${t}</a>`).join('');
+  box.hidden = false;
+  document.getElementById('meName').textContent = me.full_name || me.email;
+  document.getElementById('meAv').textContent = initials(me.full_name || me.email);
+}
+
+// ---------- router ----------
+async function route(){
+  closeDrawer();
+  if (!sb) return set(`<div class="auth"><div class="card"><h2>საჭიროა დაკავშირება</h2><p class="muted" style="margin-top:8px">config.js ფაილში ჩასვით Supabase-ის Project URL და anon key.</p></div></div>`);
+  const h = location.hash.slice(1);
+  if (!me) { renderChrome(); return authView(h === 'signup' ? 'signup' : 'login'); }
+  renderChrome();
+  if (me.role === 'candidate') {
+    if (h.startsWith('job-')) return jobDetail(h.slice(4));
+    if (h === 'applications') return myApplications();
+    if (h === 'profile') return candidateProfile();
+    if (h !== 'jobs') return go('#jobs');
+    return jobsList();
+  } else {
+    if (!company && h !== 'company') return go('#company');
+    if (h === 'company') return companyView();
+    if (h === 'new-vacancy') return vacancyForm();
+    if (h.startsWith('edit-')) return vacancyForm(h.slice(5));
+    if (h.startsWith('board-')) return board(h.slice(6));
+    if (h !== 'vacancies') return go('#vacancies');
+    return vacanciesList();
+  }
+}
+addEventListener('hashchange', route);
+
+// ---------- AUTH ----------
+function authView(mode){
+  set(`<div class="auth">
+    <div style="text-align:center;margin-bottom:22px"><h1>${mode==='login'?'შესვლა':'რეგისტრაცია'}</h1>
+    <p class="muted" style="margin-top:6px">${mode==='login'?'კეთილი იყოს თქვენი დაბრუნება':'შექმენით ანგარიში ერთ წუთში'}</p></div>
+    <div class="card">
+      <div class="seg"><button type="button" data-m="login" aria-pressed="${mode==='login'}">შესვლა</button><button type="button" data-m="signup" aria-pressed="${mode==='signup'}">რეგისტრაცია</button></div>
+      <form class="form" id="authForm" novalidate>
+        ${mode==='signup' ? `
+        <div class="roles">
+          <label class="role"><input type="radio" name="role" value="candidate" checked><b>კანდიდატი</b><small>ვეძებ სამსახურს</small></label>
+          <label class="role"><input type="radio" name="role" value="employer"><b>დამსაქმებელი</b><small>ვეძებ თანამშრომელს</small></label>
+        </div>
+        <label>სახელი და გვარი<input name="full_name" autocomplete="name" required></label>` : ''}
+        <label>ელფოსტა<input name="email" type="email" autocomplete="email" required></label>
+        <label>პაროლი<input name="password" type="password" autocomplete="${mode==='login'?'current-password':'new-password'}" minlength="8" required></label>
+        ${mode==='signup' ? `<label class="check"><input type="checkbox" name="consent" required><span>ვეთანხმები ჩემი პერსონალური მონაცემების დამუშავებას დაქირავების მიზნით.</span></label>` : ''}
+        <div id="authMsg"></div>
+        <button class="btn blue" type="submit">${mode==='login'?'შესვლა':'ანგარიშის შექმნა'}</button>
+        ${mode==='login' ? `<button class="btn ghost sm" type="button" id="forgot" style="justify-self:center">დაგავიწყდათ პაროლი?</button>` : ''}
+      </form>
+    </div></div>`);
+  view.querySelectorAll('[data-m]').forEach(b => b.onclick = () => go(b.dataset.m === 'signup' ? '#signup' : '#login'));
+  const f = document.getElementById('authForm'), out = document.getElementById('authMsg');
+  const fp = document.getElementById('forgot');
+  if (fp) fp.onclick = async () => {
+    const email = f.email.value.trim();
+    if (!email) { out.innerHTML = err('ჯერ ჩაწერეთ ელფოსტა.'); return; }
+    const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: location.origin + location.pathname });
+    out.innerHTML = error ? err(error) : `<div class="msg ok">პაროლის აღდგენის ბმული გამოგზავნილია ${esc(email)}-ზე.</div>`;
+  };
+  f.onsubmit = async e => {
+    e.preventDefault(); out.innerHTML = '';
+    const email = f.email.value.trim(), password = f.password.value;
+    if (!email || password.length < 8) { out.innerHTML = err('შეიყვანეთ ელფოსტა და მინიმუმ 8-სიმბოლოიანი პაროლი.'); return; }
+    const btn = f.querySelector('button[type=submit]'); btn.disabled = true;
+    if (mode === 'login') {
+      const { error } = await sb.auth.signInWithPassword({ email, password });
+      btn.disabled = false;
+      if (error) { out.innerHTML = err(error.message.includes('Invalid') ? 'ელფოსტა ან პაროლი არასწორია.' : error); return; }
+    } else {
+      const full_name = f.full_name.value.trim(), role = f.role.value;
+      if (!full_name) { btn.disabled = false; out.innerHTML = err('ჩაწერეთ სახელი და გვარი.'); return; }
+      if (!f.consent.checked) { btn.disabled = false; out.innerHTML = err('გასაგრძელებლად საჭიროა თანხმობა.'); return; }
+      const { data, error } = await sb.auth.signUp({ email, password, options:{ data:{ role, full_name }, emailRedirectTo: location.origin + location.pathname } });
+      btn.disabled = false;
+      if (error) { out.innerHTML = err(error); return; }
+      if (!data.session) {
+        set(`<div class="auth"><div class="card" style="text-align:center"><h2>შეამოწმეთ ელფოსტა</h2><p class="muted" style="margin-top:10px">${esc(email)}-ზე გამოგიგზავნეთ დადასტურების ბმული. დააჭირეთ მას და შემდეგ შედით სისტემაში.</p><a class="btn ghost" style="margin-top:20px" href="#login">შესვლა</a></div></div>`);
+        return;
+      }
+    }
+    await loadMe(); go(me?.role === 'employer' ? '#vacancies' : '#jobs');
+  };
+}
+
+document.getElementById('logout').onclick = async () => { await sb.auth.signOut(); me = null; company = null; go('#login'); };
+
+// ---------- CANDIDATE ----------
+async function jobsList(){
+  set(`<div class="head"><div><h1>ვაკანსიები</h1><p class="muted">აირჩიეთ და გააგზავნეთ განაცხადი ერთი დაწკაპუნებით</p></div></div>
+  <div class="toolbar"><input id="q" type="search" placeholder="ძიება: თანამდებობა, კომპანია, ქალაქი"></div>
+  <div class="grid" id="list"><div class="spin">იტვირთება…</div></div>`);
+  const [v, a] = await Promise.all([
+    sb.from('vacancies').select('id,title,city,employment_type,salary,created_at,companies(name)').eq('status','open').order('created_at',{ascending:false}),
+    sb.from('applications').select('vacancy_id,status').eq('candidate_id', me.id)
+  ]);
+  if (v.error) { document.getElementById('list').innerHTML = err(v.error); return; }
+  const applied = Object.fromEntries((a.data||[]).map(x => [x.vacancy_id, x.status]));
+  const draw = q => {
+    const rows = v.data.filter(j => !q || [j.title, j.city, j.companies?.name].join(' ').toLowerCase().includes(q));
+    document.getElementById('list').innerHTML = rows.length ? rows.map(j => `
+      <a class="card job" href="#job-${j.id}">
+        <div><h3>${esc(j.title)}</h3><div class="meta"><span>${esc(j.companies?.name)}</span>${j.city?`<span>${esc(j.city)}</span>`:''}<span>${TYPES[j.employment_type]||''}</span>${j.salary?`<span>${esc(j.salary)}</span>`:''}</div></div>
+        ${applied[j.id] ? badge(applied[j.id]) : '<span class="muted small">→</span>'}
+      </a>`).join('') : `<div class="card empty">${q ? 'ვერაფერი მოიძებნა.' : 'ჯერ ვაკანსიები არ არის. მალე დაემატება!'}</div>`;
+  };
+  draw('');
+  document.getElementById('q').oninput = e => draw(e.target.value.trim().toLowerCase());
+}
+
+async function jobDetail(id){
+  set(`<div class="spin">იტვირთება…</div>`);
+  const [v, a, c] = await Promise.all([
+    sb.from('vacancies').select('*,companies(name,city,industry,website,about)').eq('id', id).maybeSingle(),
+    sb.from('applications').select('id,status').eq('vacancy_id', id).eq('candidate_id', me.id).maybeSingle(),
+    sb.from('candidate_profiles').select('cv_path').eq('user_id', me.id).maybeSingle()
+  ]);
+  if (!v.data) return set(`<div class="card empty">ვაკანსია ვერ მოიძებნა. <a href="#jobs">ყველა ვაკანსია</a></div>`);
+  const j = v.data, co = j.companies || {}, hasCv = !!c.data?.cv_path;
+  set(`<p style="margin-bottom:14px"><a href="#jobs" class="muted small">← ყველა ვაკანსია</a></p>
+  <div class="detail">
+    <div class="card">
+      <h1>${esc(j.title)}</h1>
+      <div class="meta" style="margin-top:8px"><span>${esc(co.name)}</span>${j.city?`<span>${esc(j.city)}</span>`:''}<span>${TYPES[j.employment_type]||''}</span>${j.salary?`<span>${esc(j.salary)}</span>`:''}</div>
+      ${j.description ? `<div class="section"><h3>აღწერა</h3><p class="prose">${esc(j.description)}</p></div>` : ''}
+      ${j.requirements ? `<div class="section"><h3>მოთხოვნები</h3><p class="prose">${esc(j.requirements)}</p></div>` : ''}
+    </div>
+    <div class="grid">
+      <div class="card" id="applyBox">
+        ${a.data ? `<p class="small muted">თქვენი განაცხადი</p><div style="margin:8px 0 14px">${badge(a.data.status)}</div><a class="btn ghost" href="#applications">სტატუსის ნახვა</a>`
+          : j.status !== 'open' ? `<p class="muted">ვაკანსია დახურულია.</p>`
+          : hasCv ? `<h2>განაცხადის გაგზავნა</h2><p class="muted small" style="margin:6px 0 14px">დამსაქმებელი ნახავს თქვენს პროფილს და CV-ს.</p>
+              <form class="form" id="applyForm"><label>მოკლე წერილი (არასავალდებულო)<textarea name="note" rows="3" maxlength="1000"></textarea></label><div id="am"></div><button class="btn blue">გაგზავნა</button></form>`
+          : `<h2>ჯერ ატვირთეთ CV</h2><p class="muted small" style="margin:6px 0 14px">განაცხადის გასაგზავნად პროფილში CV უნდა გქონდეთ.</p><a class="btn blue" href="#profile">პროფილის შევსება</a>`}
+      </div>
+      <div class="card"><p class="small muted">კომპანია</p><h2 style="margin-top:4px">${esc(co.name)}</h2>
+        ${co.industry?`<p class="muted small" style="margin-top:4px">${esc(co.industry)}</p>`:''}
+        ${co.about?`<p style="margin-top:10px" class="prose">${esc(co.about)}</p>`:''}
+        ${co.website?`<p style="margin-top:10px"><a href="${/^https?:\/\//.test(co.website)?esc(co.website):'https://'+esc(co.website)}" target="_blank" rel="noopener">${esc(co.website)}</a></p>`:''}</div>
+    </div>
+  </div>`);
+  const f = document.getElementById('applyForm');
+  if (f) f.onsubmit = async e => {
+    e.preventDefault(); const b = f.querySelector('button'); b.disabled = true;
+    const { error } = await sb.from('applications').insert({ vacancy_id: id, candidate_id: me.id, note: f.note.value.trim() });
+    if (error) { b.disabled = false; document.getElementById('am').innerHTML = err(error.code === '23505' ? 'განაცხადი უკვე გაგზავნილია.' : error); return; }
+    document.getElementById('applyBox').innerHTML = `<div class="msg ok">განაცხადი გაგზავნილია! სტატუსს „ჩემ განაცხადებში“ ნახავთ.</div><a class="btn ghost" style="margin-top:14px" href="#applications">ჩემი განაცხადები</a>`;
+  };
+}
+
+async function myApplications(){
+  set(`<div class="head"><div><h1>ჩემი განაცხადები</h1><p class="muted">ყოველთვის ხედავთ, სად დგას თქვენი განაცხადი</p></div></div><div class="grid" id="list"><div class="spin">იტვირთება…</div></div>`);
+  const { data, error } = await sb.from('applications')
+    .select('id,status,created_at,vacancies(id,title,companies(name)),application_events(status,created_at)')
+    .eq('candidate_id', me.id).order('created_at', { ascending:false });
+  const box = document.getElementById('list');
+  if (error) { box.innerHTML = err(error); return; }
+  if (!data.length) { box.innerHTML = `<div class="card empty">ჯერ განაცხადი არ გაგიგზავნიათ.<br><a class="btn blue" style="margin-top:16px" href="#jobs">ვაკანსიების ნახვა</a></div>`; return; }
+  box.innerHTML = data.map(x => {
+    const ev = Object.fromEntries((x.application_events||[]).map(e => [e.status, e.created_at]));
+    const rejected = x.status === 'rejected';
+    const curIdx = FLOW.indexOf(x.status);
+    const steps = FLOW.map((s, i) => {
+      const reached = rejected ? !!ev[s] : i <= curIdx;
+      const cls = reached ? (i === curIdx ? 'on cur' : 'on') : '';
+      return `<li class="${cls}"><span class="d"></span>${STATUS[s].ka}${ev[s] ? ` · ${fmtDate(ev[s])}` : ''}</li>`;
+    }).join('') + (rejected ? `<li class="on no"><span class="d"></span>უარი · ${fmtDate(ev.rejected || x.created_at)}</li>` : '');
+    return `<div class="card"><div class="vac"><div><h2>${esc(x.vacancies?.title || 'ვაკანსია')}</h2><p class="muted small">${esc(x.vacancies?.companies?.name || '')} · გაგზავნილია ${fmtDate(x.created_at)}</p></div>${badge(x.status)}</div><ul class="timeline">${steps}</ul></div>`;
+  }).join('');
+}
+
+async function candidateProfile(){
+  set(`<div class="spin">იტვირთება…</div>`);
+  const { data: cp } = await sb.from('candidate_profiles').select('*').eq('user_id', me.id).maybeSingle();
+  const p = cp || {};
+  set(`<div class="head"><div><h1>ჩემი პროფილი</h1><p class="muted">ამ ინფორმაციას დამსაქმებელი მხოლოდ მაშინ ხედავს, როცა მის ვაკანსიაზე განაცხადს აგზავნით.</p></div></div>
+  <div class="detail">
+    <form class="card form" id="pf" novalidate>
+      <div class="two"><label>სახელი და გვარი<input name="full_name" value="${esc(me.full_name)}" required></label><label>ტელეფონი<input name="phone" value="${esc(me.phone)}" autocomplete="tel"></label></div>
+      <div class="two"><label>ქალაქი<input name="city" value="${esc(me.city)}"></label><label>გამოცდილება (წელი)<input name="experience_years" type="number" min="0" max="60" value="${p.experience_years ?? 0}"></label></div>
+      <label>პოზიცია / სათაური<input name="headline" value="${esc(p.headline)}" placeholder="მაგ. ფინანსური ანალიტიკოსი"></label>
+      <label>უნარები<input name="skills" value="${esc(p.skills)}" placeholder="მაგ. Excel, IFRS, SQL"></label>
+      <label>ჩემ შესახებ<textarea name="about" rows="4">${esc(p.about)}</textarea></label>
+      <div id="pm"></div>
+      <button class="btn blue" style="justify-self:start">შენახვა</button>
+    </form>
+    <div class="card">
+      <h2>CV</h2>
+      <p class="muted small" style="margin:6px 0 14px">მხოლოდ PDF, მაქსიმუმ 5 MB.</p>
+      <div id="cvState">${p.cv_path ? `<div class="msg ok">CV ატვირთულია.</div><div class="row" style="margin-top:12px"><button class="btn ghost sm" id="cvOpen" type="button">ნახვა</button></div>` : `<p class="muted small">CV ჯერ არ არის ატვირთული.</p>`}</div>
+      <label class="btn ghost" style="margin-top:14px;display:inline-flex">${p.cv_path ? 'ახლით ჩანაცვლება' : 'CV-ის ატვირთვა'}<input id="cvFile" type="file" accept="application/pdf" hidden></label>
+      <div id="cvMsg" style="margin-top:10px"></div>
+    </div>
+  </div>`);
+  const f = document.getElementById('pf');
+  f.onsubmit = async e => {
+    e.preventDefault(); const out = document.getElementById('pm'); const b = f.querySelector('button'); b.disabled = true;
+    const full_name = f.full_name.value.trim();
+    if (!full_name) { b.disabled = false; out.innerHTML = err('ჩაწერეთ სახელი და გვარი.'); return; }
+    const r1 = await sb.from('profiles').update({ full_name, phone: f.phone.value.trim(), city: f.city.value.trim() }).eq('id', me.id);
+    const r2 = await sb.from('candidate_profiles').update({ headline: f.headline.value.trim(), skills: f.skills.value.trim(), about: f.about.value.trim(), experience_years: Math.max(0, Math.min(60, parseInt(f.experience_years.value) || 0)), updated_at: new Date().toISOString() }).eq('user_id', me.id);
+    b.disabled = false;
+    if (r1.error || r2.error) { out.innerHTML = err(r1.error || r2.error); return; }
+    Object.assign(me, { full_name, phone: f.phone.value.trim(), city: f.city.value.trim() }); renderChrome();
+    out.innerHTML = `<div class="msg ok">შენახულია.</div>`;
+  };
+  const open = document.getElementById('cvOpen');
+  if (open) open.onclick = () => openCv(p.cv_path);
+  document.getElementById('cvFile').onchange = async e => {
+    const file = e.target.files[0], out = document.getElementById('cvMsg');
+    if (!file) return;
+    if (file.type !== 'application/pdf') { out.innerHTML = err('მხოლოდ PDF ფაილი.'); return; }
+    if (file.size > 5 * 1024 * 1024) { out.innerHTML = err('ფაილი 5 MB-ზე დიდია.'); return; }
+    out.innerHTML = `<p class="muted small">იტვირთება…</p>`;
+    const path = `${me.id}/cv.pdf`;
+    const up = await sb.storage.from('cvs').upload(path, file, { upsert: true, contentType: 'application/pdf' });
+    if (up.error) { out.innerHTML = err(up.error); return; }
+    const r = await sb.from('candidate_profiles').update({ cv_path: path, updated_at: new Date().toISOString() }).eq('user_id', me.id);
+    if (r.error) { out.innerHTML = err(r.error); return; }
+    candidateProfile();
+  };
+}
+
+async function openCv(path){
+  const w = window.open('', '_blank');
+  const { data, error } = await sb.storage.from('cvs').createSignedUrl(path, 120);
+  if (error || !data) { if (w) w.close(); alertBox('CV-ის გახსნა ვერ მოხერხდა.'); return; }
+  if (w) w.location = data.signedUrl; else location.href = data.signedUrl;
+}
+function alertBox(t){ const d = document.createElement('div'); d.className = 'msg err'; d.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:50'; d.textContent = t; document.body.append(d); setTimeout(() => d.remove(), 3500); }
+
+// ---------- EMPLOYER ----------
+function companyView(){
+  const c = company || {};
+  set(`<div class="head"><div><h1>${company ? 'კომპანიის პროფილი' : 'დაამატეთ თქვენი კომპანია'}</h1><p class="muted">${company ? 'ეს ინფორმაცია ჩანს ვაკანსიის გვერდზე.' : 'ვაკანსიის გამოსაქვეყნებლად ჯერ შეავსეთ კომპანიის ინფორმაცია.'}</p></div></div>
+  <form class="card form" id="cf" style="max-width:720px" novalidate>
+    <div class="two"><label>კომპანიის სახელი<input name="name" value="${esc(c.name)}" required></label><label>სფერო<input name="industry" value="${esc(c.industry)}" placeholder="მაგ. ფინანსები"></label></div>
+    <div class="two"><label>ქალაქი<input name="city" value="${esc(c.city)}"></label><label>ვებგვერდი<input name="website" value="${esc(c.website)}" placeholder="company.ge"></label></div>
+    <label>კომპანიის შესახებ<textarea name="about" rows="4">${esc(c.about)}</textarea></label>
+    <div id="cm"></div>
+    <button class="btn blue" style="justify-self:start">${company ? 'შენახვა' : 'გაგრძელება'}</button>
+  </form>`);
+  const f = document.getElementById('cf');
+  f.onsubmit = async e => {
+    e.preventDefault(); const out = document.getElementById('cm'); const b = f.querySelector('button');
+    const row = { name: f.name.value.trim(), industry: f.industry.value.trim(), city: f.city.value.trim(), website: f.website.value.trim(), about: f.about.value.trim() };
+    if (!row.name) { out.innerHTML = err('ჩაწერეთ კომპანიის სახელი.'); return; }
+    b.disabled = true;
+    const r = company
+      ? await sb.from('companies').update(row).eq('id', company.id).select().single()
+      : await sb.from('companies').insert({ ...row, owner_id: me.id }).select().single();
+    b.disabled = false;
+    if (r.error) { out.innerHTML = err(r.error); return; }
+    const first = !company; company = r.data;
+    if (first) go('#new-vacancy'); else out.innerHTML = `<div class="msg ok">შენახულია.</div>`;
+  };
+}
+
+async function vacanciesList(){
+  set(`<div class="head"><div><h1>ვაკანსიები</h1><p class="muted">${esc(company.name)}</p></div><a class="btn blue" href="#new-vacancy">+ ახალი ვაკანსია</a></div><div class="grid" id="list"><div class="spin">იტვირთება…</div></div>`);
+  const { data, error } = await sb.from('vacancies').select('id,title,city,status,created_at,applications(status)').eq('company_id', company.id).order('created_at', { ascending:false });
+  const box = document.getElementById('list');
+  if (error) { box.innerHTML = err(error); return; }
+  if (!data.length) { box.innerHTML = `<div class="card empty">ჯერ ვაკანსია არ გაქვთ.<br><a class="btn blue" style="margin-top:16px" href="#new-vacancy">პირველი ვაკანსიის დამატება</a></div>`; return; }
+  box.innerHTML = data.map(v => {
+    const apps = v.applications || [], fresh = apps.filter(a => a.status === 'new').length;
+    return `<div class="card vac">
+      <div><h2>${esc(v.title)}</h2><div class="meta"><span>${v.city ? esc(v.city) : ''}</span><span>${fmtDate(v.created_at)}</span>${v.status === 'closed' ? '<span class="badge b-closed">დახურული</span>' : ''}</div></div>
+      <div class="row"><div style="text-align:right;margin-right:8px"><div class="count">${apps.length}</div><div class="small muted">განაცხადი${fresh ? ` · <b style="color:var(--accent)">${fresh} ახალი</b>` : ''}</div></div>
+      <a class="btn" href="#board-${v.id}">კანდიდატები</a><a class="btn ghost" href="#edit-${v.id}">რედაქტირება</a></div>
+    </div>`;
+  }).join('');
+}
+
+async function vacancyForm(id){
+  let v = { employment_type:'full_time', status:'open' };
+  if (id) {
+    const r = await sb.from('vacancies').select('*').eq('id', id).maybeSingle();
+    if (!r.data) return set(`<div class="card empty">ვაკანსია ვერ მოიძებნა.</div>`);
+    v = r.data;
+  }
+  set(`<p style="margin-bottom:14px"><a href="#vacancies" class="muted small">← ვაკანსიები</a></p>
+  <div class="head"><div><h1>${id ? 'ვაკანსიის რედაქტირება' : 'ახალი ვაკანსია'}</h1></div></div>
+  <form class="card form" id="vf" style="max-width:760px" novalidate>
+    <label>თანამდებობა<input name="title" value="${esc(v.title)}" required placeholder="მაგ. ფინანსური ანალიტიკოსი"></label>
+    <div class="two"><label>ქალაქი<input name="city" value="${esc(v.city)}"></label>
+      <label>დასაქმების ტიპი<select name="employment_type">${Object.entries(TYPES).map(([k,t]) => `<option value="${k}" ${v.employment_type===k?'selected':''}>${t}</option>`).join('')}</select></label></div>
+    <label>ხელფასი (არასავალდებულო)<input name="salary" value="${esc(v.salary)}" placeholder="მაგ. 2000–2500 ₾"></label>
+    <label>აღწერა<textarea name="description" rows="5">${esc(v.description)}</textarea></label>
+    <label>მოთხოვნები<textarea name="requirements" rows="4">${esc(v.requirements)}</textarea></label>
+    ${id ? `<label>სტატუსი<select name="status"><option value="open" ${v.status==='open'?'selected':''}>აქტიური</option><option value="closed" ${v.status==='closed'?'selected':''}>დახურული</option></select></label>` : ''}
+    <div id="vm"></div>
+    <div class="row"><button class="btn blue">${id ? 'შენახვა' : 'გამოქვეყნება'}</button>${id ? `<button class="btn ghost" type="button" id="del">წაშლა</button>` : ''}</div>
+  </form>`);
+  const f = document.getElementById('vf');
+  f.onsubmit = async e => {
+    e.preventDefault(); const out = document.getElementById('vm'); const b = f.querySelector('button.blue');
+    const row = { title: f.title.value.trim(), city: f.city.value.trim(), employment_type: f.employment_type.value, salary: f.salary.value.trim(), description: f.description.value.trim(), requirements: f.requirements.value.trim() };
+    if (f.status) row.status = f.status.value;
+    if (!row.title) { out.innerHTML = err('ჩაწერეთ თანამდებობა.'); return; }
+    b.disabled = true;
+    const r = id ? await sb.from('vacancies').update(row).eq('id', id) : await sb.from('vacancies').insert({ ...row, company_id: company.id });
+    b.disabled = false;
+    if (r.error) { out.innerHTML = err(r.error); return; }
+    go('#vacancies');
+  };
+  const del = document.getElementById('del');
+  if (del) del.onclick = async () => {
+    if (del.dataset.sure !== '1') { del.dataset.sure = '1'; del.textContent = 'დარწმუნებული ხართ? დააჭირეთ ისევ'; return; }
+    const r = await sb.from('vacancies').delete().eq('id', id);
+    if (r.error) { document.getElementById('vm').innerHTML = err(r.error); return; }
+    go('#vacancies');
+  };
+}
+
+let boardData = [];
+async function board(id){
+  set(`<div class="spin">იტვირთება…</div>`);
+  const [v, a] = await Promise.all([
+    sb.from('vacancies').select('id,title,status').eq('id', id).maybeSingle(),
+    sb.from('applications').select('id,status,note,created_at,candidate_id,profiles!applications_candidate_id_fkey(full_name,phone,city,candidate_profiles(headline,experience_years,skills,about,cv_path))').eq('vacancy_id', id).order('created_at')
+  ]);
+  if (!v.data) return set(`<div class="card empty">ვაკანსია ვერ მოიძებნა.</div>`);
+  if (a.error) return set(err(a.error));
+  boardData = a.data;
+  const cols = ['new','viewed','interview','offer','hired','rejected'];
+  set(`<p style="margin-bottom:14px"><a href="#vacancies" class="muted small">← ვაკანსიები</a></p>
+  <div class="head"><div><h1>${esc(v.data.title)}</h1><p class="muted">${boardData.length} განაცხადი · დააჭირეთ კანდიდატს დეტალების სანახავად</p></div></div>
+  ${boardData.length ? `<div class="board">${cols.map(s => {
+    const items = boardData.filter(x => x.status === s);
+    return `<div class="col"><h4><span>${STATUS[s].ka}</span><span>${items.length}</span></h4>${items.map(x => {
+      const p = x.profiles || {}, cp = one(p.candidate_profiles);
+      return `<button class="cc" data-id="${x.id}"><b>${esc(p.full_name || 'კანდიდატი')}</b><small>${esc(cp.headline || '')}${cp.experience_years ? ` · ${cp.experience_years} წ.` : ''}</small><br><small>${fmtDate(x.created_at)}</small></button>`;
+    }).join('')}</div>`;
+  }).join('')}</div>` : `<div class="card empty">ჯერ განაცხადი არ შემოსულა. გაუზიარეთ ვაკანსიის ბმული კანდიდატებს.</div>`}`);
+  view.querySelectorAll('.cc').forEach(b => b.onclick = () => openApplicant(b.dataset.id, id));
+}
+const one = x => Array.isArray(x) ? (x[0] || {}) : (x || {});
+
+async function openApplicant(appId, vacId){
+  const x = boardData.find(r => r.id === appId); if (!x) return;
+  if (x.status === 'new') {
+    const r = await sb.from('applications').update({ status:'viewed' }).eq('id', appId);
+    if (!r.error) x.status = 'viewed';
+  }
+  const p = x.profiles || {}, cp = one(p.candidate_profiles);
+  const d = document.getElementById('drawer');
+  d.innerHTML = `<button class="x" id="dx" aria-label="დახურვა">✕</button>
+    <p class="small muted">კანდიდატი</p><h1 style="margin-top:4px">${esc(p.full_name)}</h1>
+    <p class="muted" style="margin-top:4px">${esc(cp.headline || '')}</p>
+    <div style="margin-top:12px">${badge(x.status)}</div>
+    <dl class="kv">
+      <dt>ტელეფონი</dt><dd>${esc(p.phone || '—')}</dd>
+      <dt>ქალაქი</dt><dd>${esc(p.city || '—')}</dd>
+      <dt>გამოცდილება</dt><dd>${cp.experience_years ? cp.experience_years + ' წელი' : '—'}</dd>
+      <dt>უნარები</dt><dd>${esc(cp.skills || '—')}</dd>
+      <dt>გაგზავნილია</dt><dd>${fmtDate(x.created_at)}</dd>
+    </dl>
+    ${cp.about ? `<h3 style="font-size:14px;margin:20px 0 6px">შესახებ</h3><p class="prose">${esc(cp.about)}</p>` : ''}
+    ${x.note ? `<h3 style="font-size:14px;margin:20px 0 6px">წერილი</h3><p class="prose">${esc(x.note)}</p>` : ''}
+    ${cp.cv_path ? `<button class="btn ghost" id="cvb" style="margin-top:20px">CV-ის გახსნა (PDF)</button>` : ''}
+    <h3 style="font-size:14px;margin:26px 0 4px">სტატუსის შეცვლა</h3>
+    <p class="small muted">კანდიდატი ცვლილებას მაშინვე ხედავს.</p>
+    <div class="moves">${['interview','offer','hired','rejected'].map(s => `<button class="btn ${s==='rejected'?'ghost':''} sm" data-s="${s}" ${x.status===s?'disabled':''}>${STATUS[s].ka}</button>`).join('')}</div>
+    <div id="dm" style="margin-top:12px"></div>`;
+  d.hidden = false; document.getElementById('scrim').hidden = false;
+  document.getElementById('dx').onclick = () => { closeDrawer(); board(vacId); };
+  document.getElementById('scrim').onclick = () => { closeDrawer(); board(vacId); };
+  const cvb = document.getElementById('cvb'); if (cvb) cvb.onclick = () => openCv(cp.cv_path);
+  d.querySelectorAll('[data-s]').forEach(b => b.onclick = async () => {
+    b.disabled = true;
+    const r = await sb.from('applications').update({ status: b.dataset.s }).eq('id', appId);
+    if (r.error) { b.disabled = false; document.getElementById('dm').innerHTML = err(r.error); return; }
+    x.status = b.dataset.s; openApplicant(appId, vacId);
+  });
+}
+function closeDrawer(){ document.getElementById('drawer').hidden = true; document.getElementById('scrim').hidden = true; }
+addEventListener('keydown', e => { if (e.key === 'Escape' && !document.getElementById('drawer').hidden) { closeDrawer(); route(); } });
+
+// ---------- start ----------
+(async () => {
+  if (!sb) return route();
+  await loadMe();
+  sb.auth.onAuthStateChange(async (ev) => {
+    const { data:{ session } } = await sb.auth.getSession();
+    const uid = session?.user?.id || null;
+    if ((ev === 'SIGNED_IN' || ev === 'SIGNED_OUT') && uid !== (me?.id || null)) { await loadMe(); route(); }
+    if (ev === 'PASSWORD_RECOVERY') {
+      set(`<div class="auth"><div class="card"><h2>ახალი პაროლი</h2><form class="form" id="np" style="margin-top:16px"><label>ახალი პაროლი<input name="p" type="password" minlength="8" autocomplete="new-password" required></label><div id="npm"></div><button class="btn blue">შენახვა</button></form></div></div>`);
+      const f = document.getElementById('np');
+      f.onsubmit = async e => { e.preventDefault(); const { error } = await sb.auth.updateUser({ password: f.p.value }); document.getElementById('npm').innerHTML = error ? err(error) : `<div class="msg ok">პაროლი შეიცვალა.</div>`; if (!error) setTimeout(() => go('#jobs'), 1200); };
+    }
+  });
+  route();
+})();
+</script>
+</body>
+</html>
