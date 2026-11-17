@@ -10,121 +10,135 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Georgian:wght@400;500;600;700&display=swap">
 <style>
 :root{
-  --bg:#F6F7FA; --surface:#fff; --ink:#0F1522; --muted:#5D6677; --line:#E4E7EE;
-  --accent:#2347D6; --accent-soft:#EEF2FF; --ok:#16794F; --ok-soft:#E4F5EC; --warn:#B86E00; --warn-soft:#FFF3E2; --bad:#B42318; --bad-soft:#FDECEA;
+  --bg:#06080F; --surface:rgba(255,255,255,.04); --solid:#0E1320; --ink:#F3F5FA; --muted:#97A0B5; --line:rgba(255,255,255,.09);
+  --accent:#818CF8; --accent-soft:rgba(99,102,241,.16); --ok:#34D399; --ok-soft:rgba(52,211,153,.14); --warn:#FBBF24; --warn-soft:rgba(251,191,36,.14); --bad:#F87171; --bad-soft:rgba(248,113,113,.14);
+  --grad:linear-gradient(135deg,#6366F1 0%,#A855F7 55%,#EC4899 100%);
   --font:"Inter","Noto Sans Georgian",system-ui,sans-serif;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(700px 420px at 10% -5%,rgba(99,102,241,.18),transparent 70%),radial-gradient(600px 400px at 95% 10%,rgba(168,85,247,.13),transparent 70%)}
+.top,main{position:relative;z-index:1}
 h1,h2,h3,p{margin:0}
-h1{font-size:28px;letter-spacing:-.02em;line-height:1.2}
-h2{font-size:20px;letter-spacing:-.01em}
+h1{font-size:30px;letter-spacing:-.03em;line-height:1.15}
+h2{font-size:19px;letter-spacing:-.015em}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+:focus-visible{outline:2px solid #22D3EE;outline-offset:2px;border-radius:6px}
 .muted{color:var(--muted)}
 .small{font-size:13px}
 
-/* top bar */
-.top{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.top{background:rgba(6,8,15,.7);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
 .top .in{max-width:1180px;margin:0 auto;padding:0 20px;height:64px;display:flex;align-items:center;gap:24px}
-.logo{font-weight:700;font-size:20px;letter-spacing:-.03em;text-decoration:none}
-.logo span{color:var(--accent)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px;letter-spacing:-.03em;text-decoration:none}
+.logo::before{content:"";width:24px;height:24px;border-radius:7px;background:var(--grad);box-shadow:0 0 20px rgba(129,99,241,.6)}
+.logo span{color:inherit}
 .tabs{display:flex;gap:4px;flex:1}
-.tabs a{padding:8px 14px;border-radius:999px;text-decoration:none;color:var(--muted);font-weight:500;font-size:14px}
+.tabs a{padding:8px 14px;border-radius:999px;text-decoration:none;color:var(--muted);font-weight:500;font-size:14px;transition:color .2s,background .2s}
 .tabs a:hover{color:var(--ink)}
-.tabs a[aria-current="page"]{background:var(--ink);color:#fff}
-.me{display:flex;align-items:center;gap:12px;font-size:14px}
-.avatar{width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px}
+.tabs a[aria-current="page"]{background:rgba(255,255,255,.1);color:#fff}
+.me{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--muted)}
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--grad);color:#fff;display:grid;place-items:center;font-weight:700;font-size:12px}
 
-main{max-width:1180px;margin:0 auto;padding:32px 20px 64px}
-.head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+main{max-width:1180px;margin:0 auto;padding:36px 20px 72px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:26px}
 .head p{margin-top:6px}
 
-/* elements */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border-radius:10px;border:1px solid transparent;font:inherit;font-weight:600;font-size:14px;cursor:pointer;text-decoration:none;background:var(--ink);color:#fff;transition:background .15s}
-.btn:hover{background:#000}
-.btn.blue{background:var(--accent)}.btn.blue:hover{background:#1A38B3}
-.btn.ghost{background:var(--surface);color:var(--ink);border-color:var(--line)}.btn.ghost:hover{border-color:var(--ink)}
-.btn.sm{padding:7px 12px;font-size:13px;border-radius:8px}
-.btn:disabled{opacity:.55;cursor:default}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px}
-.grid{display:grid;gap:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border-radius:11px;border:1px solid transparent;font:inherit;font-weight:600;font-size:14px;cursor:pointer;text-decoration:none;background:#fff;color:#0B0F1A;transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{box-shadow:0 0 0 4px rgba(255,255,255,.1)}
+.btn.blue{background:var(--grad);color:#fff;box-shadow:0 10px 28px -12px rgba(139,92,246,.9),inset 0 1px 0 rgba(255,255,255,.25)}
+.btn.blue:hover{transform:translateY(-1px);box-shadow:0 14px 34px -12px rgba(139,92,246,1),inset 0 1px 0 rgba(255,255,255,.25)}
+.btn.ghost{background:rgba(255,255,255,.05);color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{background:rgba(255,255,255,.1);box-shadow:none}
+.btn.sm{padding:7px 12px;font-size:13px;border-radius:9px}
+.btn:disabled{opacity:.45;cursor:default;transform:none}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.025));border:1px solid var(--line);border-radius:18px;padding:22px}
+.grid{display:grid;gap:12px}
 .form{display:grid;gap:14px}
 .form .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-label{display:grid;gap:6px;font-size:13px;font-weight:600}
-input,select,textarea{font:inherit;font-weight:400;font-size:15px;padding:11px 13px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink);width:100%}
+label{display:grid;gap:6px;font-size:13px;font-weight:600;color:#DDE1EA}
+input,select,textarea{font:inherit;font-weight:400;font-size:15px;padding:11px 13px;border-radius:10px;border:1px solid var(--line);background:rgba(6,8,15,.65);color:var(--ink);width:100%}
+select option{background:#0E1320}
+input::placeholder,textarea::placeholder{color:#5F6880}
 textarea{resize:vertical;min-height:90px}
-input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
-.check{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:14px}
-.check input{width:auto;margin-top:3px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#6366F1;box-shadow:0 0 0 3px rgba(99,102,241,.3)}
+.check{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:14px;color:var(--muted)}
+.check input{width:auto;margin-top:3px;accent-color:#8B5CF6}
 .msg{padding:12px 14px;border-radius:10px;font-size:14px}
-.msg.err{background:var(--bad-soft);color:var(--bad)}
-.msg.ok{background:var(--ok-soft);color:var(--ok)}
-.badge{display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
-.b-new{background:var(--accent-soft);color:var(--accent)}
-.b-viewed{background:#EEF0F4;color:#3A4354}
+.msg.err{background:var(--bad-soft);color:var(--bad);border:1px solid rgba(248,113,113,.25)}
+.msg.ok{background:var(--ok-soft);color:var(--ok);border:1px solid rgba(52,211,153,.25)}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--accent-soft);color:#C7CBFF;white-space:nowrap}
+.badge::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.b-new{background:var(--accent-soft);color:#C7CBFF}
+.b-viewed{background:rgba(255,255,255,.08);color:#C9CFDB}
 .b-interview{background:var(--warn-soft);color:var(--warn)}
 .b-offer,.b-hired{background:var(--ok-soft);color:var(--ok)}
 .b-rejected{background:var(--bad-soft);color:var(--bad)}
-.b-closed{background:#EEF0F4;color:var(--muted)}
-.empty{text-align:center;padding:48px 20px;color:var(--muted)}
+.b-closed{background:rgba(255,255,255,.08);color:var(--muted)}
+.empty{text-align:center;padding:52px 20px;color:var(--muted)}
 .spin{display:grid;place-items:center;padding:60px;color:var(--muted)}
 
-/* auth */
-.auth{max-width:440px;margin:40px auto}
-.auth .card{padding:30px}
-.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--bg);border-radius:12px;padding:4px;margin-bottom:22px}
+.auth{max-width:440px;margin:36px auto}
+.auth h1{font-size:34px}
+.auth .card{padding:30px;box-shadow:0 40px 80px -30px rgba(0,0,0,.8)}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:rgba(6,8,15,.65);border:1px solid var(--line);border-radius:12px;padding:4px;margin-bottom:22px}
 .seg button{border:0;background:none;font:inherit;font-weight:600;padding:10px;border-radius:9px;cursor:pointer;color:var(--muted)}
-.seg button[aria-pressed="true"]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(15,21,34,.1)}
+.seg button[aria-pressed="true"]{background:rgba(255,255,255,.1);color:#fff}
 .roles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.role{border:1.5px solid var(--line);border-radius:12px;padding:14px;cursor:pointer;font-weight:400}
-.role b{display:block;font-size:15px}
+.role{position:relative;border:1px solid var(--line);border-radius:12px;padding:14px;cursor:pointer;font-weight:400;background:rgba(6,8,15,.4);transition:border-color .2s,background .2s}
+.role b{display:block;font-size:15px;color:var(--ink)}
 .role small{color:var(--muted);font-size:13px}
-.role:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+.role:has(input:checked){border-color:#8B5CF6;background:rgba(139,92,246,.14);box-shadow:0 0 0 3px rgba(139,92,246,.18)}
 .role input{position:absolute;opacity:0;pointer-events:none}
 
-/* jobs */
 .toolbar{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
-.toolbar input{max-width:360px}
-.job{display:flex;justify-content:space-between;gap:16px;align-items:center;text-decoration:none;transition:border-color .15s}
-.job:hover{border-color:var(--ink)}
+.toolbar input{max-width:380px;padding-left:40px;background:rgba(6,8,15,.65) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2397A0B5' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") 14px 50%/16px no-repeat}
+.job{display:flex;justify-content:space-between;gap:16px;align-items:center;text-decoration:none;transition:border-color .2s,transform .2s,background .2s}
+.job:hover{border-color:rgba(139,92,246,.5);transform:translateY(-1px)}
 .job h3{font-size:17px}
-.meta{display:flex;gap:14px;flex-wrap:wrap;margin-top:4px;font-size:14px;color:var(--muted)}
-.detail{display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start}
-.prose{white-space:pre-wrap}
-.section h3{font-size:15px;margin:22px 0 8px}
+.meta{display:flex;gap:6px 14px;flex-wrap:wrap;margin-top:4px;font-size:14px;color:var(--muted)}
+.detail{display:grid;grid-template-columns:1fr 330px;gap:20px;align-items:start}
+.prose{white-space:pre-wrap;color:#D5DAE4}
+.section h3{font-size:14px;margin:24px 0 8px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 
-/* timeline */
-.timeline{list-style:none;padding:0;margin:14px 0 0;display:flex;gap:0;flex-wrap:wrap}
-.timeline li{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin-right:18px;padding:4px 0}
-.timeline .d{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.timeline{list-style:none;padding:16px 0 0;margin:16px 0 0;display:flex;flex-wrap:wrap;gap:6px 0;border-top:1px solid var(--line)}
+.timeline li{display:flex;align-items:center;gap:8px;font-size:13px;color:#5F6880;margin-right:20px;padding:4px 0}
+.timeline .d{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.12)}
 .timeline li.on{color:var(--ink)}
-.timeline li.on .d{background:var(--ok)}
+.timeline li.on .d{background:var(--ok);box-shadow:0 0 8px rgba(52,211,153,.6)}
 .timeline li.cur .d{background:var(--warn);box-shadow:0 0 0 4px var(--warn-soft)}
 .timeline li.no .d{background:var(--bad)}
 
-/* board */
 .board{display:grid;grid-template-columns:repeat(6,minmax(200px,1fr));gap:12px;overflow-x:auto;padding-bottom:8px}
-.col{background:#EEF0F4;border-radius:14px;padding:10px;min-height:200px}
-.col h4{margin:4px 6px 10px;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);display:flex;justify-content:space-between}
-.cc{background:#fff;border-radius:10px;padding:12px;margin-bottom:8px;cursor:pointer;border:1px solid transparent;box-shadow:0 1px 2px rgba(15,21,34,.06);text-align:left;width:100%;font:inherit}
-.cc:hover{border-color:var(--ink)}
+.col{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:16px;padding:10px;min-height:220px}
+.col h4{margin:4px 6px 12px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+.col h4 span:last-child{background:rgba(255,255,255,.08);border-radius:999px;padding:1px 8px;color:var(--ink)}
+.col[data-s="interview"]{border-top:2px solid var(--warn)}
+.col[data-s="offer"],.col[data-s="hired"]{border-top:2px solid var(--ok)}
+.col[data-s="rejected"]{border-top:2px solid var(--bad)}
+.col[data-s="new"]{border-top:2px solid #818CF8}
+.col[data-s="viewed"]{border-top:2px solid #64748B}
+.cc{background:var(--solid);border-radius:12px;padding:12px;margin-bottom:8px;cursor:pointer;border:1px solid var(--line);text-align:left;width:100%;font:inherit;color:var(--ink);transition:border-color .2s,transform .2s}
+.cc:hover{border-color:rgba(139,92,246,.6);transform:translateY(-1px)}
 .cc b{display:block;font-size:14px}
 .cc small{color:var(--muted);font-size:12px}
 
-/* drawer */
-.scrim{position:fixed;inset:0;background:rgba(15,21,34,.35);z-index:30}
-.drawer{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);background:#fff;z-index:31;overflow-y:auto;padding:26px;box-shadow:-20px 0 40px -20px rgba(15,21,34,.3)}
-.drawer .x{position:absolute;top:16px;right:16px;border:0;background:var(--bg);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px}
-.kv{display:grid;grid-template-columns:130px 1fr;gap:8px 12px;font-size:14px;margin-top:16px}
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(3px);z-index:30}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(460px,100%);background:#0B0F1A;border-left:1px solid var(--line);z-index:31;overflow-y:auto;padding:28px;box-shadow:-30px 0 60px -20px rgba(0,0,0,.8)}
+.drawer .x{position:absolute;top:16px;right:16px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--ink);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px}
+.kv{display:grid;grid-template-columns:130px 1fr;gap:10px 12px;font-size:14px;margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
 .kv dt{color:var(--muted)}
 .kv dd{margin:0}
 .moves{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
 
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.vac{display:flex;justify-content:space-between;align-items:center;gap:16px}
-.count{font-size:28px;font-weight:700;letter-spacing:-.02em}
+.vac{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.match{display:inline-flex;vertical-align:middle;margin-left:8px;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;background:rgba(34,211,238,.12);color:#67E8F9;border:1px solid rgba(34,211,238,.25)}
+.msg.tip{background:rgba(99,102,241,.1);border:1px solid rgba(129,140,248,.25);color:#C7CBFF}
+.msg.tip a{color:#fff;font-weight:600}
+.reply{margin-top:16px;padding:14px;border-radius:12px;background:rgba(99,102,241,.08);border:1px solid rgba(129,140,248,.2)}
+.count{font-size:30px;font-weight:700;letter-spacing:-.03em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 
 @media (max-width:800px){
   .detail{grid-template-columns:1fr}
@@ -139,7 +153,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
 
 <header class="top">
   <div class="in">
-    <a class="logo" href="index.html">kandi<span>dati</span></a>
+    <a class="logo" href="index.html">kandidati</a>
     <nav class="tabs" id="tabs" aria-label="მენიუ"></nav>
     <div class="me" id="me" hidden>
       <span class="name" id="meName"></span>
@@ -168,6 +182,13 @@ const STATUS = {
   offer:{ka:'შეთავაზება'}, hired:{ka:'აყვანილია'}, rejected:{ka:'უარი'}
 };
 const FLOW = ['new','viewed','interview','offer','hired'];
+const TEMPLATES = {
+  interview: 'გამარჯობა! მადლობა განაცხადისთვის. გვსურს გასაუბრებაზე მოგიწვიოთ. გთხოვთ, შეგვატყობინოთ თქვენთვის მოსახერხებელი დრო.',
+  offer: 'გილოცავთ! მოხარულები ვართ, შემოგთავაზოთ ეს პოზიცია. დეტალებს მალე გამოგიგზავნით.',
+  hired: 'კეთილი იყოს თქვენი მობრძანება გუნდში!',
+  rejected: 'მადლობა დაინტერესებისა და დახარჯული დროისთვის. ამჯერად სხვა კანდიდატთან ერთად ვაგრძელებთ, მაგრამ თქვენს პროფილს მომავალი ვაკანსიებისთვის შევინარჩუნებთ. წარმატებებს გისურვებთ!'
+};
+
 const TYPES = {full_time:'სრული განაკვეთი', part_time:'ნახევარი განაკვეთი', internship:'სტაჟირება', remote:'დისტანციური'};
 
 let me = null;        // {id, email, role, full_name, phone, city}
@@ -296,24 +317,30 @@ document.getElementById('logout').onclick = async () => { await sb.auth.signOut(
 // ---------- CANDIDATE ----------
 async function jobsList(){
   set(`<div class="head"><div><h1>ვაკანსიები</h1><p class="muted">აირჩიეთ და გააგზავნეთ განაცხადი ერთი დაწკაპუნებით</p></div></div>
-  <div class="toolbar"><input id="q" type="search" placeholder="ძიება: თანამდებობა, კომპანია, ქალაქი"></div>
+  <div class="toolbar"><input id="q" type="search" placeholder="ძიება: თანამდებობა, კომპანია"><select id="fc" style="max-width:200px"><option value="">ყველა ქალაქი</option></select><select id="ft" style="max-width:220px"><option value="">ყველა ტიპი</option>${Object.entries(TYPES).map(([k,t])=>`<option value="${k}">${t}</option>`).join('')}</select></div>
   <div class="grid" id="list"><div class="spin">იტვირთება…</div></div>`);
   const [v, a] = await Promise.all([
-    sb.from('vacancies').select('id,title,city,employment_type,salary,created_at,companies(name)').eq('status','open').order('created_at',{ascending:false}),
+    sb.from('vacancies').select('id,title,city,employment_type,salary,created_at,requirements,description,companies(name)').eq('status','open').order('created_at',{ascending:false}),
     sb.from('applications').select('vacancy_id,status').eq('candidate_id', me.id)
   ]);
+  const cp = (await sb.from('candidate_profiles').select('skills,headline').eq('user_id', me.id).maybeSingle()).data || {};
+  const fc = document.getElementById('fc');
+  [...new Set((v.data||[]).map(j => (j.city||'').trim()).filter(Boolean))].sort().forEach(c => fc.insertAdjacentHTML('beforeend', `<option>${esc(c)}</option>`));
   if (v.error) { document.getElementById('list').innerHTML = err(v.error); return; }
   const applied = Object.fromEntries((a.data||[]).map(x => [x.vacancy_id, x.status]));
-  const draw = q => {
-    const rows = v.data.filter(j => !q || [j.title, j.city, j.companies?.name].join(' ').toLowerCase().includes(q));
+  const draw = () => {
+    const q = document.getElementById('q').value.trim().toLowerCase(), c = fc.value, t = document.getElementById('ft').value;
+    const rows = v.data.filter(j => (!q || [j.title, j.companies?.name].join(' ').toLowerCase().includes(q)) && (!c || (j.city||'').trim() === c) && (!t || j.employment_type === t))
+      .map(j => ({ ...j, m: skillMatch(cp, j) })).sort((x, y) => (y.m ?? -1) - (x.m ?? -1));
     document.getElementById('list').innerHTML = rows.length ? rows.map(j => `
       <a class="card job" href="#job-${j.id}">
-        <div><h3>${esc(j.title)}</h3><div class="meta"><span>${esc(j.companies?.name)}</span>${j.city?`<span>${esc(j.city)}</span>`:''}<span>${TYPES[j.employment_type]||''}</span>${j.salary?`<span>${esc(j.salary)}</span>`:''}</div></div>
-        ${applied[j.id] ? badge(applied[j.id]) : '<span class="muted small">→</span>'}
-      </a>`).join('') : `<div class="card empty">${q ? 'ვერაფერი მოიძებნა.' : 'ჯერ ვაკანსიები არ არის. მალე დაემატება!'}</div>`;
+        <div><h3>${esc(j.title)}${j.m ? ` <span class="match" title="თქვენი უნარების დამთხვევა ვაკანსიის მოთხოვნებთან">${j.m}% დამთხვევა</span>` : ''}</h3><div class="meta"><span>${esc(j.companies?.name)}</span>${j.city?`<span>${esc(j.city)}</span>`:''}<span>${TYPES[j.employment_type]||''}</span>${j.salary?`<span>${esc(j.salary)}</span>`:''}</div></div>
+        ${applied[j.id] ? badge(applied[j.id]) : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#97A0B5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'}
+      </a>`).join('') : `<div class="card empty">${(q||c||t) ? 'ვერაფერი მოიძებნა.' : 'ჯერ ვაკანსიები არ არის. მალე დაემატება!'}</div>`;
   };
-  draw('');
-  document.getElementById('q').oninput = e => draw(e.target.value.trim().toLowerCase());
+  if (!cp.skills) document.getElementById('list').insertAdjacentHTML('beforebegin', `<div class="msg tip" style="margin-bottom:14px">💡 პროფილში უნარები ჩაწერეთ და თითოეულ ვაკანსიაზე დამთხვევის პროცენტს დაინახავთ. <a href="#profile">პროფილი →</a></div>`);
+  draw();
+  ['q','fc','ft'].forEach(id => document.getElementById(id).addEventListener('input', draw));
 }
 
 async function jobDetail(id){
@@ -325,7 +352,7 @@ async function jobDetail(id){
   ]);
   if (!v.data) return set(`<div class="card empty">ვაკანსია ვერ მოიძებნა. <a href="#jobs">ყველა ვაკანსია</a></div>`);
   const j = v.data, co = j.companies || {}, hasCv = !!c.data?.cv_path;
-  set(`<p style="margin-bottom:14px"><a href="#jobs" class="muted small">← ყველა ვაკანსია</a></p>
+  set(`<p style="margin-bottom:14px"><a href="#jobs" class="muted small" style="text-decoration:none">← ყველა ვაკანსია</a></p>
   <div class="detail">
     <div class="card">
       <h1>${esc(j.title)}</h1>
@@ -359,7 +386,7 @@ async function jobDetail(id){
 async function myApplications(){
   set(`<div class="head"><div><h1>ჩემი განაცხადები</h1><p class="muted">ყოველთვის ხედავთ, სად დგას თქვენი განაცხადი</p></div></div><div class="grid" id="list"><div class="spin">იტვირთება…</div></div>`);
   const { data, error } = await sb.from('applications')
-    .select('id,status,created_at,vacancies(id,title,companies(name)),application_events(status,created_at)')
+    .select('id,status,employer_message,created_at,vacancies(id,title,companies(name)),application_events(status,created_at)')
     .eq('candidate_id', me.id).order('created_at', { ascending:false });
   const box = document.getElementById('list');
   if (error) { box.innerHTML = err(error); return; }
@@ -373,7 +400,7 @@ async function myApplications(){
       const cls = reached ? (i === curIdx ? 'on cur' : 'on') : '';
       return `<li class="${cls}"><span class="d"></span>${STATUS[s].ka}${ev[s] ? ` · ${fmtDate(ev[s])}` : ''}</li>`;
     }).join('') + (rejected ? `<li class="on no"><span class="d"></span>უარი · ${fmtDate(ev.rejected || x.created_at)}</li>` : '');
-    return `<div class="card"><div class="vac"><div><h2>${esc(x.vacancies?.title || 'ვაკანსია')}</h2><p class="muted small">${esc(x.vacancies?.companies?.name || '')} · გაგზავნილია ${fmtDate(x.created_at)}</p></div>${badge(x.status)}</div><ul class="timeline">${steps}</ul></div>`;
+    return `<div class="card"><div class="vac"><div><h2>${esc(x.vacancies?.title || 'ვაკანსია')}</h2><p class="muted small">${esc(x.vacancies?.companies?.name || '')} · გაგზავნილია ${fmtDate(x.created_at)}</p></div>${badge(x.status)}</div><ul class="timeline">${steps}</ul>${x.employer_message ? `<div class="reply"><p class="small muted">შეტყობინება დამსაქმებლისგან</p><p class="prose" style="margin-top:4px">${esc(x.employer_message)}</p></div>` : ''}</div>`;
   }).join('');
 }
 
@@ -466,14 +493,15 @@ function companyView(){
 
 async function vacanciesList(){
   set(`<div class="head"><div><h1>ვაკანსიები</h1><p class="muted">${esc(company.name)}</p></div><a class="btn blue" href="#new-vacancy">+ ახალი ვაკანსია</a></div><div class="grid" id="list"><div class="spin">იტვირთება…</div></div>`);
-  const { data, error } = await sb.from('vacancies').select('id,title,city,status,created_at,applications(status)').eq('company_id', company.id).order('created_at', { ascending:false });
+  const { data, error } = await sb.from('vacancies').select('id,title,city,status,created_at,applications(status,created_at)').eq('company_id', company.id).order('created_at', { ascending:false });
   const box = document.getElementById('list');
   if (error) { box.innerHTML = err(error); return; }
   if (!data.length) { box.innerHTML = `<div class="card empty">ჯერ ვაკანსია არ გაქვთ.<br><a class="btn blue" style="margin-top:16px" href="#new-vacancy">პირველი ვაკანსიის დამატება</a></div>`; return; }
   box.innerHTML = data.map(v => {
     const apps = v.applications || [], fresh = apps.filter(a => a.status === 'new').length;
+    const late = apps.filter(a => ['new','viewed'].includes(a.status) && (Date.now() - new Date(a.created_at)) > 5*864e5).length;
     return `<div class="card vac">
-      <div><h2>${esc(v.title)}</h2><div class="meta"><span>${v.city ? esc(v.city) : ''}</span><span>${fmtDate(v.created_at)}</span>${v.status === 'closed' ? '<span class="badge b-closed">დახურული</span>' : ''}</div></div>
+      <div><h2>${esc(v.title)}</h2><div class="meta"><span>${v.city ? esc(v.city) : ''}</span><span>${fmtDate(v.created_at)}</span>${v.status === 'closed' ? '<span class="badge b-closed">დახურული</span>' : ''}</div>${late ? `<p class="small" style="color:var(--warn);margin-top:8px">⏱ ${late} კანდიდატი 5 დღეზე მეტია პასუხს ელოდება</p>` : ''}</div>
       <div class="row"><div style="text-align:right;margin-right:8px"><div class="count">${apps.length}</div><div class="small muted">განაცხადი${fresh ? ` · <b style="color:var(--accent)">${fresh} ახალი</b>` : ''}</div></div>
       <a class="btn" href="#board-${v.id}">კანდიდატები</a><a class="btn ghost" href="#edit-${v.id}">რედაქტირება</a></div>
     </div>`;
@@ -526,7 +554,7 @@ async function board(id){
   set(`<div class="spin">იტვირთება…</div>`);
   const [v, a] = await Promise.all([
     sb.from('vacancies').select('id,title,status').eq('id', id).maybeSingle(),
-    sb.from('applications').select('id,status,note,created_at,candidate_id,profiles!applications_candidate_id_fkey(full_name,phone,city,candidate_profiles(headline,experience_years,skills,about,cv_path))').eq('vacancy_id', id).order('created_at')
+    sb.from('applications').select('id,status,note,employer_message,created_at,candidate_id,profiles!applications_candidate_id_fkey(full_name,phone,city,candidate_profiles(headline,experience_years,skills,about,cv_path))').eq('vacancy_id', id).order('created_at')
   ]);
   if (!v.data) return set(`<div class="card empty">ვაკანსია ვერ მოიძებნა.</div>`);
   if (a.error) return set(err(a.error));
@@ -536,12 +564,19 @@ async function board(id){
   <div class="head"><div><h1>${esc(v.data.title)}</h1><p class="muted">${boardData.length} განაცხადი · დააჭირეთ კანდიდატს დეტალების სანახავად</p></div></div>
   ${boardData.length ? `<div class="board">${cols.map(s => {
     const items = boardData.filter(x => x.status === s);
-    return `<div class="col"><h4><span>${STATUS[s].ka}</span><span>${items.length}</span></h4>${items.map(x => {
+    return `<div class="col" data-s="${s}"><h4><span>${STATUS[s].ka}</span><span>${items.length}</span></h4>${items.map(x => {
       const p = x.profiles || {}, cp = one(p.candidate_profiles);
       return `<button class="cc" data-id="${x.id}"><b>${esc(p.full_name || 'კანდიდატი')}</b><small>${esc(cp.headline || '')}${cp.experience_years ? ` · ${cp.experience_years} წ.` : ''}</small><br><small>${fmtDate(x.created_at)}</small></button>`;
     }).join('')}</div>`;
   }).join('')}</div>` : `<div class="card empty">ჯერ განაცხადი არ შემოსულა. გაუზიარეთ ვაკანსიის ბმული კანდიდატებს.</div>`}`);
   view.querySelectorAll('.cc').forEach(b => b.onclick = () => openApplicant(b.dataset.id, id));
+}
+function skillMatch(cp, j){
+  const skills = (cp.skills || '').split(/[,;\n]+/).map(x => x.trim().toLowerCase()).filter(x => x.length > 1);
+  if (!skills.length) return null;
+  const text = [j.title, j.requirements, j.description].join(' ').toLowerCase();
+  const hit = skills.filter(k => text.includes(k)).length;
+  return Math.round(hit / skills.length * 100);
 }
 const one = x => Array.isArray(x) ? (x[0] || {}) : (x || {});
 
@@ -568,19 +603,31 @@ async function openApplicant(appId, vacId){
     ${x.note ? `<h3 style="font-size:14px;margin:20px 0 6px">წერილი</h3><p class="prose">${esc(x.note)}</p>` : ''}
     ${cp.cv_path ? `<button class="btn ghost" id="cvb" style="margin-top:20px">CV-ის გახსნა (PDF)</button>` : ''}
     <h3 style="font-size:14px;margin:26px 0 4px">სტატუსის შეცვლა</h3>
-    <p class="small muted">კანდიდატი ცვლილებას მაშინვე ხედავს.</p>
-    <div class="moves">${['interview','offer','hired','rejected'].map(s => `<button class="btn ${s==='rejected'?'ghost':''} sm" data-s="${s}" ${x.status===s?'disabled':''}>${STATUS[s].ka}</button>`).join('')}</div>
+    <p class="small muted">აირჩიეთ ეტაპი. კანდიდატი სტატუსს და თქვენს შეტყობინებას მაშინვე ნახავს.</p>
+    <div class="moves">${['interview','offer','hired','rejected'].map(s => `<button class="btn ghost sm" data-pick="${s}" ${x.status===s?'disabled':''}>${STATUS[s].ka}</button>`).join('')}</div>
+    <div id="compose" hidden style="margin-top:14px" class="form">
+      <label>შეტყობინება კანდიდატს<textarea id="tmsg" rows="4" maxlength="1500"></textarea></label>
+      <div class="row"><button class="btn blue sm" id="send">გაგზავნა</button><button class="btn ghost sm" id="cancel" type="button">გაუქმება</button></div>
+    </div>
+    ${x.employer_message ? `<div class="card" style="margin-top:16px;padding:14px"><p class="small muted">ბოლო შეტყობინება</p><p class="prose" style="margin-top:4px">${esc(x.employer_message)}</p></div>` : ''}
     <div id="dm" style="margin-top:12px"></div>`;
   d.hidden = false; document.getElementById('scrim').hidden = false;
   document.getElementById('dx').onclick = () => { closeDrawer(); board(vacId); };
   document.getElementById('scrim').onclick = () => { closeDrawer(); board(vacId); };
   const cvb = document.getElementById('cvb'); if (cvb) cvb.onclick = () => openCv(cp.cv_path);
-  d.querySelectorAll('[data-s]').forEach(b => b.onclick = async () => {
-    b.disabled = true;
-    const r = await sb.from('applications').update({ status: b.dataset.s }).eq('id', appId);
-    if (r.error) { b.disabled = false; document.getElementById('dm').innerHTML = err(r.error); return; }
-    x.status = b.dataset.s; openApplicant(appId, vacId);
+  let pick = null;
+  const comp = document.getElementById('compose'), tm = document.getElementById('tmsg');
+  d.querySelectorAll('[data-pick]').forEach(b => b.onclick = () => {
+    pick = b.dataset.pick; tm.value = TEMPLATES[pick] || ''; comp.hidden = false;
+    d.querySelectorAll('[data-pick]').forEach(o => o.classList.toggle('blue', o === b)); tm.focus();
   });
+  document.getElementById('cancel').onclick = () => { comp.hidden = true; pick = null; d.querySelectorAll('[data-pick]').forEach(o => o.classList.remove('blue')); };
+  document.getElementById('send').onclick = async e => {
+    e.preventDefault(); if (!pick) return; const b = e.currentTarget; b.disabled = true;
+    const r = await sb.from('applications').update({ status: pick, employer_message: tm.value.trim() }).eq('id', appId);
+    if (r.error) { b.disabled = false; document.getElementById('dm').innerHTML = err(r.error); return; }
+    x.status = pick; x.employer_message = tm.value.trim(); openApplicant(appId, vacId);
+  };
 }
 function closeDrawer(){ document.getElementById('drawer').hidden = true; document.getElementById('scrim').hidden = true; }
 addEventListener('keydown', e => { if (e.key === 'Escape' && !document.getElementById('drawer').hidden) { closeDrawer(); route(); } });
