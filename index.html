@@ -112,6 +112,7 @@ select option{background:#0B0F1A}
 input:focus,select:focus{outline:none;border-color:var(--a1);box-shadow:0 0 0 3px rgba(99,102,241,.3)}
 form .btn{margin-top:6px;justify-self:start}
 .err{color:var(--warn);font-size:14px}
+.msg-ok{padding:14px 16px;border-radius:12px;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3);color:#6EE7B7;font-weight:500}
 .done-box{display:grid;gap:12px;border-top:1px solid var(--line);padding-top:16px}
 .done-box pre{margin:0;white-space:pre-wrap;font-family:var(--font);font-size:14px;background:rgba(6,8,15,.7);border:1px solid var(--line);padding:14px;border-radius:10px}
 .row{display:flex;gap:10px;flex-wrap:wrap}
@@ -257,8 +258,9 @@ footer{border-top:1px solid var(--line)}
         <select id="f-h"><option>1–10</option><option selected>11–50</option><option>51–200</option><option>200+</option></select></label>
       <p class="err" id="err" hidden data-i="err">შეავსეთ ყველა ველი.</p>
       <button class="btn blue" type="submit" data-i="sub">გაგზავნა</button>
+      <div class="msg-ok" id="thanks" hidden data-i="ok_t">გმადლობთ! მოთხოვნა მივიღეთ და მალე დაგიკავშირდებით.</div>
       <div class="done-box" id="done" hidden>
-        <p><span data-i="to">გამოგვიგზავნეთ ეს ტექსტი:</span> <span class="mail">ankaorbela@gmail.com</span></p>
+        <p><span id="to" data-i="to">გამოგვიგზავნეთ ეს ტექსტი:</span> <span class="mail">ankaorbela@gmail.com</span></p>
         <pre id="msg"></pre>
         <div class="row"><button class="ghost-s" type="button" id="copy" data-i="copy">კოპირება</button><a class="ghost-s" id="mailto" href="#" data-i="om">ელფოსტის გახსნა</a></div>
       </div>
@@ -275,6 +277,8 @@ footer{border-top:1px solid var(--line)}
   </div>
 </footer>
 
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const EN={
 login:"Log in",m1:"Employers",m2:"Candidates",m3:"Pilot",
@@ -291,10 +295,10 @@ job:"Financial Analyst",ex:"Example",s1:"Application sent",s1d:"12 Nov",s2:"CV v
 p_k:"Pilot",p_t:"Become a first partner company.",p_s:"We are looking for companies that hire new people regularly.",
 pp1:"Free pilot",pp2:"Shaped around you",pp3:"Direct support",
 f1:"Company",f2:"Contact person",f3:"Email or phone",f4:"New hires per year",err:"Please fill in all fields.",sub:"Send",
-to:"Send us this text:",copy:"Copy",copied:"Copied",om:"Open email",
+to:"Send us this text:",ok_t:"Thank you! We received your request and will contact you soon.",fail:"Could not send. Please email us this text:",copy:"Copy",copied:"Copied",om:"Open email",
 hi:"Hello! We are interested in the Kandidati pilot.",mc:"Company",mn:"Contact person",mt:"Contact",mh:"New hires per year"
 };
-const KA={copied:"დაკოპირდა",hi:"გამარჯობა! Kandidati-ს პილოტი გვაინტერესებს.",mc:"კომპანია",mn:"საკონტაქტო პირი",mt:"კონტაქტი",mh:"ახალი თანამშრომლები წელიწადში"};
+const KA={ok_t:"გმადლობთ! მოთხოვნა მივიღეთ და მალე დაგიკავშირდებით.",fail:"გაგზავნა ვერ მოხერხდა. გამოგვიგზავნეთ ეს ტექსტი:",copied:"დაკოპირდა",hi:"გამარჯობა! Kandidati-ს პილოტი გვაინტერესებს.",mc:"კომპანია",mn:"საკონტაქტო პირი",mt:"კონტაქტი",mh:"ახალი თანამშრომლები წელიწადში"};
 document.querySelectorAll('[data-i]').forEach(el=>{if(!(el.dataset.i in KA))KA[el.dataset.i]=el.hasAttribute('data-html')?el.innerHTML:el.textContent});
 const D={ka:KA,en:EN};let lang='ka';
 function setLang(l){
@@ -325,10 +329,19 @@ function build(){
   $('msg').textContent=t;
   $('mailto').href='mailto:ankaorbela@gmail.com?subject='+encodeURIComponent('Kandidati pilot — '+$('f-co').value.trim())+'&body='+encodeURIComponent(t);
 }
-$('form').addEventListener('submit',e=>{
+const CFG=window.KANDIDATI_CONFIG||{};
+const db=(window.supabase&&CFG.SUPABASE_URL&&!CFG.SUPABASE_URL.startsWith('PASTE'))?window.supabase.createClient(CFG.SUPABASE_URL,CFG.SUPABASE_ANON_KEY):null;
+$('form').addEventListener('submit',async e=>{
   e.preventDefault();
-  if(!$('f-co').value.trim()||!$('f-name').value.trim()||!$('f-ct').value.trim()){$('err').hidden=false;return}
-  $('err').hidden=true;build();$('done').hidden=false;
+  const co=$('f-co').value.trim(),nm=$('f-name').value.trim(),ct=$('f-ct').value.trim();
+  if(!co||!nm||!ct){$('err').hidden=false;return}
+  $('err').hidden=true;
+  const btn=e.target.querySelector('button[type=submit]');btn.disabled=true;
+  let ok=false;
+  if(db){try{const r=await db.from('pilot_requests').insert({company:co.slice(0,200),contact_name:nm.slice(0,200),contact:ct.slice(0,200),hires:$('f-h').value,lang});ok=!r.error}catch(x){ok=false}}
+  btn.disabled=false;
+  if(ok){$('thanks').hidden=false;$('done').hidden=true;e.target.querySelectorAll('input').forEach(i=>i.value='');}
+  else{build();$('to').textContent=D[lang].fail;$('done').hidden=false;$('thanks').hidden=true;}
 });
 $('copy').addEventListener('click',()=>{
   const b=$('copy');
