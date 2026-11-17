@@ -236,7 +236,7 @@ async function route(){
   closeDrawer();
   if (!sb) return set(`<div class="auth"><div class="card"><h2>საჭიროა დაკავშირება</h2><p class="muted" style="margin-top:8px">config.js ფაილში ჩასვით Supabase-ის Project URL და anon key.</p></div></div>`);
   const h = location.hash.slice(1);
-  if (!me) { renderChrome(); return authView(h === 'signup' ? 'signup' : 'login'); }
+  if (!me) { renderChrome(); return authView(h.startsWith('signup') ? 'signup' : 'login', h === 'signup-employer' ? 'employer' : 'candidate'); }
   renderChrome();
   if (me.role === 'candidate') {
     if (h.startsWith('job-')) return jobDetail(h.slice(4));
@@ -257,7 +257,7 @@ async function route(){
 addEventListener('hashchange', route);
 
 // ---------- AUTH ----------
-function authView(mode){
+function authView(mode, role = 'candidate'){
   set(`<div class="auth">
     <div style="text-align:center;margin-bottom:22px"><h1>${mode==='login'?'შესვლა':'რეგისტრაცია'}</h1>
     <p class="muted" style="margin-top:6px">${mode==='login'?'კეთილი იყოს თქვენი დაბრუნება':'შექმენით ანგარიში ერთ წუთში'}</p></div>
@@ -266,8 +266,8 @@ function authView(mode){
       <form class="form" id="authForm" novalidate>
         ${mode==='signup' ? `
         <div class="roles">
-          <label class="role"><input type="radio" name="role" value="candidate" checked><b>კანდიდატი</b><small>ვეძებ სამსახურს</small></label>
-          <label class="role"><input type="radio" name="role" value="employer"><b>დამსაქმებელი</b><small>ვეძებ თანამშრომელს</small></label>
+          <label class="role"><input type="radio" name="role" value="candidate" ${role==='candidate'?'checked':''}><b>კანდიდატი</b><small>ვეძებ სამსახურს</small></label>
+          <label class="role"><input type="radio" name="role" value="employer" ${role==='employer'?'checked':''}><b>დამსაქმებელი</b><small>ვეძებ თანამშრომელს</small></label>
         </div>
         <label>სახელი და გვარი<input name="full_name" autocomplete="name" required></label>` : ''}
         <label>ელფოსტა<input name="email" type="email" autocomplete="email" required></label>

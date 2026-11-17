@@ -113,6 +113,10 @@ input:focus,select:focus{outline:none;border-color:var(--a1);box-shadow:0 0 0 3p
 form .btn{margin-top:6px;justify-self:start}
 .err{color:var(--warn);font-size:14px}
 .msg-ok{padding:14px 16px;border-radius:12px;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3);color:#6EE7B7;font-weight:500}
+.cta-card{border-radius:24px;padding:32px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid var(--line)}
+.cta-big{font-size:26px;font-weight:700;letter-spacing:-.02em}
+.small-note{margin-top:18px;font-size:14px;color:var(--muted)}
+.small-note a{color:#fff;font-weight:600;text-decoration:underline}
 .done-box{display:grid;gap:12px;border-top:1px solid var(--line);padding-top:16px}
 .done-box pre{margin:0;white-space:pre-wrap;font-family:var(--font);font-size:14px;background:rgba(6,8,15,.7);border:1px solid var(--line);padding:14px;border-radius:10px}
 .row{display:flex;gap:10px;flex-wrap:wrap}
@@ -250,21 +254,15 @@ footer{border-top:1px solid var(--line)}
         <span class="pill"><i></i><span data-i="pp3">პირდაპირი მხარდაჭერა</span></span>
       </div>
     </div>
-    <form id="form" novalidate>
-      <label><span data-i="f1">კომპანია</span><input id="f-co" autocomplete="organization"></label>
-      <label><span data-i="f2">საკონტაქტო პირი</span><input id="f-name" autocomplete="name"></label>
-      <label><span data-i="f3">ელფოსტა ან ტელეფონი</span><input id="f-ct" autocomplete="email"></label>
-      <label><span data-i="f4">ახალი თანამშრომლები წელიწადში</span>
-        <select id="f-h"><option>1–10</option><option selected>11–50</option><option>51–200</option><option>200+</option></select></label>
-      <p class="err" id="err" hidden data-i="err">შეავსეთ ყველა ველი.</p>
-      <button class="btn blue" type="submit" data-i="sub">გაგზავნა</button>
-      <div class="msg-ok" id="thanks" hidden data-i="ok_t">გმადლობთ! მოთხოვნა მივიღეთ და მალე დაგიკავშირდებით.</div>
-      <div class="done-box" id="done" hidden>
-        <p><span id="to" data-i="to">გამოგვიგზავნეთ ეს ტექსტი:</span> <span class="mail">ankaorbela@gmail.com</span></p>
-        <pre id="msg"></pre>
-        <div class="row"><button class="ghost-s" type="button" id="copy" data-i="copy">კოპირება</button><a class="ghost-s" id="mailto" href="#" data-i="om">ელფოსტის გახსნა</a></div>
+    <div class="cta-card">
+      <p class="cta-big" data-i="pc_t">დაიწყეთ ერთ წუთში</p>
+      <p class="sub" style="margin-top:8px" data-i="pc_s">დარეგისტრირდით, დაამატეთ კომპანია და გამოაქვეყნეთ პირველი ვაკანსია. პილოტის პერიოდში ყველაფერი უფასოა.</p>
+      <div class="row" style="margin-top:22px">
+        <a class="btn" style="margin-top:0" href="app.html#signup-employer" data-i="pc_b1">დარეგისტრირდით დამსაქმებლად</a>
+        <a class="btn ghost" style="margin-top:0" href="app.html#signup" data-i="pc_b2">ვეძებ სამსახურს</a>
       </div>
-    </form>
+      <p class="small-note" data-i="pc_n" data-html>უკვე გაქვთ ანგარიში? <a href="app.html#login">შესვლა</a></p>
+    </div>
   </div>
 </section>
 
@@ -277,8 +275,6 @@ footer{border-top:1px solid var(--line)}
   </div>
 </footer>
 
-<script src="config.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const EN={
 login:"Log in",m1:"Employers",m2:"Candidates",m3:"Pilot",
@@ -293,7 +289,7 @@ c_k:"For candidates · free",c_t:"Never be left without an answer.",c_s:"One pro
 cc1:"One profile",cc2:"Real-time status",cc3:"Pick your interview time",cc4:"Always an answer",cc5:"Skill match %",cc6:"Filter by city and type",
 job:"Financial Analyst",ex:"Example",s1:"Application sent",s1d:"12 Nov",s2:"CV viewed",s2d:"13 Nov",s3:"Interview",s3d:"18 Nov, 15:00",s4:"Final answer",
 p_k:"Pilot",p_t:"Become a first partner company.",p_s:"We are looking for companies that hire new people regularly.",
-pp1:"Free pilot",pp2:"Shaped around you",pp3:"Direct support",
+pp1:"Free pilot",pc_t:"Get started in a minute",pc_s:"Sign up, add your company and publish your first vacancy. Everything is free during the pilot.",pc_b1:"Sign up as an employer",pc_b2:"I am looking for a job",pc_n:"Already have an account? <a href=\"app.html#login\">Log in</a>",pp2:"Shaped around you",pp3:"Direct support",
 f1:"Company",f2:"Contact person",f3:"Email or phone",f4:"New hires per year",err:"Please fill in all fields.",sub:"Send",
 to:"Send us this text:",ok_t:"Thank you! We received your request and will contact you soon.",fail:"Could not send. Please email us this text:",copy:"Copy",copied:"Copied",om:"Open email",
 hi:"Hello! We are interested in the Kandidati pilot.",mc:"Company",mn:"Contact person",mt:"Contact",mh:"New hires per year"
@@ -306,7 +302,6 @@ function setLang(l){
   document.querySelectorAll('[data-i]').forEach(el=>{const v=D[l][el.dataset.i];if(v==null)return;el.hasAttribute('data-html')?el.innerHTML=v:el.textContent=v});
   document.querySelectorAll('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===l));
   try{localStorage.setItem('kd-lang',l)}catch(e){}
-  if(!$('done').hidden)build();
 }
 const $=id=>document.getElementById(id);
 document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
@@ -324,31 +319,6 @@ let pref=null;try{pref=localStorage.getItem('kd-lang')}catch(e){}
 const q=new URLSearchParams(location.search).get('lang');if(q)pref=q;
 if(pref==='en')setLang('en');
 
-function build(){
-  const d=D[lang],t=d.hi+'\n\n'+d.mc+': '+$('f-co').value.trim()+'\n'+d.mn+': '+$('f-name').value.trim()+'\n'+d.mt+': '+$('f-ct').value.trim()+'\n'+d.mh+': '+$('f-h').value;
-  $('msg').textContent=t;
-  $('mailto').href='mailto:ankaorbela@gmail.com?subject='+encodeURIComponent('Kandidati pilot — '+$('f-co').value.trim())+'&body='+encodeURIComponent(t);
-}
-const CFG=window.KANDIDATI_CONFIG||{};
-const db=(window.supabase&&CFG.SUPABASE_URL&&!CFG.SUPABASE_URL.startsWith('PASTE'))?window.supabase.createClient(CFG.SUPABASE_URL,CFG.SUPABASE_ANON_KEY):null;
-$('form').addEventListener('submit',async e=>{
-  e.preventDefault();
-  const co=$('f-co').value.trim(),nm=$('f-name').value.trim(),ct=$('f-ct').value.trim();
-  if(!co||!nm||!ct){$('err').hidden=false;return}
-  $('err').hidden=true;
-  const btn=e.target.querySelector('button[type=submit]');btn.disabled=true;
-  let ok=false;
-  if(db){try{const r=await db.from('pilot_requests').insert({company:co.slice(0,200),contact_name:nm.slice(0,200),contact:ct.slice(0,200),hires:$('f-h').value,lang});ok=!r.error}catch(x){ok=false}}
-  btn.disabled=false;
-  if(ok){$('thanks').hidden=false;$('done').hidden=true;e.target.querySelectorAll('input').forEach(i=>i.value='');}
-  else{build();$('to').textContent=D[lang].fail;$('done').hidden=false;$('thanks').hidden=true;}
-});
-$('copy').addEventListener('click',()=>{
-  const b=$('copy');
-  const ok=()=>{b.textContent=D[lang].copied;setTimeout(()=>b.textContent=D[lang].copy,2000)};
-  const fb=()=>{const r=document.createRange();r.selectNodeContents($('msg'));const s=getSelection();s.removeAllRanges();s.addRange(r)};
-  try{navigator.clipboard.writeText($('msg').textContent).then(ok,fb)}catch(e){fb()}
-});
 </script>
 </body>
 </html>
