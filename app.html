@@ -295,14 +295,14 @@ function authView(mode, role = 'candidate'){
     if (mode === 'login') {
       const { error } = await sb.auth.signInWithPassword({ email, password });
       btn.disabled = false;
-      if (error) { out.innerHTML = err(error.message.includes('Invalid') ? 'ელფოსტა ან პაროლი არასწორია.' : error); return; }
+      if (error) { const m = error.message || ''; out.innerHTML = err(m.includes('Invalid') ? 'ელფოსტა ან პაროლი არასწორია.' : m.includes('not confirmed') ? 'ელფოსტა ჯერ დადასტურებული არ არის. გახსენით წერილი, რომელიც რეგისტრაციისას გამოგიგზავნეთ, და დააჭირეთ დადასტურების ბმულს.' : error); return; }
     } else {
       const full_name = f.full_name.value.trim(), role = f.role.value;
       if (!full_name) { btn.disabled = false; out.innerHTML = err('ჩაწერეთ სახელი და გვარი.'); return; }
       if (!f.consent.checked) { btn.disabled = false; out.innerHTML = err('გასაგრძელებლად საჭიროა თანხმობა.'); return; }
       const { data, error } = await sb.auth.signUp({ email, password, options:{ data:{ role, full_name }, emailRedirectTo: location.origin + location.pathname } });
       btn.disabled = false;
-      if (error) { out.innerHTML = err(error); return; }
+      if (error) { const m = error.message || ''; out.innerHTML = err(m.includes('already registered') ? 'ეს ელფოსტა უკვე რეგისტრირებულია. სცადეთ შესვლა.' : m.includes('rate limit') ? 'ძალიან ბევრი მცდელობა. სცადეთ რამდენიმე წუთში.' : error); return; }
       if (!data.session) {
         set(`<div class="auth"><div class="card" style="text-align:center"><h2>შეამოწმეთ ელფოსტა</h2><p class="muted" style="margin-top:10px">${esc(email)}-ზე გამოგიგზავნეთ დადასტურების ბმული. დააჭირეთ მას და შემდეგ შედით სისტემაში.</p><a class="btn ghost" style="margin-top:20px" href="#login">შესვლა</a></div></div>`);
         return;
