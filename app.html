@@ -4,35 +4,35 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Kandidati</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23121826'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='18' fill='white' text-anchor='middle'%3Ek%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230B4A72'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='18' fill='white' text-anchor='middle'%3Ek%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wdth,wght@62.5..100,400..900&family=Noto+Sans:wdth,wght@62.5..100,400..800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Georgian:wght@400;500;600;700&display=swap">
 <style>
 :root{
-  --bg:#F3F5F1; --surface:#FFFFFF; --solid:#FFFFFF; --ink:#14201B; --muted:#56635C; --line:#D6DDD7;
-  --accent:#0F5C46; --accent-dark:#0A4635; --accent-soft:#E1EFE6; --ok:#0F5C46; --ok-soft:#E1EFE6; --warn:#B7791F; --warn-soft:#FBF0DC; --bad:#B4362A; --bad-soft:#FBE8E5;
-  --font:"Noto Sans Georgian","Noto Sans",system-ui,sans-serif;
+  --bg:#F5F7F9; --surface:#FFFFFF; --solid:#FFFFFF; --ink:#0F1B26; --muted:#5B6875; --line:#E4E9EE; --line-2:#EEF1F4;
+  --accent:#0B4A72; --accent-dark:#083A5A; --accent-soft:#E8F0F6; --link:#0B5E91; --ok:#1E7A55; --ok-soft:#E7F3ED; --warn:#9A6212; --warn-soft:#FBF1DF; --bad:#B4362A; --bad-soft:#FBE8E5;
+  --font:Inter,"Noto Sans Georgian",system-ui,sans-serif;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;min-height:100vh}
 h1,h2,h3,p{margin:0}
-h1{font-size:34px;font-stretch:72%;font-weight:800;letter-spacing:-.01em;line-height:1.1}
-h2{font-size:19px;font-weight:700}
+h1{font-size:32px;font-weight:700;letter-spacing:-.03em;line-height:1.12}
+h2{font-size:19px;font-weight:700;letter-spacing:-.01em}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
 .muted{color:var(--muted)}
 .small{font-size:14px}
 
-.top{background:var(--bg);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
-.top .in{max-width:1180px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;gap:28px}
-.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;letter-spacing:-.02em;text-decoration:none}
-.logo::before{content:"";width:26px;height:26px;border-radius:6px;background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M9 16.5l4.5 4.5L23 11' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.top .in{max-width:1180px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;gap:28px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px;letter-spacing:-.03em;text-decoration:none}
+.logo::before{content:"";width:28px;height:28px;border-radius:9px;background:var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M9 16.5l4.5 4.5L23 11' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/70% no-repeat}
 .tabs{display:flex;gap:24px;flex:1}
 .tabs a{padding:6px 0;text-decoration:none;color:var(--muted);font-weight:500;font-size:15px;border-bottom:2px solid transparent}
 .tabs a:hover{color:var(--ink)}
-.tabs a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--accent)}
+.tabs a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--ink)}
 .me{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--muted)}
 .avatar{width:32px;height:32px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-weight:700;font-size:13px}
 
@@ -40,46 +40,46 @@ main{max-width:1180px;margin:0 auto;padding:40px 24px 80px}
 .head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:28px}
 .head p{margin-top:8px}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border-radius:8px;border:1.5px solid var(--ink);font:inherit;font-weight:600;font-size:15px;cursor:pointer;text-decoration:none;background:var(--ink);color:#fff;transition:background .15s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border-radius:999px;border:1px solid var(--ink);font:inherit;font-weight:600;font-size:15px;cursor:pointer;text-decoration:none;background:var(--ink);color:#fff;transition:background .15s}
 .btn:hover{background:#000}
 .btn.blue{background:var(--accent);border-color:var(--accent)}
 .btn.blue:hover{background:var(--accent-dark);border-color:var(--accent-dark)}
 .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
 .btn.ghost:hover{border-color:var(--ink);background:transparent}
-.btn.sm{padding:7px 12px;font-size:14px;border-radius:6px}
+.btn.sm{padding:7px 14px;font-size:14px}
 .btn:disabled{opacity:.5;cursor:default}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px}
 .grid{display:grid;gap:12px}
 .form{display:grid;gap:14px}
 .form .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 label{display:grid;gap:6px;font-size:14px;font-weight:600}
-input,select,textarea{font:inherit;font-weight:400;font-size:16px;padding:11px 13px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--ink);width:100%}
+input,select,textarea{font:inherit;font-weight:400;font-size:16px;padding:11px 14px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink);width:100%}
 input::placeholder,textarea::placeholder{color:#8A958F}
 textarea{resize:vertical;min-height:90px}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
 .check{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:14px;color:var(--muted)}
 .check input{width:auto;margin-top:4px;accent-color:var(--accent)}
-.msg{padding:12px 14px;border-radius:8px;font-size:15px}
+.msg{padding:12px 16px;border-radius:12px;font-size:15px}
 .msg.err{background:var(--bad-soft);color:var(--bad)}
 .msg.ok{background:var(--ok-soft);color:var(--ok)}
-.badge{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:3px 10px;border-radius:4px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
-.b-new{background:#E6ECF5;color:#2F4A73}
-.b-viewed{background:#ECEFEC;color:#4B5650}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:4px 11px;border-radius:999px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.b-new{background:var(--accent-soft);color:var(--accent)}
+.b-viewed{background:#F1F4F7;color:#3F4C59}
 .b-interview{background:var(--warn-soft);color:var(--warn)}
 .b-offer,.b-hired{background:var(--ok-soft);color:var(--ok)}
 .b-rejected{background:var(--bad-soft);color:var(--bad)}
-.b-closed{background:#ECEFEC;color:var(--muted)}
+.b-closed{background:#F1F4F7;color:var(--muted)}
 .empty{text-align:center;padding:52px 20px;color:var(--muted)}
 .spin{display:grid;place-items:center;padding:60px;color:var(--muted)}
 
 .auth{max-width:440px;margin:28px auto}
-.auth h1{font-size:44px}
-.auth .card{padding:30px}
+.auth h1{font-size:40px}
+.auth .card{padding:32px;border-radius:24px}
 .seg{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line);margin-bottom:24px}
 .seg button{border:0;background:none;font:inherit;font-weight:600;padding:10px;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px}
 .seg button[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--accent)}
 .roles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.role{position:relative;border:1.5px solid var(--line);border-radius:8px;padding:14px;cursor:pointer;font-weight:400}
+.role{position:relative;border:1px solid var(--line);border-radius:14px;padding:14px;cursor:pointer;font-weight:400}
 .role b{display:block;font-size:16px}
 .role small{color:var(--muted);font-size:14px}
 .role:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
@@ -88,7 +88,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
 .toolbar{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
 .toolbar input{max-width:380px}
 .job{display:flex;justify-content:space-between;gap:16px;align-items:center;text-decoration:none}
-.job:hover{border-color:var(--ink)}
+.job:hover{border-color:#C9D3DC;box-shadow:0 10px 24px -18px rgba(15,27,38,.35)}
 .job h3{font-size:18px;font-weight:700}
 .meta{display:flex;gap:4px 16px;flex-wrap:wrap;margin-top:4px;font-size:15px;color:var(--muted)}
 .detail{display:grid;grid-template-columns:1fr 330px;gap:20px;align-items:start}
@@ -104,15 +104,15 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
 .timeline li.no .d{background:var(--bad);border-color:var(--bad)}
 
 .board{display:grid;grid-template-columns:repeat(6,minmax(200px,1fr));gap:12px;overflow-x:auto;padding-bottom:8px}
-.col{background:#E9EDE8;border-radius:10px;padding:10px;min-height:220px}
+.col{background:#EDF1F4;border-radius:16px;padding:10px;min-height:220px}
 .col h4{margin:4px 6px 12px;font-size:14px;font-weight:600;color:var(--ink);display:flex;justify-content:space-between;align-items:center}
 .col h4 span:last-child{color:var(--muted);font-weight:500}
-.cc{background:#fff;border-radius:8px;padding:12px;margin-bottom:8px;cursor:pointer;border:1px solid var(--line);text-align:left;width:100%;font:inherit;color:var(--ink)}
-.cc:hover{border-color:var(--ink)}
+.cc{background:#fff;border-radius:12px;padding:12px;margin-bottom:8px;cursor:pointer;border:1px solid var(--line);text-align:left;width:100%;font:inherit;color:var(--ink)}
+.cc:hover{border-color:#C9D3DC}
 .cc b{display:block;font-size:15px}
 .cc small{color:var(--muted);font-size:13px}
 
-.scrim{position:fixed;inset:0;background:rgba(20,32,27,.35);z-index:30}
+.scrim{position:fixed;inset:0;background:rgba(15,27,38,.35);z-index:30}
 .drawer{position:fixed;top:0;right:0;bottom:0;width:min(480px,100%);background:#fff;border-left:1px solid var(--line);z-index:31;overflow-y:auto;padding:30px}
 .drawer .x{position:absolute;top:16px;right:16px;border:1px solid var(--line);background:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px}
 .kv{display:grid;grid-template-columns:130px 1fr;gap:10px 12px;font-size:15px;margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
@@ -122,21 +122,86 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);
 
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .vac{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
-.match{display:inline-flex;vertical-align:middle;margin-left:8px;font-size:13px;font-weight:600;padding:2px 8px;border-radius:4px;background:var(--accent-soft);color:var(--accent)}
+.match{display:inline-flex;vertical-align:middle;margin-left:8px;font-size:13px;font-weight:600;padding:2px 9px;border-radius:999px;background:var(--ok-soft);color:var(--ok)}
 .msg.tip{background:#fff;border:1px solid var(--line);color:var(--ink)}
-.msg.tip a{color:var(--accent);font-weight:600}
-.reply{margin-top:16px;padding:14px;border-radius:8px;background:var(--accent-soft)}
+.msg.tip a{color:var(--link);font-weight:600}
+.reply{margin-top:16px;padding:14px 16px;border-radius:14px;background:var(--accent-soft)}
 .reply .small{color:var(--accent)!important;font-weight:600}
-.ai-card{margin-top:22px;padding:16px;border-radius:10px;background:#fff;border:1px solid var(--line);border-left:3px solid var(--accent)}
+.ai-card{margin-top:22px;padding:18px;border-radius:16px;background:#F7F9FB;border:1px solid var(--line)}
 .ai-head{display:flex;gap:14px;align-items:center}
 .ai-score{flex:none;width:60px;height:60px;border-radius:50%;display:grid;place-content:center;text-align:center;border:3px solid var(--c);line-height:1}
 .ai-score b{font-size:21px}.ai-score small{font-size:10px;color:var(--muted)}
 .ai-l{margin:14px 0 4px;font-size:14px;font-weight:600}
 .ai-ul{margin:0;padding-left:18px;font-size:15px;display:grid;gap:3px}
 .ai-ul.ok li::marker{color:var(--ok)}.ai-ul.no li::marker{color:var(--warn)}
-.count{font-size:30px;font-weight:800;font-stretch:72%;color:var(--ink)}
+.count{font-size:28px;font-weight:700;letter-spacing:-.03em;color:var(--ink)}
+
+/* ---------- tests ---------- */
+.two-col{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:20px;align-items:start}
+.qed{border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff;display:grid;gap:12px}
+.qed-top{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.qed-top .n{width:30px;height:30px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-weight:700;font-size:14px;flex:none}
+.qed-top select{width:auto;padding:7px 12px;font-size:14px}
+.qed-top .pts{width:76px;padding:7px 10px;font-size:14px}
+.qed-top .sp{flex:1}
+.opt{display:flex;gap:10px;align-items:center}
+.opt input[type=radio]{width:18px;height:18px;flex:none;accent-color:var(--ok);margin:0}
+.opt input[type=text]{padding:8px 12px;font-size:15px}
+.icon-btn{border:1px solid var(--line);background:#fff;border-radius:50%;width:32px;height:32px;flex:none;cursor:pointer;color:var(--muted);font-size:14px;display:grid;place-items:center}
+.icon-btn:hover{border-color:var(--bad);color:var(--bad)}
+.linkbtn{border:0;background:none;padding:0;font:inherit;font-weight:600;font-size:14px;color:var(--link);cursor:pointer;justify-self:start}
+.hint{font-size:13px;color:var(--muted);font-weight:400}
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sw-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line-2);font-weight:500;font-size:15px}
+.sw-row:first-child{border-top:0}
+.sw-row small{display:block;color:var(--muted);font-weight:400;font-size:13px}
+input.sw{appearance:none;-webkit-appearance:none;width:42px;height:24px;border-radius:999px;background:#CBD4DC;position:relative;cursor:pointer;flex:none;padding:0;border:0;transition:background .15s}
+input.sw::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:transform .15s;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+input.sw:checked{background:var(--accent)}
+input.sw:checked::after{transform:translateX(18px)}
+input.sw:focus{box-shadow:0 0 0 3px var(--accent-soft)}
+.mins{width:70px!important;padding:6px 8px!important;font-size:14px!important;text-align:center}
+.ta-item{border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-top:10px;font-size:14px}
+.ta-item b{font-size:15px}
+.code{font-family:ui-monospace,Menlo,monospace;font-size:18px;font-weight:700;letter-spacing:.12em;background:var(--accent-soft);color:var(--accent);padding:2px 10px;border-radius:8px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:20px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}
+.stat b{display:block;font-size:24px;letter-spacing:-.02em}
+.stat span{font-size:13px;color:var(--muted)}
+.stat.warn b{color:var(--warn)}
+.res-q{border-top:1px solid var(--line-2);padding:16px 0}
+.res-q:first-child{border-top:0;padding-top:0}
+.res-opt{display:flex;gap:8px;align-items:baseline;font-size:15px;padding:3px 0;color:var(--muted)}
+.res-opt.right{color:var(--ok);font-weight:600}
+.res-opt.wrong{color:var(--bad);font-weight:600}
+.ans{background:#F7F9FB;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:8px;white-space:pre-wrap;font-size:15px}
+.mark{margin-top:8px;font-size:14px;color:var(--accent)}
+.res-pts{font-size:13px;font-weight:600;color:var(--muted);white-space:nowrap}
+/* exam */
+body.exam .tabs,body.exam .me{visibility:hidden}
+.exam-bar{position:sticky;top:72px;z-index:9;background:var(--accent);color:#fff;border-radius:18px;padding:14px 20px;display:flex;align-items:center;gap:18px;margin-bottom:20px;box-shadow:0 18px 36px -24px rgba(11,74,114,.8)}
+.exam-bar .t{flex:1;font-weight:700}
+.exam-bar .t small{display:block;font-weight:400;color:#CFE4F1;font-size:13px}
+.timer{font-variant-numeric:tabular-nums;font-weight:700;font-size:20px;background:rgba(255,255,255,.14);padding:4px 12px;border-radius:10px}
+.timer.low{background:#B4362A}
+.exam-bar .btn{background:#fff;color:var(--accent);border-color:#fff}
+.exam-q{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;margin-bottom:14px}
+.exam-q.nocopy{-webkit-user-select:none;user-select:none}
+.exam-q .qn{font-size:13px;color:var(--muted);font-weight:600}
+.exam-q h3{font-size:17px;font-weight:600;margin-top:6px;white-space:pre-wrap}
+.choice{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-top:10px;cursor:pointer;font-weight:400;font-size:15px}
+.choice:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+.choice input{width:18px;height:18px;margin:0;accent-color:var(--accent);flex:none}
+.exam-q textarea{margin-top:12px}
+.warnbox{position:fixed;inset:0;z-index:60;background:rgba(15,27,38,.55);display:grid;place-items:center;padding:20px}
+.warnbox .card{max-width:420px;text-align:center}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:70;background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;font-size:14px}
 
 @media (max-width:800px){
+  .two-col{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .exam-bar{top:0;flex-wrap:wrap;gap:10px}
+  .modes{grid-template-columns:1fr}
   .detail{grid-template-columns:1fr}
   .form .two{grid-template-columns:1fr}
   .top .in{height:auto;padding-block:12px;flex-wrap:wrap;gap:12px}
@@ -189,6 +254,7 @@ const TYPES = {full_time:'სრული განაკვეთი', part_tim
 
 let me = null;        // {id, email, role, full_name, phone, city}
 let company = null;   // employer's company
+let examCleanup = null; // removes test-taking listeners when leaving the page
 
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmtDate = d => new Date(d).toLocaleDateString('ka-GE', {day:'numeric', month:'short'});
@@ -217,10 +283,11 @@ function renderChrome(){
   const box = document.getElementById('me');
   if (!me) { tabs.innerHTML = ''; box.hidden = true; return; }
   const items = me.role === 'candidate'
-    ? [['#jobs','ვაკანსიები'],['#applications','ჩემი განაცხადები'],['#profile','პროფილი']]
-    : [['#vacancies','ვაკანსიები'],['#new-vacancy','ახალი ვაკანსია'],['#company','კომპანია']];
+    ? [['#jobs','ვაკანსიები'],['#applications','ჩემი განაცხადები'],['#my-tests','ტესტები'],['#profile','პროფილი']]
+    : [['#vacancies','ვაკანსიები'],['#new-vacancy','ახალი ვაკანსია'],['#tests','ტესტები'],['#company','კომპანია']];
   const h = location.hash.slice(1);
-  const cur = h.startsWith('job-') ? '#jobs' : (h.startsWith('board-') || h.startsWith('edit-')) ? '#vacancies' : '#' + h;
+  const cur = h.startsWith('job-') ? '#jobs' : (h.startsWith('board-') || h.startsWith('edit-')) ? '#vacancies'
+    : (h === 'new-test' || h.startsWith('test-') || h.startsWith('result-')) ? '#tests' : h.startsWith('take-') ? '#my-tests' : '#' + h;
   tabs.innerHTML = items.map(([href,t]) => `<a href="${href}" ${cur === href ? 'aria-current="page"' : ''}>${t}</a>`).join('');
   box.hidden = false;
   document.getElementById('meName').textContent = me.full_name || me.email;
@@ -230,6 +297,7 @@ function renderChrome(){
 // ---------- router ----------
 async function route(){
   closeDrawer();
+  if (examCleanup) { examCleanup(); examCleanup = null; }
   if (!sb) return set(`<div class="auth"><div class="card"><h2>საჭიროა დაკავშირება</h2><p class="muted" style="margin-top:8px">config.js ფაილში ჩასვით Supabase-ის Project URL და anon key.</p></div></div>`);
   const h = location.hash.slice(1);
   if (!me) { renderChrome(); return authView(h.startsWith('signup') ? 'signup' : 'login', h === 'signup-employer' ? 'employer' : 'candidate'); }
@@ -238,6 +306,8 @@ async function route(){
     if (h.startsWith('job-')) return jobDetail(h.slice(4));
     if (h === 'applications') return myApplications();
     if (h === 'profile') return candidateProfile();
+    if (h === 'my-tests') return myTests();
+    if (h.startsWith('take-')) return takeTest(h.slice(5));
     if (h !== 'jobs') return go('#jobs');
     return jobsList();
   } else {
@@ -246,6 +316,10 @@ async function route(){
     if (h === 'new-vacancy') return vacancyForm();
     if (h.startsWith('edit-')) return vacancyForm(h.slice(5));
     if (h.startsWith('board-')) return board(h.slice(6));
+    if (h === 'tests') return testsLibrary();
+    if (h === 'new-test') return testEditor();
+    if (h.startsWith('test-')) return testEditor(h.slice(5));
+    if (h.startsWith('result-')) return testResult(h.slice(7));
     if (h !== 'vacancies') return go('#vacancies');
     return vacanciesList();
   }
@@ -321,6 +395,7 @@ async function jobsList(){
   ]);
   const cp = (await sb.from('candidate_profiles').select('skills,headline').eq('user_id', me.id).maybeSingle()).data || {};
   const fc = document.getElementById('fc');
+  const q0 = new URLSearchParams(location.search).get('q'); if (q0) document.getElementById('q').value = q0;
   [...new Set((v.data||[]).map(j => (j.city||'').trim()).filter(Boolean))].sort().forEach(c => fc.insertAdjacentHTML('beforeend', `<option>${esc(c)}</option>`));
   if (v.error) { document.getElementById('list').innerHTML = err(v.error); return; }
   const applied = Object.fromEntries((a.data||[]).map(x => [x.vacancy_id, x.status]));
@@ -386,6 +461,7 @@ async function myApplications(){
     .eq('candidate_id', me.id).order('created_at', { ascending:false });
   const box = document.getElementById('list');
   if (error) { box.innerHTML = err(error); return; }
+  sb.rpc('my_tests').then(({ data: ts }) => { const n = (ts || []).filter(t => t.status !== 'submitted').length; if (n && document.getElementById('list')) document.getElementById('list').insertAdjacentHTML('beforebegin', `<div class="msg tip" style="margin-bottom:14px">დამსაქმებელმა ტესტი გამოგიგზავნათ (${n}). <a href="#my-tests">ტესტების ნახვა</a></div>`); });
   if (!data.length) { box.innerHTML = `<div class="card empty">ჯერ განაცხადი არ გაგიგზავნიათ.<br><a class="btn blue" style="margin-top:16px" href="#jobs">ვაკანსიების ნახვა</a></div>`; return; }
   box.innerHTML = data.map(x => {
     const ev = Object.fromEntries((x.application_events||[]).map(e => [e.status, e.created_at]));
@@ -608,6 +684,7 @@ async function openApplicant(appId, vacId){
     ${x.note ? `<h3 style="font-size:14px;margin:20px 0 6px">წერილი</h3><p class="prose">${esc(x.note)}</p>` : ''}
     ${cp.cv_path ? `<button class="btn ghost" id="cvb" style="margin-top:20px">CV-ის გახსნა (PDF)</button>` : ''}
     <div class="ai-card" id="aiCard"><div class="row" style="justify-content:space-between"><h3 style="font-size:16px">AI-ის შეფასება</h3><button class="btn blue sm" id="aiBtn">შეფასება</button></div><div id="aiOut" style="margin-top:10px"><p class="small muted">AI წაიკითხავს CV-ს და შეადარებს ვაკანსიის მოთხოვნებს.</p></div></div>
+    <div class="ai-card" id="testBox"><p class="small muted">იტვირთება…</p></div>
     <h3 style="font-size:14px;margin:26px 0 4px">სტატუსის შეცვლა</h3>
     <p class="small muted">აირჩიეთ ეტაპი. კანდიდატი სტატუსს და თქვენს შეტყობინებას მაშინვე ნახავს.</p>
     <div class="moves">${['interview','offer','hired','rejected'].map(s => `<button class="btn ghost sm" data-pick="${s}" ${x.status===s?'disabled':''}>${STATUS[s].ka}</button>`).join('')}</div>
@@ -621,6 +698,7 @@ async function openApplicant(appId, vacId){
   document.getElementById('dx').onclick = () => { closeDrawer(); board(vacId); };
   document.getElementById('scrim').onclick = () => { closeDrawer(); board(vacId); };
   const cvb = document.getElementById('cvb'); if (cvb) cvb.onclick = () => openCv(cp.cv_path);
+  testSection(appId);
   const aiOut = document.getElementById('aiOut'), aiBtn = document.getElementById('aiBtn');
   sb.from('ai_reviews').select('*').eq('application_id', appId).maybeSingle().then(({ data }) => {
     if (data) { aiOut.innerHTML = aiBox(data); aiBtn.textContent = 'თავიდან შეფასება'; aiBtn.dataset.refresh = '1'; }
@@ -664,6 +742,354 @@ function aiBox(r){
 }
 function closeDrawer(){ document.getElementById('drawer').hidden = true; document.getElementById('scrim').hidden = true; }
 addEventListener('keydown', e => { if (e.key === 'Escape' && !document.getElementById('drawer').hidden) { closeDrawer(); route(); } });
+
+// ---------- TESTS (employer) ----------
+const QTYPES = { choice:'არჩევითი', open:'ღია პასუხი', task:'პრაქტიკული დავალება' };
+const MODES = { home:'სახლიდან', office:'ოფისში' };
+const TA_STATUS = { assigned:'დანიშნულია', started:'მიმდინარეობს', submitted:'დასრულებულია' };
+const qid = () => 'q' + Math.random().toString(36).slice(2, 9);
+const totalPoints = qs => (qs || []).reduce((a, q) => a + (Number(q.points) || 0), 0);
+const taBadge = st => `<span class="badge ${st === 'submitted' ? 'b-offer' : st === 'started' ? 'b-interview' : 'b-new'}">${TA_STATUS[st] || esc(st)}</span>`;
+function rpcErr(e){
+  const m = e?.message || '';
+  if (m.includes('wrong code')) return 'კოდი არასწორია. გადაამოწმეთ დამსაქმებელთან.';
+  if (m.includes('already submitted')) return 'ეს ტესტი უკვე გაგზავნილია.';
+  if (m.includes('not open')) return 'ტესტი აღარ არის ღია.';
+  if (m.includes('not found')) return 'ტესტი ვერ მოიძებნა.';
+  return m || 'შეცდომა. სცადეთ თავიდან.';
+}
+function toast(t){ const d = document.createElement('div'); d.className = 'toast'; d.textContent = t; document.body.append(d); setTimeout(() => d.remove(), 2200); }
+function dur(a, b){ const m = Math.max(0, Math.round((new Date(b) - new Date(a)) / 60000)); return m < 60 ? `${m} წთ` : `${Math.floor(m/60)} სთ ${m%60} წთ`; }
+
+async function testsLibrary(){
+  set(`<div class="head"><div><h1>ტესტები</h1><p class="muted">აღწერეთ, რა ტესტი გჭირდებათ, AI შეადგენს, თქვენ ამოწმებთ და ინახავთ. შემდეგ ნებისმიერ კანდიდატს უგზავნით დაფიდან.</p></div><a class="btn blue" href="#new-test">+ ახალი ტესტი</a></div>
+  <div class="two-col"><div><h2 style="margin-bottom:12px">ჩემი ტესტები</h2><div class="grid" id="lib"><div class="spin">იტვირთება…</div></div></div>
+  <div><h2 style="margin-bottom:12px">ბოლო შედეგები</h2><div class="card" id="recent" style="padding:8px 20px"><div class="spin" style="padding:30px">იტვირთება…</div></div></div></div>`);
+  const [t, r] = await Promise.all([
+    sb.from('tests').select('id,title,questions,created_at,test_assignments(id)').eq('company_id', company.id).order('created_at', { ascending:false }),
+    sb.from('test_assignments').select('id,status,score,max_score,leave_count,needs_review,submitted_at,mode,tests(title),applications(profiles!applications_candidate_id_fkey(full_name))').order('created_at', { ascending:false }).limit(12)
+  ]);
+  const lib = document.getElementById('lib');
+  if (t.error) lib.innerHTML = err(t.error);
+  else if (!t.data.length) lib.innerHTML = `<div class="card empty">ჯერ ტესტი არ გაქვთ.<br><a class="btn blue" style="margin-top:16px" href="#new-test">პირველი ტესტის შექმნა</a></div>`;
+  else lib.innerHTML = t.data.map(x => `<div class="card vac"><div><h2>${esc(x.title)}</h2><div class="meta"><span>${x.questions.length} კითხვა</span><span>${totalPoints(x.questions)} ქულა</span><span>${fmtDate(x.created_at)}</span>${x.test_assignments?.length ? `<span>გაგზავნილია ${x.test_assignments.length}-ჯერ</span>` : ''}</div></div><div class="row"><a class="btn ghost sm" href="#test-${x.id}">რედაქტირება</a></div></div>`).join('');
+  const rec = document.getElementById('recent');
+  if (r.error) { rec.innerHTML = err(r.error); return; }
+  rec.innerHTML = r.data.length ? r.data.map(a => {
+    const name = a.applications?.profiles?.full_name || 'კანდიდატი';
+    return `<a href="#result-${a.id}" style="display:block;text-decoration:none;padding:14px 0;border-top:1px solid var(--line-2)"><div class="row" style="justify-content:space-between"><b style="font-size:15px">${esc(name)}</b>${a.status === 'submitted' ? `<span class="res-pts" style="color:var(--ink)">${a.score ?? 0} / ${a.max_score ?? 0}</span>` : taBadge(a.status)}</div><div class="small muted">${esc(a.tests?.title)} · ${MODES[a.mode]}${a.leave_count ? ` · <span style="color:var(--warn)">ფანჯარა დატოვა ${a.leave_count}-ჯერ</span>` : ''}${a.needs_review ? ' · ღია პასუხები შესაფასებელია' : ''}</div></a>`;
+  }).join('').replace('border-top:1px solid var(--line-2)', 'border-top:0') : `<p class="muted small" style="padding:18px 0">შედეგები აქ გამოჩნდება, როცა კანდიდატი ტესტს დაასრულებს. ტესტის გასაგზავნად გახსენით ვაკანსიის დაფა და აირჩიეთ კანდიდატი.</p>`;
+}
+
+async function testEditor(id){
+  set(`<div class="spin">იტვირთება…</div>`);
+  let test = { title:'', prompt:'', questions:[] };
+  if (id) {
+    const r = await sb.from('tests').select('*').eq('id', id).maybeSingle();
+    if (!r.data) return set(`<div class="card empty">ტესტი ვერ მოიძებნა. <a href="#tests">ყველა ტესტი</a></div>`);
+    test = r.data;
+  }
+  const vacs = (await sb.from('vacancies').select('id,title,requirements').eq('company_id', company.id).order('created_at', { ascending:false })).data || [];
+  let qs = JSON.parse(JSON.stringify(test.questions || []));
+  set(`<p style="margin-bottom:14px"><a href="#tests" class="muted small">← ტესტები</a></p>
+  <div class="head"><div><h1>${id ? 'ტესტის რედაქტირება' : 'ახალი ტესტი'}</h1><p class="muted">AI ადგენს მონახაზს. ყველა კითხვას თქვენ ამოწმებთ და, საჭიროების შემთხვევაში, ასწორებთ.</p></div></div>
+  <div class="grid" style="max-width:860px;gap:16px">
+    <div class="card form">
+      <label>რა ტესტი გჭირდებათ?<textarea id="tp" rows="3" maxlength="2000" placeholder="მაგ. Excel-ის ტესტი ფინანსური ანალიტიკოსისთვის: VLOOKUP, Pivot ცხრილები, ფინანსური ფორმულები">${esc(test.prompt)}</textarea></label>
+      <div class="two"><label>კითხვების რაოდენობა<select id="tn">${[5,10,15,20].map(n => `<option ${n===10?'selected':''}>${n}</option>`).join('')}</select></label>
+        <label>ვაკანსია (არასავალდებულო)<select id="tv"><option value="">ვაკანსიის გარეშე</option>${vacs.map(v => `<option value="${v.id}">${esc(v.title)}</option>`).join('')}</select></label></div>
+      <div class="row"><button class="btn blue" type="button" id="gen">AI-ით შედგენა</button><span class="hint">ან დაამატეთ კითხვები ხელით ქვემოთ.</span></div>
+      <div id="genMsg"></div>
+    </div>
+    <div class="card form">
+      <label>ტესტის სახელი<input id="tt" value="${esc(test.title)}" maxlength="200" placeholder="მაგ. Excel, საბაზისო დონე"></label>
+      <div class="row" style="justify-content:space-between"><h2>კითხვები</h2><span class="small muted" id="qsum"></span></div>
+      <div class="grid" id="qlist"></div>
+      <button class="linkbtn" type="button" id="addq">+ კითხვის დამატება</button>
+      <div id="sm"></div>
+      <div class="row"><button class="btn blue" type="button" id="save">დადასტურება და შენახვა</button>${id ? `<button class="btn ghost" type="button" id="del">წაშლა</button>` : ''}</div>
+      <p class="hint">შენახული ტესტი „ჩემ ტესტებში“ ჩნდება. კანდიდატს მას ვაკანსიის დაფიდან გაუგზავნით.</p>
+    </div>
+  </div>`);
+  const list = document.getElementById('qlist');
+  const draw = () => {
+    document.getElementById('qsum').textContent = qs.length ? `${qs.length} კითხვა · ${totalPoints(qs)} ქულა` : '';
+    list.innerHTML = qs.length ? qs.map((q, i) => `<div class="qed" data-i="${i}">
+      <div class="qed-top"><span class="n">${i+1}</span>
+        <select data-f="type" aria-label="კითხვის ტიპი">${Object.entries(QTYPES).map(([k,t]) => `<option value="${k}" ${q.type===k?'selected':''}>${t}</option>`).join('')}</select>
+        <label class="hint" style="display:flex;align-items:center;gap:6px">ქულა<input class="pts" data-f="points" type="number" min="1" max="20" value="${Number(q.points)||1}"></label>
+        <span class="sp"></span>
+        <button class="icon-btn" type="button" data-act="up" aria-label="ზემოთ" ${i===0?'disabled':''}>↑</button>
+        <button class="icon-btn" type="button" data-act="rm" aria-label="კითხვის წაშლა">✕</button></div>
+      <textarea data-f="text" rows="2" placeholder="კითხვის ტექსტი">${esc(q.text)}</textarea>
+      ${q.type === 'choice' ? `<div class="grid" style="gap:8px">${(q.options||[]).map((o, k) => `<div class="opt"><input type="radio" name="ans${i}" data-ans="${k}" ${String(q.answer)===String(k)?'checked':''} aria-label="სწორი პასუხი"><input type="text" data-opt="${k}" value="${esc(o)}" placeholder="ვარიანტი ${k+1}"><button class="icon-btn" type="button" data-act="rmopt" data-k="${k}" aria-label="ვარიანტის წაშლა">✕</button></div>`).join('')}
+        <div class="row" style="justify-content:space-between"><button class="linkbtn" type="button" data-act="addopt">+ ვარიანტი</button><span class="hint">მწვანე წრე = სწორი პასუხი</span></div></div>`
+      : `<label class="hint">რას უნდა შეიცავდეს კარგი პასუხი (კანდიდატი ამას ვერ ხედავს)<textarea data-f="guide" rows="2">${esc(q.guide)}</textarea></label>`}
+    </div>`).join('') : `<p class="muted small">ჯერ კითხვები არ არის. აღწერეთ ტესტი ზემოთ და დააჭირეთ „AI-ით შედგენას“.</p>`;
+  };
+  draw();
+  list.addEventListener('input', e => {
+    const box = e.target.closest('.qed'); if (!box) return; const q = qs[+box.dataset.i];
+    if (e.target.dataset.f) { q[e.target.dataset.f] = e.target.dataset.f === 'points' ? Math.max(1, Math.min(20, parseInt(e.target.value) || 1)) : e.target.value; if (e.target.dataset.f === 'points') document.getElementById('qsum').textContent = `${qs.length} კითხვა · ${totalPoints(qs)} ქულა`; }
+    if (e.target.dataset.opt != null) q.options[+e.target.dataset.opt] = e.target.value;
+    if (e.target.dataset.ans != null) q.answer = +e.target.dataset.ans;
+  });
+  list.addEventListener('change', e => {
+    if (e.target.dataset.f !== 'type') return;
+    const q = qs[+e.target.closest('.qed').dataset.i];
+    q.type = e.target.value;
+    if (q.type === 'choice' && !(q.options||[]).length) { q.options = ['', '', '', '']; q.answer = 0; }
+    draw();
+  });
+  list.addEventListener('click', e => {
+    const b = e.target.closest('[data-act]'); if (!b) return;
+    const i = +b.closest('.qed').dataset.i, q = qs[i];
+    if (b.dataset.act === 'rm') qs.splice(i, 1);
+    if (b.dataset.act === 'up' && i > 0) [qs[i-1], qs[i]] = [qs[i], qs[i-1]];
+    if (b.dataset.act === 'addopt') { q.options.push(''); }
+    if (b.dataset.act === 'rmopt') { const k = +b.dataset.k; q.options.splice(k, 1); if (q.answer === k) q.answer = 0; else if (q.answer > k) q.answer--; }
+    draw();
+  });
+  document.getElementById('addq').onclick = () => { qs.push({ id: qid(), type:'choice', text:'', options:['','','',''], answer:0, points:1 }); draw(); list.lastElementChild.querySelector('textarea').focus(); };
+  document.getElementById('gen').onclick = async e => {
+    const b = e.currentTarget, out = document.getElementById('genMsg'), prompt = document.getElementById('tp').value.trim();
+    if (!prompt) { out.innerHTML = err('ჯერ აღწერეთ, რა ტესტი გჭირდებათ.'); return; }
+    if (qs.length && b.dataset.sure !== '1') { b.dataset.sure = '1'; b.textContent = 'არსებული კითხვები ჩანაცვლდება. დააჭირეთ ისევ'; return; }
+    b.dataset.sure = ''; b.disabled = true; b.textContent = 'AI ადგენს… (20–40 წამი)'; out.innerHTML = '';
+    const v = vacs.find(x => x.id === document.getElementById('tv').value);
+    try {
+      const r = await aiCall({ action:'generate_test', prompt, count: +document.getElementById('tn').value, vacancy: v ? `${v.title}. ${(v.requirements||'').slice(0, 600)}` : '' });
+      qs = r.questions; if (!document.getElementById('tt').value.trim()) document.getElementById('tt').value = r.title || '';
+      draw(); out.innerHTML = `<div class="msg ok" style="margin-top:4px">მონახაზი მზადაა. გადახედეთ კითხვებს და სწორ პასუხებს, შემდეგ შეინახეთ.</div>`;
+    } catch (x) { out.innerHTML = err('ვერ მოხერხდა: ' + x.message); }
+    b.disabled = false; b.textContent = 'AI-ით შედგენა';
+  };
+  document.getElementById('save').onclick = async e => {
+    const out = document.getElementById('sm'), title = document.getElementById('tt').value.trim();
+    if (!title) { out.innerHTML = err('ჩაწერეთ ტესტის სახელი.'); return; }
+    if (!qs.length) { out.innerHTML = err('დაამატეთ მინიმუმ ერთი კითხვა.'); return; }
+    for (let i = 0; i < qs.length; i++) {
+      const q = qs[i];
+      if (!String(q.text||'').trim()) { out.innerHTML = err(`კითხვა ${i+1}: ჩაწერეთ კითხვის ტექსტი.`); return; }
+      if (q.type === 'choice') {
+        q.options = (q.options||[]).map(o => String(o).trim());
+        if (q.options.filter(Boolean).length < 2 || q.options.some(o => !o)) { out.innerHTML = err(`კითხვა ${i+1}: შეავსეთ ყველა ვარიანტი (მინიმუმ 2).`); return; }
+        if (!(q.answer >= 0 && q.answer < q.options.length)) { out.innerHTML = err(`კითხვა ${i+1}: მონიშნეთ სწორი პასუხი.`); return; }
+      }
+    }
+    const clean = qs.map(q => ({ id: q.id || qid(), type: q.type, text: String(q.text).trim(), points: Number(q.points) || 1,
+      ...(q.type === 'choice' ? { options: q.options, answer: q.answer } : { guide: String(q.guide || '').trim() }) }));
+    const b = e.currentTarget; b.disabled = true;
+    const row = { title, prompt: document.getElementById('tp').value.trim(), questions: clean, updated_at: new Date().toISOString() };
+    const r = id ? await sb.from('tests').update(row).eq('id', id) : await sb.from('tests').insert({ ...row, company_id: company.id });
+    b.disabled = false;
+    if (r.error) { out.innerHTML = err(r.error); return; }
+    go('#tests');
+  };
+  const del = document.getElementById('del');
+  if (del) del.onclick = async () => {
+    if (del.dataset.sure !== '1') { del.dataset.sure = '1'; del.textContent = 'შედეგებიც წაიშლება. დააჭირეთ ისევ'; return; }
+    const r = await sb.from('tests').delete().eq('id', id);
+    if (r.error) { document.getElementById('sm').innerHTML = err(r.error); return; }
+    go('#tests');
+  };
+}
+
+// section inside the applicant drawer: assigned tests + form to send a new one
+async function testSection(appId){
+  const box = document.getElementById('testBox'); if (!box) return;
+  const [lib, mine] = await Promise.all([
+    sb.from('tests').select('id,title,questions').eq('company_id', company.id).order('created_at', { ascending:false }),
+    sb.from('test_assignments').select('id,mode,office_code,status,score,max_score,leave_count,time_limit_min,tests(title)').eq('application_id', appId).order('created_at')
+  ]);
+  const items = (mine.data || []).map(a => `<div class="ta-item"><div class="row" style="justify-content:space-between"><b>${esc(a.tests?.title)}</b>${taBadge(a.status)}</div>
+    <div class="muted" style="margin-top:2px">${MODES[a.mode]}${a.time_limit_min ? ` · ${a.time_limit_min} წთ` : ''}${a.leave_count ? ` · <span style="color:var(--warn)">ფანჯარა დატოვა ${a.leave_count}-ჯერ</span>` : ''}</div>
+    ${a.mode === 'office' && a.status !== 'submitted' ? `<p style="margin-top:8px">დაწყების კოდი: <span class="code">${esc(a.office_code)}</span></p><p class="hint" style="margin-top:4px">კოდი კანდიდატს ოფისში, ტესტის დაწყებისას მიეცით.</p>` : ''}
+    ${a.status === 'submitted' ? `<p style="margin-top:8px"><b>${a.score ?? 0} / ${a.max_score ?? 0}</b> ქულა · <a href="#result-${a.id}" style="color:var(--link);font-weight:600">შედეგის ნახვა</a></p>` : ''}</div>`).join('');
+  const tests = lib.data || [];
+  box.innerHTML = `<h3 style="font-size:16px">ტესტი</h3>${items}
+    ${tests.length ? `<form class="form" id="taForm" style="margin-top:14px">
+      <label>ტესტი<select name="test">${tests.map(t => `<option value="${t.id}">${esc(t.title)} (${t.questions.length} კითხვა)</option>`).join('')}</select></label>
+      <div><p style="font-size:14px;font-weight:600;margin-bottom:6px">სად წერს კანდიდატი</p><div class="modes">
+        <label class="role"><input type="radio" name="mode" value="home" checked><b>სახლიდან</b><small>საკუთარი ანგარიშიდან</small></label>
+        <label class="role"><input type="radio" name="mode" value="office"><b>ოფისში</b><small>იწყება თქვენი კოდით</small></label></div></div>
+      <div>
+        <div class="sw-row"><span>დროის ლიმიტი<small>დროის ამოწურვისას ტესტი თავად იგზავნება</small></span><span class="row" style="gap:8px"><input class="mins" name="mins" type="number" min="1" max="300" value="30" aria-label="წუთი"><span class="small muted">წთ</span><input class="sw" type="checkbox" name="limit" checked aria-label="დროის ლიმიტი"></span></div>
+        <div class="sw-row"><span>ფანჯრის დატოვება ფიქსირდება<small>სხვა ფანჯარაზე გადასვლა ან ჩაკეცვა თქვენთან ჩანს</small></span><input class="sw" type="checkbox" name="leave" checked aria-label="ფანჯრის დატოვების აღრიცხვა"></div>
+        <div class="sw-row"><span>კოპირება და ჩასმა აკრძალულია</span><input class="sw" type="checkbox" name="copy" checked aria-label="კოპირების აკრძალვა"></div>
+        <div class="sw-row"><span>კითხვების არეული რიგი</span><input class="sw" type="checkbox" name="shuffle" aria-label="არეული რიგი"></div>
+        <div class="sw-row"><span>კანდიდატი ხედავს თავის ქულას</span><input class="sw" type="checkbox" name="show" aria-label="ქულის ჩვენება"></div>
+      </div>
+      <div id="taMsg"></div>
+      <button class="btn blue sm" style="justify-self:start">ტესტის გაგზავნა</button></form>`
+    : `<p class="small muted" style="margin-top:8px">ბიბლიოთეკაში ჯერ ტესტი არ გაქვთ. <a href="#new-test" style="color:var(--link);font-weight:600">ტესტის შექმნა</a></p>`}`;
+  const f = document.getElementById('taForm'); if (!f) return;
+  f.limit.onchange = () => { f.mins.disabled = !f.limit.checked; };
+  f.onsubmit = async e => {
+    e.preventDefault(); const b = f.querySelector('button'); b.disabled = true;
+    const row = { test_id: f.test.value, application_id: appId, mode: f.mode.value,
+      time_limit_min: f.limit.checked ? Math.max(1, Math.min(300, parseInt(f.mins.value) || 30)) : null,
+      block_leave: f.leave.checked, block_copy: f.copy.checked, shuffle: f.shuffle.checked, show_score: f.show.checked };
+    const r = await sb.from('test_assignments').insert(row);
+    if (r.error) { b.disabled = false; document.getElementById('taMsg').innerHTML = err(r.error); return; }
+    toast(row.mode === 'office' ? 'ტესტი დაინიშნა. კოდი ქვემოთ ჩანს.' : 'ტესტი გაეგზავნა კანდიდატს.');
+    testSection(appId);
+  };
+}
+
+async function testResult(aid){
+  set(`<div class="spin">იტვირთება…</div>`);
+  const { data:a, error } = await sb.from('test_assignments').select('*,tests(title,questions),applications(vacancy_id,vacancies(title),profiles!applications_candidate_id_fkey(full_name))').eq('id', aid).maybeSingle();
+  if (error) return set(err(error));
+  if (!a) return set(`<div class="card empty">შედეგი ვერ მოიძებნა. <a href="#tests">ტესტები</a></div>`);
+  const qs = a.tests?.questions || [], ans = a.answers || {}, marks = a.ai_feedback?.marks || {};
+  const name = a.applications?.profiles?.full_name || 'კანდიდატი';
+  const hasOpen = qs.some(q => q.type !== 'choice');
+  set(`<p style="margin-bottom:14px"><a href="#board-${a.applications?.vacancy_id}" class="muted small">← ${esc(a.applications?.vacancies?.title || 'დაფა')}</a></p>
+  <div class="head"><div><h1>${esc(name)}</h1><p class="muted">${esc(a.tests?.title)} · ${MODES[a.mode]}</p></div>${taBadge(a.status)}</div>
+  <div class="stats">
+    <div class="stat"><b>${a.status === 'submitted' ? `${a.score ?? 0} / ${a.max_score ?? 0}` : '—'}</b><span>ქულა${a.needs_review ? ', ღია პასუხების გარეშე' : ''}</span></div>
+    <div class="stat"><b>${a.started_at && a.submitted_at ? dur(a.started_at, a.submitted_at) : '—'}</b><span>დახარჯული დრო${a.time_limit_min ? ` (ლიმიტი ${a.time_limit_min} წთ)` : ''}</span></div>
+    <div class="stat ${a.leave_count ? 'warn' : ''}"><b>${a.leave_count}</b><span>ფანჯრის დატოვება${a.block_leave ? '' : ' (არ აღირიცხებოდა)'}</span></div>
+    <div class="stat ${a.late ? 'warn' : ''}"><b>${a.submitted_at ? fmtDate(a.submitted_at) : '—'}</b><span>${a.late ? 'გაგზავნილია დაგვიანებით' : 'გაგზავნის თარიღი'}</span></div>
+  </div>
+  ${a.status === 'submitted' && hasOpen ? `<div class="ai-card" style="margin:0 0 16px"><div class="row" style="justify-content:space-between"><div><h3 style="font-size:16px">ღია პასუხების შეფასება</h3><p class="small muted" style="margin-top:2px">${a.ai_feedback ? 'AI-მა შეაფასა. ქულა შეგიძლიათ ქვემოთ შეცვალოთ.' : 'AI წაიკითხავს პასუხებს და თითოეულს ქულას მიანიჭებს.'}</p></div><button class="btn blue sm" id="grade">${a.ai_feedback ? 'თავიდან შეფასება' : 'შეფასება AI-ით'}</button></div><div id="gm"></div></div>` : ''}
+  <div class="card">${qs.map((q, i) => {
+    const given = ans[q.id];
+    let body = '';
+    if (q.type === 'choice') body = (q.options || []).map((o, k) => { const right = String(q.answer) === String(k), chosen = String(given) === String(k); return `<div class="res-opt ${right ? 'right' : chosen ? 'wrong' : ''}"><span>${right ? '✓' : chosen ? '✕' : '○'}</span><span>${esc(o)}${chosen ? ' <span class="hint">(კანდიდატის პასუხი)</span>' : ''}</span></div>`; }).join('') + (given == null || given === '' ? `<p class="hint" style="margin-top:4px">უპასუხოდ დატოვა</p>` : '');
+    else body = `<div class="ans">${given ? esc(given) : '<span class="muted">უპასუხოდ დატოვა</span>'}</div>${marks[q.id] ? `<p class="mark">AI: ${marks[q.id].points} / ${q.points} ქულა. ${esc(marks[q.id].note)}</p>` : ''}${q.guide ? `<p class="hint" style="margin-top:6px">კარგი პასუხი: ${esc(q.guide)}</p>` : ''}`;
+    return `<div class="res-q"><div class="row" style="justify-content:space-between;align-items:flex-start;flex-wrap:nowrap"><h3 style="font-size:16px;font-weight:600;white-space:pre-wrap">${i+1}. ${esc(q.text)}</h3><span class="res-pts">${q.points} ქ.</span></div><div style="margin-top:8px">${body}</div></div>`;
+  }).join('')}</div>
+  ${a.status === 'submitted' ? `<form class="card row" id="sf" style="margin-top:16px"><label style="display:flex;align-items:center;gap:10px">საბოლოო ქულა<input name="s" type="number" min="0" max="${a.max_score ?? 0}" value="${a.score ?? 0}" style="width:100px"></label><span class="muted">/ ${a.max_score ?? 0}</span><button class="btn ghost sm">შენახვა</button><span id="sfm" class="small"></span></form>` : ''}`);
+  const g = document.getElementById('grade');
+  if (g) g.onclick = async () => {
+    g.disabled = true; g.textContent = 'AI აფასებს…'; document.getElementById('gm').innerHTML = '';
+    try { await aiCall({ action:'grade_test', assignment_id: aid }); testResult(aid); }
+    catch (x) { document.getElementById('gm').innerHTML = err('ვერ მოხერხდა: ' + x.message); g.disabled = false; g.textContent = 'შეფასება AI-ით'; }
+  };
+  const sf = document.getElementById('sf');
+  if (sf) sf.onsubmit = async e => {
+    e.preventDefault();
+    const v = Math.max(0, Math.min(a.max_score ?? 0, parseInt(sf.s.value) || 0));
+    const r = await sb.from('test_assignments').update({ score: v, needs_review: false }).eq('id', aid);
+    document.getElementById('sfm').innerHTML = r.error ? `<span style="color:var(--bad)">${esc(r.error.message)}</span>` : '<span style="color:var(--ok)">შენახულია</span>';
+  };
+}
+
+// ---------- TESTS (candidate) ----------
+async function myTests(){
+  set(`<div class="head"><div><h1>ტესტები</h1><p class="muted">ტესტები, რომლებიც დამსაქმებლებმა გამოგიგზავნეს</p></div></div><div class="grid" id="list"><div class="spin">იტვირთება…</div></div>`);
+  const { data, error } = await sb.rpc('my_tests');
+  const box = document.getElementById('list');
+  if (error) { box.innerHTML = err(error); return; }
+  if (!data.length) { box.innerHTML = `<div class="card empty">ჯერ ტესტი არ გაქვთ. როცა დამსაქმებელი ტესტს გამოგიგზავნით, აქ გამოჩნდება.</div>`; return; }
+  box.innerHTML = data.map(t => `<div class="card vac"><div><h2>${esc(t.title)}</h2><div class="meta"><span>${esc(t.company)}</span><span>${esc(t.vacancy)}</span><span>${t.n_questions} კითხვა</span>${t.time_limit_min ? `<span>${t.time_limit_min} წუთი</span>` : '<span>დროის ლიმიტის გარეშე</span>'}<span>${MODES[t.mode]}</span></div>
+    ${t.status !== 'submitted' && t.mode === 'office' ? `<p class="small muted" style="margin-top:8px">ეს ტესტი ოფისში იწერება. დაწყების კოდს დამსაქმებელი ადგილზე მოგცემთ.</p>` : ''}</div>
+    <div class="row">${t.status === 'submitted' ? `<div style="text-align:right">${taBadge('submitted')}${t.score != null ? `<div class="count" style="margin-top:6px">${t.score} / ${t.max_score}</div>` : ''}</div>`
+      : `<a class="btn blue" href="#take-${t.id}">${t.status === 'started' ? 'გაგრძელება' : 'დაწყება'}</a>`}</div></div>`).join('');
+}
+
+async function takeTest(aid){
+  set(`<div class="spin">იტვირთება…</div>`);
+  const { data, error } = await sb.rpc('my_tests');
+  const t = (data || []).find(x => x.id === aid);
+  if (error || !t) return set(`<div class="card empty">ტესტი ვერ მოიძებნა. <a href="#my-tests">ჩემი ტესტები</a></div>`);
+  if (t.status === 'submitted') return set(`<div class="auth"><div class="card" style="text-align:center"><h2>ტესტი გაგზავნილია</h2><p class="muted" style="margin-top:8px">${esc(t.company)} შედეგს ნახავს და გიპასუხებთ.</p><a class="btn ghost" style="margin-top:18px" href="#my-tests">ჩემი ტესტები</a></div></div>`);
+  set(`<div style="max-width:620px;margin:10px auto">
+    <div class="card form">
+      <div><p class="small muted">${esc(t.company)} · ${esc(t.vacancy)}</p><h1 style="margin-top:4px">${esc(t.title)}</h1></div>
+      <ul style="margin:0;padding-left:20px;display:grid;gap:6px">
+        <li>${t.n_questions} კითხვა.</li>
+        <li>${t.time_limit_min ? `დრო: ${t.time_limit_min} წუთი. დაწყების შემდეგ ტაიმერი არ ჩერდება და დროის ამოწურვისას ტესტი თავად გაიგზავნება.` : 'დროის ლიმიტი არ არის.'}</li>
+        ${t.block_leave ? '<li>თუ ტესტის ფანჯარას დატოვებთ ან ჩაკეცავთ, ეს დაფიქსირდება და დამსაქმებელი დაინახავს.</li>' : ''}
+        ${t.block_copy ? '<li>კოპირება და ჩასმა გამორთულია.</li>' : ''}
+        <li>პასუხები ავტომატურად ინახება.</li>
+      </ul>
+      ${t.mode === 'office' ? `<label>დაწყების კოდი (მოგცემთ დამსაქმებელი)<input id="oc" inputmode="numeric" maxlength="6" autocomplete="off" placeholder="000000" style="max-width:200px;letter-spacing:.2em;font-weight:600"></label>` : ''}
+      <div id="tm"></div>
+      <div class="row"><button class="btn blue" id="startBtn">${t.status === 'started' ? 'ტესტის გაგრძელება' : 'ტესტის დაწყება'}</button><a class="btn ghost" href="#my-tests">მოგვიანებით</a></div>
+    </div></div>`);
+  document.getElementById('startBtn').onclick = async e => {
+    const b = e.currentTarget; b.disabled = true;
+    const code = document.getElementById('oc')?.value.trim() || '';
+    const r = await sb.rpc('start_test', { aid, code });
+    if (r.error) { b.disabled = false; document.getElementById('tm').innerHTML = err(rpcErr(r.error)); return; }
+    runExam(aid, r.data, t);
+  };
+}
+
+function runExam(aid, x, meta){
+  const qs = x.questions || [], ans = { ...(x.answers || {}) };
+  const offset = new Date(x.now) - Date.now();
+  const ends = x.ends_at ? new Date(x.ends_at).getTime() : null;
+  let leaves = x.leave_count || 0, done = false, saveT = null, lastLeave = 0, timerT = null;
+  document.body.classList.add('exam');
+  set(`<div style="max-width:760px;margin:0 auto">
+    <div class="exam-bar"><div class="t">${esc(x.title)}<small id="prog"></small></div>${ends ? `<span class="timer" id="timer" aria-live="off">--:--</span>` : ''}<button class="btn sm" id="sub">გაგზავნა</button></div>
+    ${qs.map((q, i) => `<div class="exam-q ${x.block_copy ? 'nocopy' : ''}" data-q="${esc(q.id)}"><div class="qn">კითხვა ${i+1} / ${qs.length} · ${q.points || 1} ქულა</div><h3>${esc(q.text)}</h3>
+      ${q.type === 'choice' ? (q.options || []).map((o, k) => `<label class="choice"><input type="radio" name="${esc(q.id)}" value="${k}" ${String(ans[q.id]) === String(k) ? 'checked' : ''}><span>${esc(o)}</span></label>`).join('')
+        : `<textarea name="${esc(q.id)}" rows="${q.type === 'task' ? 8 : 4}" maxlength="6000" placeholder="თქვენი პასუხი">${esc(ans[q.id] || '')}</textarea>`}</div>`).join('')}
+    <div class="row" style="justify-content:flex-end"><button class="btn blue" id="sub2">ტესტის გაგზავნა</button></div>
+    <div id="em" style="margin-top:12px"></div></div>`);
+  const answered = () => qs.filter(q => ans[q.id] != null && String(ans[q.id]).trim() !== '').length;
+  const prog = () => { document.getElementById('prog').textContent = `პასუხი გაცემულია ${answered()} / ${qs.length}`; };
+  prog();
+  const save = () => { clearTimeout(saveT); saveT = setTimeout(() => sb.rpc('save_test_answers', { aid, ans }), 1200); };
+  const onInput = e => { const n = e.target.name; if (!n || !e.target.closest('.exam-q')) return; ans[n] = e.target.value; prog(); save(); };
+  view.addEventListener('input', onInput);
+  const block = e => { e.preventDefault(); toast('კოპირება და ჩასმა ამ ტესტში გამორთულია'); };
+  const onLeave = () => {
+    if (done || !x.block_leave) return;
+    const now = Date.now(); if (now - lastLeave < 1500) return; lastLeave = now;
+    leaves++;
+    sb.rpc('log_test_leave', { aid }).then(r => { if (r.data) leaves = r.data; });
+    if (!document.getElementById('wb')) document.body.insertAdjacentHTML('beforeend', `<div class="warnbox" id="wb"><div class="card"><h2>თქვენ დატოვეთ ტესტის ფანჯარა</h2><p class="muted" style="margin-top:8px">ეს დაფიქსირდა და დამსაქმებელი დაინახავს. დატოვების რაოდენობა: <b id="wbn"></b></p><button class="btn blue" style="margin-top:18px" id="wbok">ტესტზე დაბრუნება</button></div></div>`);
+    document.getElementById('wbn').textContent = leaves;
+    document.getElementById('wbok').onclick = () => document.getElementById('wb')?.remove();
+  };
+  const onVis = () => { if (document.visibilityState === 'hidden') onLeave(); };
+  const onUnload = e => { if (!done) { e.preventDefault(); e.returnValue = ''; } };
+  document.addEventListener('visibilitychange', onVis);
+  window.addEventListener('blur', onLeave);
+  window.addEventListener('beforeunload', onUnload);
+  if (x.block_copy) ['copy','cut','paste','contextmenu','drop'].forEach(ev => document.addEventListener(ev, block));
+  examCleanup = () => {
+    document.body.classList.remove('exam'); clearInterval(timerT); clearTimeout(saveT);
+    view.removeEventListener('input', onInput);
+    document.removeEventListener('visibilitychange', onVis); window.removeEventListener('blur', onLeave); window.removeEventListener('beforeunload', onUnload);
+    ['copy','cut','paste','contextmenu','drop'].forEach(ev => document.removeEventListener(ev, block));
+    document.getElementById('wb')?.remove();
+    if (!done) sb.rpc('save_test_answers', { aid, ans });
+  };
+  const submit = async (auto) => {
+    if (done) return; done = true; clearInterval(timerT); clearTimeout(saveT);
+    [document.getElementById('sub'), document.getElementById('sub2')].forEach(b => { if (b) b.disabled = true; });
+    const r = await sb.rpc('submit_test', { aid, ans });
+    if (r.error) { done = false; document.getElementById('em').innerHTML = err(rpcErr(r.error)); [document.getElementById('sub'), document.getElementById('sub2')].forEach(b => { if (b) b.disabled = false; }); return; }
+    const res = r.data || {};
+    examCleanup(); examCleanup = null;
+    set(`<div class="auth"><div class="card" style="text-align:center"><h2>${auto ? 'დრო ამოიწურა. ტესტი გაიგზავნა' : 'ტესტი გაგზავნილია'}</h2>
+      ${res.show_score ? `<div class="count" style="font-size:44px;margin-top:14px">${res.score} / ${res.max_score}</div><p class="muted small">${res.needs_review ? 'ეს ქულა არჩევით კითხვებს ეხება. ღია პასუხებს დამსაქმებელი შეაფასებს.' : 'თქვენი ქულა'}</p>` : ''}
+      <p class="muted" style="margin-top:12px">${esc(meta.company)} შედეგს ნახავს და სტატუსს „ჩემ განაცხადებში“ დაინახავთ.</p>
+      <div class="row" style="justify-content:center;margin-top:20px"><a class="btn ghost" href="#applications">ჩემი განაცხადები</a></div></div></div>`);
+  };
+  const ask = e => {
+    const b = e.currentTarget, left = qs.length - answered();
+    if (left && b.dataset.sure !== '1') { b.dataset.sure = '1'; b.textContent = `${left} კითხვა უპასუხოა. გაგზავნა მაინც?`; return; }
+    submit(false);
+  };
+  document.getElementById('sub').onclick = ask; document.getElementById('sub2').onclick = ask;
+  if (ends) {
+    const tick = () => {
+      const left = Math.max(0, ends - (Date.now() + offset)), el = document.getElementById('timer'); if (!el) return;
+      const m = Math.floor(left / 60000), s = Math.floor(left % 60000 / 1000);
+      el.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`; el.classList.toggle('low', left < 60000);
+      if (left <= 0) submit(true);
+    };
+    tick(); timerT = setInterval(tick, 1000);
+  }
+}
 
 // ---------- start ----------
 (async () => {

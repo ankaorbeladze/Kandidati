@@ -3,339 +3,297 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kandidati</title>
-<meta name="description" content="Kandidati — დაქირავების პლატფორმა, სადაც ყველა კანდიდატი იღებს პასუხს.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F5C46'/%3E%3Cpath d='M9 16.5l4.5 4.5L23 11' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<title>Kandidati — პასუხი ყველა კანდიდატს</title>
+<meta name="description" content="სამსახურის ძიება და დაქირავება ერთ სივრცეში. კანდიდატი ყოველთვის ხედავს თავის სტატუსს, კომპანია კი ყველა განაცხადს ერთ დაფაზე მართავს.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230B4A72'/%3E%3Cpath d='M9 16.5l4.5 4.5L23 11' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wdth,wght@62.5..100,400..900&family=Noto+Sans:wdth,wght@62.5..100,400..800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Georgian:wght@400;500;600;700&display=swap">
 <style>
-:root{
-  --paper:#F3F5F1; --white:#FFFFFF; --ink:#14201B; --soft:#56635C; --rule:#D6DDD7;
-  --pine:#0F5C46; --pine-dark:#0A4635; --mint:#E1EFE6; --amber:#B7791F; --amber-soft:#FBF0DC;
-  --sans:"Noto Sans Georgian","Noto Sans",system-ui,sans-serif;
-}
+:root{--bg:#F5F7F9;--ink:#0F1B26;--ocean:#0B4A72;--link:#0B5E91;--line:#E4E9EE;--line-2:#EEF1F4;--muted:#5B6875;--soft:#3F4C59;--green:#1E7A55;--green-soft:#E7F3ED;--ice:#CFE4F1}
 *{box-sizing:border-box}
-[hidden]{display:none!important}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,"Noto Sans Georgian",system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
 h1,h2,h3,p{margin:0}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--pine);outline-offset:3px;border-radius:4px}
-.wrap{width:100%;max-width:1120px;margin:0 auto;padding-inline:28px}
-.display{font-stretch:68%;font-weight:800;letter-spacing:-.01em;line-height:1.02}
+a{color:var(--link);text-decoration:none}
+a:hover{color:#08486F}
+:focus-visible{outline:3px solid #6FB2DD;outline-offset:3px;border-radius:8px}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:40px}
 
 /* header */
-header{background:var(--paper);border-bottom:1px solid var(--rule)}
-.nav{display:flex;align-items:center;gap:32px;height:76px}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:21px;letter-spacing:-.02em}
-.logo svg{flex:none}
-.menu{display:flex;gap:26px;margin-left:12px;flex:1}
-.menu a{text-decoration:none;font-size:15px;color:var(--soft);padding:6px 0;border-bottom:2px solid transparent}
-.menu a:hover{color:var(--ink)}
-.menu a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--pine)}
-.right{display:flex;align-items:center;gap:18px}
-.lang{display:flex;font-size:14px}
-.lang button{border:0;background:none;font:inherit;padding:4px 6px;color:var(--soft);cursor:pointer}
-.lang button[aria-pressed="true"]{color:var(--ink);font-weight:700;text-decoration:underline;text-underline-offset:4px}
-.login{font-size:15px;font-weight:600;text-decoration:none}
-.login:hover{text-decoration:underline;text-underline-offset:4px}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.hd{height:76px;display:flex;align-items:center;gap:28px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:21px;letter-spacing:-.03em;color:var(--ink)}
+.logo:hover{color:var(--ink)}
+.mark{width:30px;height:30px;border-radius:9px;background:var(--ocean);display:grid;place-items:center;flex:none}
+.search{flex:1;max-width:420px;display:flex;align-items:center;gap:10px;background:#F1F4F7;border:1px solid var(--line);border-radius:999px;padding:9px 8px 9px 18px}
+.search:focus-within{border-color:#9DB9CE;background:#fff}
+.search input{border:0;outline:0;background:transparent;font:inherit;font-size:15px;width:100%;color:var(--ink)}
+.search input::placeholder{color:#7A8794}
+.search button{border:0;background:var(--ocean);color:#fff;font:inherit;font-weight:600;font-size:14px;border-radius:999px;padding:6px 14px;cursor:pointer}
+nav.main{display:flex;gap:24px;font-size:15px;margin-left:auto}
+nav.main a{color:var(--soft)}
+nav.main a:hover{color:var(--ink)}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px}
+.lang button{border:0;background:none;font:inherit;font-size:13px;font-weight:600;color:var(--muted);padding:4px 10px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.pill{display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:15px;padding:11px 22px;border-radius:999px;white-space:nowrap;transition:background .15s,border-color .15s}
+.pill.dark{background:var(--ink);color:#fff}
+.pill.dark:hover{background:#000;color:#fff}
+.pill.white{background:#fff;color:var(--ocean);padding:14px 26px}
+.pill.white:hover{background:#EAF3F9;color:var(--ocean)}
+.pill.line{border:1px solid rgba(255,255,255,.35);color:#fff;padding:14px 26px}
+.pill.line:hover{border-color:#fff;color:#fff}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 22px;border-radius:8px;font:inherit;font-size:16px;font-weight:600;text-decoration:none;cursor:pointer;border:1.5px solid var(--pine);background:var(--pine);color:#fff;transition:background .15s}
-.btn:hover{background:var(--pine-dark);border-color:var(--pine-dark)}
-.btn.line{background:transparent;color:var(--pine)}
-.btn.line:hover{background:var(--mint)}
-
-main{flex:1}
-.view{padding:72px 0 88px}
-
-/* HOME */
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:72px;align-items:center}
-.hero h1{font-size:clamp(48px,7.4vw,96px)}
-.hero .lead{margin-top:26px;font-size:20px;color:var(--soft);max-width:31ch}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
-
-/* the reply feed — the one memorable thing */
-.feed{position:relative;padding-left:26px}
-.feed::before{content:"";position:absolute;left:7px;top:14px;bottom:14px;width:2px;background:var(--rule)}
-.reply{position:relative;background:var(--white);border:1px solid var(--rule);border-radius:12px;padding:16px 18px;margin-bottom:14px}
-.reply::before{content:"";position:absolute;left:-25px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--pine)}
-.reply.done::before{background:var(--pine)}
-.reply.wait::before{border-color:var(--amber);background:var(--amber-soft)}
-.reply .who{display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--soft)}
-.reply .who b{color:var(--ink);font-weight:600}
-.reply .st{display:inline-block;margin-top:8px;font-size:14px;font-weight:600;color:var(--pine)}
-.reply.wait .st{color:var(--amber)}
-.reply .msg{margin-top:8px;font-size:16px;line-height:1.5}
-.reply.big{border-color:var(--pine);box-shadow:0 1px 0 var(--pine)}
+/* hero */
+.hero{padding-top:40px}
+.hero-card{background:var(--ocean);color:#fff;border-radius:32px;padding:64px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:center;box-shadow:0 30px 60px -36px rgba(11,74,114,.7)}
+h1{font-size:58px;line-height:1.06;letter-spacing:-.035em;font-weight:700}
+.lede{margin-top:22px;font-size:19px;line-height:1.5;color:var(--ice);max-width:36ch}
+.ctas{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap}
+.mock{position:relative;padding-bottom:48px}
+.mock-card{background:#fff;color:var(--ink);border-radius:24px;padding:24px;box-shadow:0 24px 48px -24px rgba(0,0,0,.45)}
+.mock-card h3{font-size:17px;font-weight:700}
+.app{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line-2)}
+.app:last-child{border-bottom:0}
+.dot{width:9px;height:9px;border-radius:50%;flex:none}
+.app b{display:block;font-weight:600;font-size:15px}
+.app small{display:block;font-size:13px;color:var(--muted)}
+.app .st{margin-left:auto;font-size:13px;font-weight:600;white-space:nowrap}
+.note{position:absolute;left:-36px;bottom:0;right:40px;background:#fff;color:var(--ink);border-radius:18px;padding:14px 18px;display:flex;align-items:center;gap:14px;box-shadow:0 20px 40px -20px rgba(0,0,0,.5)}
+.note .ic{width:40px;height:40px;border-radius:50%;background:var(--green-soft);display:grid;place-items:center;flex:none}
+.note b{display:block;font-size:15px}
+.note small{display:block;font-size:13px;color:var(--muted)}
 @media (prefers-reduced-motion:no-preference){
-  .feed .reply{animation:arrive .5s ease both}
-  .feed .reply:nth-child(2){animation-delay:.5s}
-  .feed .reply:nth-child(3){animation-delay:1.1s}
-  @keyframes arrive{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .note{animation:pop .6s cubic-bezier(.2,.8,.2,1) .7s both}
+  @keyframes pop{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
 }
+.sample{margin-top:14px;font-size:12px;color:#9CC3DD;text-align:right}
 
-.paths{display:grid;grid-template-columns:repeat(3,1fr);margin-top:88px;border-top:1px solid var(--rule)}
-.path{display:block;padding:26px 26px 6px 0;text-decoration:none}
-.path + .path{padding-left:26px;border-left:1px solid var(--rule)}
-.path b{display:block;font-size:20px;font-weight:700}
-.path span{display:block;margin-top:6px;color:var(--soft);font-size:16px;max-width:30ch}
-.path:hover b{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:2px;text-decoration-color:var(--pine)}
+/* sections */
+section.block{padding-top:88px}
+h2{font-size:36px;letter-spacing:-.03em;font-weight:700;line-height:1.15}
+.sub{margin-top:10px;color:var(--muted);font-size:18px;max-width:52ch}
+.tiles{margin-top:28px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.tile{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px}
+.tile .ic{width:44px;height:44px;border-radius:12px;background:#EEF3F7;display:grid;place-items:center}
+.tile h3{margin-top:18px;font-weight:700;font-size:18px}
+.tile p{color:var(--muted);font-size:15px;margin-top:4px}
+.tile.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+.tile.dark .ic{background:#1C2B3A}
+.tile.dark p{color:#B4C1CD}
+.tile.dark a{display:inline-block;margin-top:14px;font-weight:600;font-size:15px;color:#9CCBE8}
+.tile.dark a:hover{color:#fff}
 
-/* INNER PAGES */
-.page{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
-.page h2{font-size:clamp(40px,5.4vw,68px)}
-.page .lead{margin-top:20px;font-size:19px;color:var(--soft);max-width:34ch}
-.list{list-style:none;margin:36px 0 0;padding:0;border-top:1px solid var(--rule)}
-.list li{padding:16px 0;border-bottom:1px solid var(--rule)}
-.list b{display:block;font-weight:600}
-.list span{display:block;color:var(--soft);font-size:16px;margin-top:2px}
-.page .btn{margin-top:32px}
+.cand{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px;align-items:start}
+.points{margin-top:28px;display:grid;gap:18px}
+.points b{display:block;font-size:17px}
+.points span{color:var(--muted);font-size:15px}
+.jobs{background:#fff;border:1px solid var(--line);border-radius:24px;padding:8px 24px}
+.job{display:flex;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid var(--line-2)}
+.job:last-child{border-bottom:0}
+.logo-sq{width:46px;height:46px;border-radius:13px;color:#fff;display:grid;place-items:center;font-weight:700;flex:none}
+.job .t{flex:1;min-width:0}
+.job b{display:block;font-weight:600;font-size:17px}
+.job small{display:block;font-size:14px;color:var(--muted)}
+.tag{font-weight:600;font-size:14px;padding:6px 12px;border-radius:999px;white-space:nowrap}
+.tag.ok{background:var(--green-soft);color:var(--green)}
+.tag.new{background:#F1F4F7;color:var(--soft)}
 
-.board{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;background:var(--white);border:1px solid var(--rule);border-radius:12px;padding:16px}
-.col h4{margin:0 0 10px;font-size:14px;font-weight:600;color:var(--soft)}
-.card{border:1px solid var(--rule);border-radius:8px;padding:10px 12px;margin-bottom:8px;font-size:14px;background:var(--paper)}
-.card b{display:block;font-weight:600}
-.card small{display:block;color:var(--soft);font-size:13px}
-.tag{display:inline-block;margin-top:6px;font-size:12px;font-weight:600;padding:2px 8px;border-radius:4px;background:var(--mint);color:var(--pine)}
-.tag.w{background:var(--amber-soft);color:var(--amber)}
+/* faq */
+.faq{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px}
+.qa{background:#fff;border:1px solid var(--line);border-radius:24px;padding:4px 24px}
+details{border-bottom:1px solid var(--line-2)}
+details:last-child{border-bottom:0}
+summary{list-style:none;cursor:pointer;padding:18px 0;font-weight:600;font-size:17px;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-weight:400;font-size:22px;line-height:1;color:var(--muted)}
+details[open] summary::after{content:"–"}
+details p{padding:0 0 18px;color:var(--muted);font-size:15px;max-width:60ch}
+details ol{margin:0;padding:0 0 18px 20px;color:var(--muted);font-size:15px;display:grid;gap:6px;max-width:60ch}
 
-.status{background:var(--white);border:1px solid var(--rule);border-radius:12px;padding:22px}
-.status h3{font-size:18px;font-weight:700}
-.status .co{color:var(--soft);font-size:15px}
-.steps{list-style:none;margin:18px 0 0;padding:0}
-.steps li{display:grid;grid-template-columns:22px 1fr auto;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--rule);font-size:16px}
-.dot{width:14px;height:14px;border-radius:50%;border:2px solid var(--rule)}
-.done .dot{background:var(--pine);border-color:var(--pine)}
-.now .dot{border-color:var(--amber);background:var(--amber-soft)}
-.later{color:var(--soft)}
-.when{font-size:14px;color:var(--soft)}
-.note{margin-top:14px;padding:14px;border-radius:8px;background:var(--mint);font-size:15px}
-.note small{display:block;color:var(--pine);font-weight:600;margin-bottom:2px}
+/* cta + footer */
+.cta{margin-block:88px 0;background:var(--ink);color:#fff;border-radius:28px;padding:48px 56px;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
+.cta h2{font-size:32px}
+.cta p{margin-top:6px;color:#B4C1CD;font-size:17px}
+.cta .pill.white{color:var(--ink)}
+footer{padding:48px 0 56px;color:var(--muted);font-size:14px}
+.ft{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:28px}
+.ft nav{display:flex;gap:22px;flex-wrap:wrap}
+.ft a{color:var(--soft)}
 
-.start{background:var(--white);border:1px solid var(--rule);border-radius:12px;padding:32px}
-.start h3{font-size:26px;font-weight:700;letter-spacing:-.01em}
-.start p{margin-top:10px;color:var(--soft)}
-.start .actions{margin-top:24px}
-.start .small{margin-top:20px;font-size:15px;color:var(--soft)}
-.start .small a{color:var(--ink);font-weight:600}
-
-footer{border-top:1px solid var(--rule)}
-.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:24px;font-size:15px;color:var(--soft)}
-
-@media (max-width:900px){
-  .hero,.page{grid-template-columns:1fr;gap:48px}
-  .view{padding:48px 0 64px}
-  .paths{grid-template-columns:1fr;margin-top:56px}
-  .path + .path{padding-left:0;border-left:0;border-top:1px solid var(--rule)}
+@media (max-width:1020px){
+  .search{display:none}
+  .hero-card{grid-template-columns:1fr;padding:48px}
+  .mock{max-width:480px}
+  .note{left:-12px}
+  .tiles{grid-template-columns:1fr 1fr}
+  .cand,.faq{grid-template-columns:1fr;gap:28px}
 }
-@media (max-width:640px){
-  .nav{height:auto;flex-wrap:wrap;padding-block:16px;gap:14px}
-  .menu{order:3;width:100%;margin-left:0;gap:4px 18px;flex-wrap:wrap}
-  .menu a{font-size:14px}
-  .right{margin-left:auto}
-  .board{grid-template-columns:1fr 1fr}.board .col:nth-child(3){display:none}
+@media (max-width:680px){
+  .wrap{padding-inline:20px}
+  .hd{height:64px;gap:14px}
+  nav.main{display:none}
+  .lang{margin-left:auto}
+  .pill{padding:9px 16px;font-size:14px}
+  .hero{padding-top:20px}
+  .hero-card{padding:32px 24px;border-radius:24px;gap:36px}
+  h1{font-size:40px}
+  .lede{font-size:17px}
+  .pill.white,.pill.line{padding:12px 20px}
+  .note{left:12px;right:12px}
+  h2{font-size:28px}
+  .tiles{grid-template-columns:1fr}
+  .cta{padding:32px 24px}
+  .job .tag{display:none}
 }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="wrap nav">
-    <a class="logo" href="#" aria-label="Kandidati">
-      <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#0F5C46"/><path d="M9 16.5l4.5 4.5L23 11" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      kandidati
-    </a>
-    <nav class="menu" aria-label="Main">
-      <a href="#employers" data-v="employers" data-i="m1">დამსაქმებლებისთვის</a>
-      <a href="#candidates" data-v="candidates" data-i="m2">კანდიდატებისთვის</a>
-      <a href="#start" data-v="start" data-i="m3">დაწყება</a>
-    </nav>
-    <div class="right">
-      <a class="login" href="app.html#login" data-i="login">შესვლა</a>
-      <div class="lang" role="group" aria-label="Language">
-        <button type="button" data-lang="ka" aria-pressed="true">ქარ</button>
-        <button type="button" data-lang="en" aria-pressed="false">EN</button>
-      </div>
-    </div>
+  <div class="wrap hd">
+    <a class="logo" href="index.html" aria-label="Kandidati"><span class="mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg></span>kandidati</a>
+    <form class="search" action="app.html" role="search">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#5B6875" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input name="q" aria-label="ძიება" data-ph="ph" placeholder="თანამდებობა, კომპანია ან უნარი">
+      <button type="submit" data-i="find">ძიება</button>
+    </form>
+    <nav class="main" aria-label="მენიუ"><a href="app.html#jobs" data-i="m1">ვაკანსიები</a><a href="#companies" data-i="m2">კომპანიებს</a><a href="#faq" data-i="m3">როგორ მუშაობს</a></nav>
+    <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="ka" aria-pressed="true">ქარ</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
+    <a class="pill dark" href="app.html#login" data-i="login">შესვლა</a>
   </div>
 </header>
 
 <main>
-
-<section class="view" data-view="home">
-  <div class="wrap">
-    <div class="hero">
-      <div>
-        <h1 class="display" data-i="h_t">პასუხი ყველა კანდიდატს.</h1>
-        <p class="lead" data-i="h_s">კომპანიები ყველა განაცხადს ერთ ადგილას მართავენ, კანდიდატები კი ყოველთვის იგებენ, სად დგას მათი განაცხადი.</p>
-        <div class="actions">
-          <a class="btn" href="app.html#signup-employer" data-i="h_c1">ვაკანსიის გამოქვეყნება</a>
-          <a class="btn line" href="app.html#signup" data-i="h_c2">ვეძებ სამსახურს</a>
-        </div>
-      </div>
-      <div class="feed" aria-label="Example of replies a candidate receives">
-        <div class="reply done">
-          <div class="who"><b>Alpha Finance</b><span data-i="r1d">12 ნოე</span></div>
-          <span class="st" data-i="r1s">CV ნანახია</span>
-        </div>
-        <div class="reply done">
-          <div class="who"><b>Alpha Finance</b><span data-i="r2d">14 ნოე</span></div>
-          <span class="st" data-i="r2s">მოწვევა გასაუბრებაზე</span>
-          <p class="msg" data-i="r2m">გამარჯობა, ნინო! გვსურს გაგიცნოთ. რომელი დრო გაწყობთ, ხუთშაბათი 15:00 თუ პარასკევი 11:00?</p>
-        </div>
-        <div class="reply wait">
-          <div class="who"><b>Beta Group</b><span data-i="r3d">15 ნოე</span></div>
-          <span class="st" data-i="r3s">განაცხადი განხილვაშია</span>
-        </div>
-      </div>
-    </div>
-
-    <nav class="paths" aria-label="Sections">
-      <a class="path" href="#employers"><b data-i="m1">დამსაქმებლებისთვის</b><span data-i="k1">ყველა განაცხადი ერთ დაფაზე და მზა პასუხები.</span></a>
-      <a class="path" href="#candidates"><b data-i="m2">კანდიდატებისთვის</b><span data-i="k2">ერთი პროფილი და სტატუსი, რომელიც ყოველთვის ჩანს.</span></a>
-      <a class="path" href="#start"><b data-i="m3">დაწყება</b><span data-i="k3">რეგისტრაცია ერთ წუთში. პილოტის პერიოდში უფასოა.</span></a>
-    </nav>
-  </div>
-</section>
-
-<section class="view" data-view="employers" hidden>
-  <div class="wrap page">
+<section class="wrap hero">
+  <div class="hero-card">
     <div>
-      <h2 class="display" data-i="e_t">ნაკლები მიმოწერა, მეტი დრო კანდიდატებისთვის.</h2>
-      <p class="lead" data-i="e_s">ვაკანსიიდან შეთავაზებამდე ყველაფერი ერთ სისტემაშია.</p>
-      <ul class="list">
-        <li><b data-i="e1">ერთი დაფა</b><span data-i="e1d">ყველა განაცხადი ეტაპების მიხედვით, ელფოსტისა და ცხრილების გარეშე.</span></li>
-        <li><b data-i="e2">მზა პასუხები</b><span data-i="e2d">მოწვევა თუ უარი, თავაზიანი ტექსტი ერთი დაჭერით.</span></li>
-        <li><b data-i="e3">შეხსენება უპასუხოზე</b><span data-i="e3d">ხედავთ, ვინ ელოდება პასუხს 5 დღეზე მეტხანს.</span></li>
-        <li><b data-i="e4">AI-ის დახმარება</b><span data-i="e4d">CV-ის მოკლე შეფასება და ვაკანსიის ტექსტის მონახაზი.</span></li>
-      </ul>
-      <a class="btn" href="app.html#signup-employer" data-i="h_c1">ვაკანსიის გამოქვეყნება</a>
+      <h1><span data-i="h1a">პასუხი</span><br><span data-i="h1b">ყველა კანდიდატს.</span></h1>
+      <p class="lede" data-i="lede">სამსახურის ძიება და დაქირავება ერთ სივრცეში. კანდიდატი ყოველთვის ხედავს თავის სტატუსს, კომპანია კი ყველა განაცხადს ერთ დაფაზე მართავს.</p>
+      <div class="ctas"><a class="pill white" href="app.html#jobs" data-i="c1">ვაკანსიების ნახვა</a><a class="pill line" href="app.html#signup-employer" data-i="c2">ვაკანსიის გამოქვეყნება</a></div>
     </div>
-    <div class="board" aria-label="Board example">
-      <div class="col"><h4 data-i="c1">ახალი</h4>
-        <div class="card"><b data-i="n1">ნინო ბ.</b><small data-i="d1">3 წლის გამოცდილება</small></div>
-        <div class="card"><b data-i="n2">გიორგი მ.</b><small>ACCA</small></div>
-      </div>
-      <div class="col"><h4 data-i="c2">გასაუბრება</h4>
-        <div class="card"><b data-i="n3">მარიამ კ.</b><small data-i="d3">ხვალ, 15:00</small><span class="tag w" data-i="g3">დაჯავშნილი</span></div>
-      </div>
-      <div class="col"><h4 data-i="c3">შეთავაზება</h4>
-        <div class="card"><b data-i="n5">ანა ტ.</b><small data-i="d5">შეთავაზება გაგზავნილია</small><span class="tag" data-i="g5">ეცნობა</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="view" data-view="candidates" hidden>
-  <div class="wrap page">
     <div>
-      <h2 class="display" data-i="c_t">აღარ დაელოდებით უპასუხოდ.</h2>
-      <p class="lead" data-i="c_s">ერთი პროფილით აგზავნით განაცხადებს და ხედავთ, რა ხდება თითოეულზე.</p>
-      <ul class="list">
-        <li><b data-i="cc1">სტატუსი ყოველ ეტაპზე</b><span data-i="cc1d">ნანახია, გასაუბრება, შეთავაზება ან უარი.</span></li>
-        <li><b data-i="cc2">შეტყობინება დამსაქმებლისგან</b><span data-i="cc2d">პირადად თქვენთვის დაწერილი პასუხი, მიზეზით.</span></li>
-        <li><b data-i="cc3">ვაკანსიები თქვენი უნარებით</b><span data-i="cc3d">ვხედავთ, რამდენად ემთხვევა თქვენი უნარები მოთხოვნებს.</span></li>
-      </ul>
-      <a class="btn" href="app.html#signup" data-i="h_c2">ვეძებ სამსახურს</a>
-    </div>
-    <div class="status">
-      <h3 data-i="job">ფინანსური ანალიტიკოსი</h3>
-      <p class="co">Alpha Finance</p>
-      <ol class="steps">
-        <li class="done"><span class="dot"></span><span data-i="s1">განაცხადი გაგზავნილია</span><span class="when" data-i="s1d">12 ნოე</span></li>
-        <li class="done"><span class="dot"></span><span data-i="s2">CV ნანახია</span><span class="when" data-i="s2d">13 ნოე</span></li>
-        <li class="now"><span class="dot"></span><span data-i="s3">გასაუბრება</span><span class="when" data-i="s3d">18 ნოე, 15:00</span></li>
-        <li class="later"><span class="dot"></span><span data-i="s4">საბოლოო პასუხი</span><span class="when"></span></li>
-      </ol>
-      <div class="note"><small data-i="nt">დამსაქმებლის შეტყობინება</small><span data-i="ntm">გამარჯობა, ნინო! გელოდებით ხუთშაბათს 15:00-ზე, ჭავჭავაძის 12, მე-3 სართული.</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="view" data-view="start" hidden>
-  <div class="wrap page">
-    <div>
-      <h2 class="display" data-i="p_t">დაიწყეთ დღესვე.</h2>
-      <p class="lead" data-i="p_s">ვეძებთ პირველ კომპანიებს, რომლებიც რეგულარულად იღებენ ახალ თანამშრომლებს. პილოტის პერიოდში Kandidati უფასოა.</p>
-      <ul class="list">
-        <li><b data-i="pp1">უფასო პილოტი</b><span data-i="pp1d">გადახდა არ დაგჭირდებათ.</span></li>
-        <li><b data-i="pp2">თქვენზე მორგებული</b><span data-i="pp2d">ფუნქციებს თქვენი დაქირავების პროცესის მიხედვით ვამატებთ.</span></li>
-        <li><b data-i="pp3">პირდაპირი კავშირი</b><span data-i="pp3d">ყველა შენიშვნას დამფუძნებელი კითხულობს.</span></li>
-      </ul>
-    </div>
-    <div class="start">
-      <h3 data-i="st_t">რეგისტრაცია ერთ წუთში</h3>
-      <p data-i="st_s">დაამატეთ კომპანია და გამოაქვეყნეთ პირველი ვაკანსია.</p>
-      <div class="actions">
-        <a class="btn" href="app.html#signup-employer" data-i="st_b1">დარეგისტრირდით დამსაქმებლად</a>
-        <a class="btn line" href="app.html#signup" data-i="h_c2">ვეძებ სამსახურს</a>
+      <div class="mock" aria-hidden="true">
+        <div class="mock-card">
+          <h3 data-i="mk">ჩემი განაცხადები</h3>
+          <div style="margin-top:14px">
+            <div class="app"><span class="dot" style="background:var(--green)"></span><div><b data-i="j1">ფინანსური ანალიტიკოსი</b><small>Alpha Finance</small></div><span class="st" style="color:var(--green)" data-i="s1">გასაუბრება</span></div>
+            <div class="app"><span class="dot" style="background:var(--link)"></span><div><b data-i="j2">ბიზნეს ანალიტიკოსი</b><small>Nova Group</small></div><span class="st" style="color:var(--link)" data-i="s2">CV ნანახია</span></div>
+            <div class="app"><span class="dot" style="background:#B7C1CA"></span><div><b data-i="j3">აუდიტის ასისტენტი</b><small>Beta Audit</small></div><span class="st" style="color:var(--muted)" data-i="s3">გაგზავნილია</span></div>
+          </div>
+        </div>
+        <div class="note">
+          <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E7A55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+          <div><b data-i="nt">Alpha Finance გიპასუხა</b><small data-i="nts">გელოდებით ხუთშაბათს, 15:00-ზე</small></div>
+        </div>
       </div>
-      <p class="small" data-i="st_n" data-html>უკვე გაქვთ ანგარიში? <a href="app.html#login">შესვლა</a></p>
+      <p class="sample" data-i="smp">სანიმუშო მაგალითი</p>
     </div>
   </div>
 </section>
 
+<section class="wrap block" id="companies">
+  <h2 data-i="co_t">კომპანიებისთვის</h2>
+  <p class="sub" data-i="co_s">ყველაფერი, რაც დაქირავებას სჭირდება, ერთ სისტემაში.</p>
+  <div class="tiles">
+    <div class="tile"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B4A72" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="11" rx="1.5"/><rect x="17" y="4" width="4" height="7" rx="1.5"/></svg></div><h3 data-i="f1">ერთი დაფა</h3><p data-i="f1d">ყველა განაცხადი ეტაპების მიხედვით, ელფოსტისა და Excel-ის გარეშე.</p></div>
+    <div class="tile"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B4A72" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 14l2 2 4-4"/></svg></div><h3 data-i="f2">AI-ის შეფასება</h3><p data-i="f2d">CV-ის მოკლე დასკვნა და შესაბამისობის ქულა. გადაწყვეტილება თქვენია.</p></div>
+    <div class="tile dark"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9CCBE8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></div><h3 data-i="f3">ტესტები AI-ით</h3><p data-i="f3d">აღწერეთ, რა ტესტი გჭირდებათ, და AI შეადგენს. კანდიდატი წერს სახლიდან ან ოფისში, შედეგი კი თქვენთან მოდის.</p><a href="#faq-tests" id="howTests" data-i="f3l">როგორ მუშაობს</a></div>
+    <div class="tile"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B4A72" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3 data-i="f4">მზა პასუხები</h3><p data-i="f4d">მოწვევა თუ უარი, თავაზიანი ტექსტით, ერთი დაჭერით.</p></div>
+    <div class="tile"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B4A72" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3 data-i="f5">შეხსენება</h3><p data-i="f5d">ხედავთ, ვინ ელოდება პასუხს 5 დღეზე მეტხანს.</p></div>
+    <div class="tile"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B4A72" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><h3 data-i="f6">დაცული მონაცემები</h3><p data-i="f6d">CV-ს მხოლოდ ის კომპანია ხედავს, რომელსაც კანდიდატმა მიმართა.</p></div>
+  </div>
+</section>
+
+<section class="wrap block cand" id="candidates">
+  <div>
+    <h2 data-i="ca_t">კანდიდატებისთვის</h2>
+    <p class="sub" data-i="ca_s">ყოველთვის უფასოა.</p>
+    <div class="points">
+      <div><b data-i="p1">სტატუსი ყოველ ეტაპზე</b><span data-i="p1d">ნანახია, გასაუბრება, შეთავაზება ან უარი, თარიღით.</span></div>
+      <div><b data-i="p2">პირადი პასუხი</b><span data-i="p2d">დამსაქმებლის შეტყობინება პირადად შენთვის.</span></div>
+      <div><b data-i="p3">შენზე მორგებული ვაკანსიები</b><span data-i="p3d">ხედავ, რამდენად ემთხვევა შენი უნარები მოთხოვნებს.</span></div>
+    </div>
+  </div>
+  <div>
+    <div class="jobs" aria-hidden="true">
+      <div class="job"><div class="logo-sq" style="background:var(--ink)">A</div><div class="t"><b data-i="j1">ფინანსური ანალიტიკოსი</b><small data-i="jm1">Alpha Finance, თბილისი, 2 500–3 000 ₾</small></div><span class="tag ok" data-i="m86">86% დამთხვევა</span></div>
+      <div class="job"><div class="logo-sq" style="background:var(--ocean)">N</div><div class="t"><b data-i="j2">ბიზნეს ანალიტიკოსი</b><small data-i="jm2">Nova Group, ჰიბრიდული</small></div><span class="tag ok" data-i="m79">79% დამთხვევა</span></div>
+      <div class="job"><div class="logo-sq" style="background:#6B7A88">B</div><div class="t"><b data-i="j4">გაყიდვების მენეჯერი</b><small data-i="jm3">Beta Retail, ბათუმი</small></div><span class="tag new" data-i="nw">ახალი</span></div>
+    </div>
+    <p class="sample" style="color:var(--muted)" data-i="smp">სანიმუშო მაგალითი</p>
+  </div>
+</section>
+
+<section class="wrap block faq" id="faq">
+  <div><h2 data-i="fq_t">როგორ მუშაობს</h2><p class="sub" data-i="fq_s">მოკლე პასუხები ხშირ კითხვებზე.</p></div>
+  <div class="qa">
+    <details id="faq-tests"><summary data-i="q1">როგორ მუშაობს ტესტები?</summary>
+      <ol><li data-i="a1a">დამსაქმებელი წერს, რა ტესტი სჭირდება, მაგალითად: „Excel-ის ტესტი ანალიტიკოსისთვის“.</li><li data-i="a1b">AI ადგენს კითხვებს. დამსაქმებელი ამოწმებს, ასწორებს და ინახავს თავის ბიბლიოთეკაში.</li><li data-i="a1c">ტესტს უგზავნის კანდიდატს: სახლიდან დასაწერად ან ოფისში, გასაუბრებისას. თავად წყვეტს დროის ლიმიტს, ფანჯრის დატოვების აღრიცხვას და კოპირების აკრძალვას.</li><li data-i="a1d">კანდიდატი ტესტს Kandidati-ზე წერს, შედეგი კი დამსაქმებელთან მოდის.</li></ol></details>
+    <details><summary data-i="q2">რა ღირს Kandidati?</summary><p data-i="a2">კანდიდატებისთვის ყოველთვის უფასოა. კომპანიებისთვის პილოტის პერიოდში უფასოა.</p></details>
+    <details><summary data-i="q3">ვინ ხედავს ჩემს CV-ს?</summary><p data-i="a3">მხოლოდ ის კომპანია, რომლის ვაკანსიაზეც განაცხადი გააგზავნე.</p></details>
+    <details><summary data-i="q4">AI იღებს გადაწყვეტილებას?</summary><p data-i="a4">არა. AI დამსაქმებელს მხოლოდ მოკლე შეფასებას სთავაზობს და არ ითვალისწინებს ასაკს, სქესსა თუ წარმომავლობას. გადაწყვეტილებას ადამიანი იღებს.</p></details>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="cta">
+    <div><h2 data-i="ct_t">დაიწყე დღესვე.</h2><p data-i="ct_s">რეგისტრაცია ერთ წუთში, კანდიდატად ან კომპანიად.</p></div>
+    <div class="ctas" style="margin-top:0"><a class="pill white" href="app.html#signup" data-i="ct1">სამსახურს ვეძებ</a><a class="pill line" href="app.html#signup-employer" data-i="ct2">თანამშრომელს ვეძებ</a></div>
+  </div>
+</section>
 </main>
 
-<footer>
-  <div class="wrap foot">
-    <span>© 2026 Kandidati</span>
-    <span>ankaorbela@gmail.com</span>
+<footer class="wrap">
+  <div class="ft">
+    <span data-i="ft">© 2026 Kandidati, თბილისი</span>
+    <nav><a href="app.html#jobs" data-i="m1">ვაკანსიები</a><a href="app.html#signup-employer" data-i="fc">კომპანიებისთვის</a><a href="#faq" data-i="m3">როგორ მუშაობს</a><a href="app.html#login" data-i="login">შესვლა</a></nav>
   </div>
 </footer>
 
 <script>
 const EN={
-m1:"For employers",m2:"For candidates",m3:"Get started",login:"Log in",
-h_t:"An answer for every candidate.",
-h_s:"Companies manage every application in one place, and candidates always know where their application stands.",
-h_c1:"Post a vacancy",h_c2:"I'm looking for a job",
-r1d:"12 Nov",r1s:"CV viewed",r2d:"14 Nov",r2s:"Invited to an interview",
-r2m:"Hi Nino! We'd love to meet you. Does Thursday 15:00 or Friday 11:00 work better?",
-r3d:"15 Nov",r3s:"Application under review",
-k1:"Every application on one board, with ready-made replies.",k2:"One profile and a status you can always see.",k3:"Sign up in a minute. Free during the pilot.",
-e_t:"Less back-and-forth, more time for candidates.",e_s:"Everything from vacancy to offer in one system.",
-e1:"One board",e1d:"Every application by stage, without email threads or spreadsheets.",
-e2:"Ready replies",e2d:"Invite or decline with a polite message in one click.",
-e3:"Reminders for unanswered candidates",e3d:"See who has been waiting more than 5 days.",
-e4:"AI assistance",e4d:"A short CV review and a draft of the vacancy text.",
-c1:"New",c2:"Interview",c3:"Offer",n1:"Nino B.",n2:"Giorgi M.",n3:"Mariam K.",n5:"Ana T.",
-d1:"3 years of experience",d3:"Tomorrow, 15:00",d5:"Offer sent",g3:"Booked",g5:"Notified",
-c_t:"No more waiting without an answer.",c_s:"Apply with one profile and see what happens to each application.",
-cc1:"Status at every stage",cc1d:"Viewed, interview, offer or decline.",
-cc2:"A message from the employer",cc2d:"A reply written for you, with a reason.",
-cc3:"Vacancies that fit your skills",cc3d:"See how well your skills match the requirements.",
-job:"Financial Analyst",s1:"Application sent",s1d:"12 Nov",s2:"CV viewed",s2d:"13 Nov",s3:"Interview",s3d:"18 Nov, 15:00",s4:"Final answer",
-nt:"Message from the employer",ntm:"Hi Nino! See you on Thursday at 15:00, 12 Chavchavadze Ave, 3rd floor.",
-p_t:"Start today.",p_s:"We are looking for our first companies that hire regularly. Kandidati is free during the pilot.",
-pp1:"Free pilot",pp1d:"No payment needed.",pp2:"Shaped around you",pp2d:"We add features based on your hiring process.",
-pp3:"Direct line",pp3d:"The founder reads every piece of feedback.",
-st_t:"Sign up in a minute",st_s:"Add your company and publish your first vacancy.",st_b1:"Sign up as an employer",
-st_n:"Already have an account? <a href=\"app.html#login\">Log in</a>"
+ph:"Job title, company or skill",find:"Search",m1:"Jobs",m2:"For companies",m3:"How it works",login:"Log in",
+h1a:"An answer",h1b:"for every candidate.",lede:"Job search and hiring in one place. Candidates always see their status, and companies manage every application on one board.",
+c1:"Browse jobs",c2:"Post a vacancy",mk:"My applications",j1:"Financial Analyst",j2:"Business Analyst",j3:"Audit Assistant",j4:"Sales Manager",
+s1:"Interview",s2:"CV viewed",s3:"Sent",nt:"Alpha Finance replied",nts:"See you on Thursday at 15:00",smp:"Sample example",
+co_t:"For companies",co_s:"Everything hiring needs, in one system.",
+f1:"One board",f1d:"Every application by stage, without email threads or spreadsheets.",
+f2:"AI review",f2d:"A short CV summary and a fit score. The decision is yours.",
+f3:"Tests made with AI",f3d:"Describe the test you need and AI drafts it. Candidates take it at home or in your office, and the results come to you.",f3l:"How it works",
+f4:"Ready replies",f4d:"Invite or decline with a polite message, in one click.",
+f5:"Reminders",f5d:"See who has been waiting for an answer more than 5 days.",
+f6:"Private data",f6d:"Only the company a candidate applied to can see their CV.",
+ca_t:"For candidates",ca_s:"Always free.",p1:"A status at every stage",p1d:"Viewed, interview, offer or decline, with dates.",p2:"A personal reply",p2d:"A message from the employer, written for you.",p3:"Jobs that fit you",p3d:"See how well your skills match the requirements.",
+jm1:"Alpha Finance, Tbilisi, 2,500–3,000 ₾",jm2:"Nova Group, hybrid",jm3:"Beta Retail, Batumi",m86:"86% match",m79:"79% match",nw:"New",
+fq_t:"How it works",fq_s:"Short answers to common questions.",
+q1:"How do tests work?",a1a:"The employer writes what test they need, for example “an Excel test for an analyst”.",a1b:"AI drafts the questions. The employer checks them, edits them and saves the test in their library.",a1c:"They send it to a candidate to take at home or in the office during an interview, and choose the time limit, whether leaving the window is recorded and whether copying is blocked.",a1d:"The candidate takes the test on Kandidati, and the results go to the employer.",
+q2:"How much does Kandidati cost?",a2:"Always free for candidates. Free for companies during the pilot.",
+q3:"Who can see my CV?",a3:"Only the company whose vacancy you applied to.",
+q4:"Does AI make the decision?",a4:"No. AI only offers the employer a short review and does not consider age, gender or origin. A person makes the decision.",
+ct_t:"Start today.",ct_s:"Sign up in a minute, as a candidate or as a company.",ct1:"I'm looking for a job",ct2:"I'm hiring",
+ft:"© 2026 Kandidati, Tbilisi",fc:"For companies"
 };
 const KA={};
-document.querySelectorAll('[data-i]').forEach(el=>{if(!(el.dataset.i in KA))KA[el.dataset.i]=el.hasAttribute('data-html')?el.innerHTML:el.textContent});
+document.querySelectorAll('[data-i]').forEach(el=>{if(!(el.dataset.i in KA))KA[el.dataset.i]=el.textContent});
+document.querySelectorAll('[data-ph]').forEach(el=>{KA[el.dataset.ph]=el.placeholder});
 const D={ka:KA,en:EN};
 function setLang(l){
   document.documentElement.lang=l;
-  document.querySelectorAll('[data-i]').forEach(el=>{const v=D[l][el.dataset.i];if(v==null)return;el.hasAttribute('data-html')?el.innerHTML=v:el.textContent=v});
+  document.querySelectorAll('[data-i]').forEach(el=>{const v=D[l][el.dataset.i];if(v!=null)el.textContent=v});
+  document.querySelectorAll('[data-ph]').forEach(el=>{const v=D[l][el.dataset.ph];if(v)el.placeholder=v});
   document.querySelectorAll('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===l));
   try{localStorage.setItem('kd-lang',l)}catch(e){}
 }
 document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
-const VIEWS=['employers','candidates','start'];
-function route(){
-  let h=location.hash.slice(1);if(h==='pilot')h='start';
-  const v=VIEWS.includes(h)?h:'home';
-  document.querySelectorAll('.view').forEach(s=>s.hidden=s.dataset.view!==v);
-  document.querySelectorAll('.menu a').forEach(a=>a.dataset.v===v?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
-  window.scrollTo(0,0);
-}
-addEventListener('hashchange',route);route();
-let pref=null;try{pref=localStorage.getItem('kd-lang')}catch(e){}
-const q=new URLSearchParams(location.search).get('lang');if(q)pref=q;
-if(pref==='en')setLang('en');
+try{const l=localStorage.getItem('kd-lang');if(l==='en')setLang('en')}catch(e){}
+// search goes to the jobs list with the query
+document.querySelector('.search').addEventListener('submit',e=>{e.preventDefault();const q=e.target.q.value.trim();location.href='app.html'+(q?'?q='+encodeURIComponent(q):'')+'#jobs'});
+// "How it works" on the tests tile opens that answer
+document.getElementById('howTests').addEventListener('click',()=>{document.getElementById('faq-tests').open=true});
+if(location.hash==='#faq-tests')document.getElementById('faq-tests').open=true;
 </script>
 </body>
 </html>
