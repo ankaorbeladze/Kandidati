@@ -197,6 +197,82 @@ body.exam .tabs,body.exam .me{visibility:hidden}
 .warnbox .card{max-width:420px;text-align:center}
 .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:70;background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;font-size:14px}
 
+/* ---------- job search ---------- */
+.js-hero{background:var(--accent);color:#fff;border-radius:28px;padding:36px 40px 28px;margin-bottom:28px;box-shadow:0 24px 48px -32px rgba(11,74,114,.7)}
+.js-hero h1{font-size:34px;color:#fff}
+.js-search{margin-top:20px;background:#fff;border-radius:999px;padding:6px;display:flex;align-items:center;gap:4px;box-shadow:0 12px 30px -18px rgba(0,0,0,.5)}
+.js-f{flex:1;display:flex;align-items:center;gap:10px;padding:0 16px;color:var(--muted);font-weight:400;min-width:0}
+.js-f input,.js-f select{border:0;padding:10px 0;background:transparent;box-shadow:none!important;font-size:16px}
+.js-f input:focus,.js-f select:focus{box-shadow:none}
+.js-city{flex:0 0 250px;border-left:1px solid var(--line)}
+.js-city select{cursor:pointer}
+.js-search .btn{padding:12px 26px}
+.js-quick{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.js-chip{border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;font:inherit;font-size:14px;font-weight:500;padding:7px 14px;border-radius:999px;cursor:pointer}
+.js-chip:hover{border-color:#fff}
+.js-chip.on{background:#fff;color:var(--accent);border-color:#fff;font-weight:600}
+.js-layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:28px;align-items:start}
+.js-side{position:sticky;top:96px}
+.js-side-in{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px}
+.js-side-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.js-side-head h2{font-size:17px}
+.js-close,.js-apply,.js-ftoggle{display:none!important}
+.js-side fieldset{border:0;border-top:1px solid var(--line-2);margin:14px 0 0;padding:14px 0 0}
+.js-side legend{float:left;width:100%;font-size:13px;font-weight:600;color:var(--muted);padding:0;margin-bottom:8px}
+.js-side legend+*{clear:both}
+.js-chk{display:flex;align-items:center;gap:10px;font-weight:400;font-size:15px;padding:5px 0;cursor:pointer}
+.js-chk input{width:18px;height:18px;margin:0;accent-color:var(--accent);flex:none}
+.js-chk span{flex:1}
+.js-chk small{color:var(--muted);font-size:13px;background:#F1F4F7;border-radius:999px;padding:0 8px}
+.js-range{display:grid;gap:4px;margin-bottom:4px}
+.js-range input{padding:0;border:0;accent-color:var(--accent)}
+.js-range output{font-size:14px;font-weight:600}
+.js-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+.js-bar b{font-size:20px}
+.js-sort{display:flex;align-items:center;gap:8px;font-weight:400}
+.js-sort select{width:auto;padding:7px 12px;font-size:14px;border-radius:999px}
+.js-active{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.js-active:empty{display:none}
+.js-pill{display:inline-flex;align-items:center;gap:8px;border:0;background:var(--accent-soft);color:var(--accent);font:inherit;font-size:14px;font-weight:600;padding:6px 8px 6px 12px;border-radius:999px;cursor:pointer}
+.js-pill span{width:18px;height:18px;border-radius:50%;background:rgba(11,74,114,.12);display:grid;place-items:center;font-size:10px}
+.js-pill:hover span{background:var(--accent);color:#fff}
+.js-job{display:flex;gap:16px;align-items:center;text-decoration:none;padding:20px 22px;transition:border-color .15s,box-shadow .15s}
+.js-job:hover{border-color:#C9D3DC;box-shadow:0 14px 30px -22px rgba(15,27,38,.45)}
+.js-logo{width:52px;height:52px;border-radius:15px;color:#fff;display:grid;place-items:center;font-weight:700;font-size:17px;flex:none}
+.js-main{flex:1;min-width:0}
+.js-t{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.js-t h3{font-size:18px;font-weight:700;letter-spacing:-.01em}
+.js-new{font-size:12px;font-weight:700;color:var(--ok);background:var(--ok-soft);padding:2px 9px;border-radius:999px}
+.js-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:10px}
+.js-tag{font-size:13px;font-weight:500;background:#F1F4F7;color:#3F4C59;padding:3px 10px;border-radius:999px}
+.js-tag.sal{background:var(--ok-soft);color:var(--ok);font-weight:600}
+.js-when{font-size:13px;color:var(--muted);margin-left:4px}
+.js-right{flex:none;text-align:center}
+.js-match{display:inline-block;font-size:14px;font-weight:600;padding:6px 12px;border-radius:999px;background:#F1F4F7;color:#3F4C59;white-space:nowrap}
+.js-match.hi{background:var(--ok-soft);color:var(--ok)}
+@media (max-width:900px){
+  .js-layout{grid-template-columns:1fr}
+  .js-ftoggle{display:inline-flex!important}
+  .js-side{position:fixed;inset:0;z-index:40;background:rgba(15,27,38,.4);display:none;top:0}
+  .js-side.open{display:block}
+  .js-side-in{position:absolute;left:0;right:0;bottom:0;max-height:85vh;overflow:auto;border-radius:24px 24px 0 0}
+  .js-close{display:grid!important}
+  .js-apply{display:flex!important;width:100%;margin-top:18px}
+  .js-side-head{gap:12px}.js-side-head h2{flex:1}
+}
+@media (max-width:640px){
+  .js-hero{padding:24px 20px;border-radius:22px}
+  .js-hero h1{font-size:26px}
+  .js-search{flex-direction:column;align-items:stretch;border-radius:20px;padding:8px}
+  .js-city{flex:auto;border-left:0;border-top:1px solid var(--line)}
+  .js-job{padding:16px;gap:12px;align-items:flex-start}
+  .js-logo{width:44px;height:44px;border-radius:12px}
+  .js-job{flex-wrap:wrap}
+  .js-right{flex:1 1 100%;text-align:left;padding-left:56px}
+  .js-right>svg{display:none}
+  .js-bar{flex-wrap:wrap}
+}
+
 @media (max-width:800px){
   .two-col{grid-template-columns:1fr}
   .stats{grid-template-columns:1fr 1fr}
@@ -205,7 +281,9 @@ body.exam .tabs,body.exam .me{visibility:hidden}
   .detail{grid-template-columns:1fr}
   .form .two{grid-template-columns:1fr}
   .top .in{height:auto;padding-block:12px;flex-wrap:wrap;gap:12px}
-  .tabs{order:3;width:100%;overflow-x:auto}
+  .tabs{order:3;flex:1 1 100%;overflow-x:auto;gap:20px}
+  .tabs a{white-space:nowrap}
+  .me{margin-left:auto}
   .me .name{display:none}
 }
 </style>
@@ -298,6 +376,7 @@ function renderChrome(){
 async function route(){
   closeDrawer();
   if (examCleanup) { examCleanup(); examCleanup = null; }
+  document.body.style.overflow = '';
   if (!sb) return set(`<div class="auth"><div class="card"><h2>საჭიროა დაკავშირება</h2><p class="muted" style="margin-top:8px">config.js ფაილში ჩასვით Supabase-ის Project URL და anon key.</p></div></div>`);
   const h = location.hash.slice(1);
   if (!me) { renderChrome(); return authView(h.startsWith('signup') ? 'signup' : 'login', h === 'signup-employer' ? 'employer' : 'candidate'); }
@@ -385,33 +464,151 @@ function authView(mode, role = 'candidate'){
 document.getElementById('logout').onclick = async () => { await sb.auth.signOut(); me = null; company = null; go('#login'); };
 
 // ---------- CANDIDATE ----------
+// job search state survives going into a vacancy and back
+let jobState = null;
+const salaryNum = s => { const m = String(s || '').replace(/[\s,]/g, '').match(/\d{3,6}/); return m ? +m[0] : null; };
+const daysAgo = d => Math.floor((Date.now() - new Date(d)) / 864e5);
+const ago = d => { const n = daysAgo(d); return n <= 0 ? 'დღეს' : n === 1 ? 'გუშინ' : n < 7 ? `${n} დღის წინ` : n < 30 ? `${Math.floor(n/7)} კვირის წინ` : fmtDate(d); };
+const LOGO_BG = ['#0F1B26','#0B4A72','#1E7A55','#6B7A88','#8A5A14','#4A3F8F'];
+const logoBg = name => LOGO_BG[[...String(name || '?')].reduce((a, c) => a + c.charCodeAt(0), 0) % LOGO_BG.length];
+
 async function jobsList(){
-  set(`<div class="head"><div><h1>ვაკანსიები</h1><p class="muted">აირჩიეთ და გააგზავნეთ განაცხადი ერთი დაწკაპუნებით</p></div></div>
-  <div class="toolbar"><input id="q" type="search" placeholder="ძიება: თანამდებობა, კომპანია"><select id="fc" style="max-width:200px"><option value="">ყველა ქალაქი</option></select><select id="ft" style="max-width:220px"><option value="">ყველა ტიპი</option>${Object.entries(TYPES).map(([k,t])=>`<option value="${k}">${t}</option>`).join('')}</select></div>
-  <div class="grid" id="list"><div class="spin">იტვირთება…</div></div>`);
-  const [v, a] = await Promise.all([
-    sb.from('vacancies').select('id,title,city,employment_type,salary,created_at,requirements,description,companies(name)').eq('status','open').order('created_at',{ascending:false}),
-    sb.from('applications').select('vacancy_id,status').eq('candidate_id', me.id)
+  const q0 = new URLSearchParams(location.search).get('q');
+  const st = jobState || (jobState = { q: q0 || '', city: '', types: [], industries: [], minSal: 0, fresh: false, salOnly: false, fit: false, sort: 'new' });
+  set(`<div id="jsPage"><section class="js-hero">
+      <h1>იპოვე სამსახური, რომელიც შენ გერგება</h1>
+      <form class="js-search" id="jsForm" role="search">
+        <label class="js-f"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="თანამდებობა, კომპანია ან უნარი" value="${esc(st.q)}" aria-label="ძიება"></label>
+        <label class="js-f js-city"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><select id="fc" aria-label="ქალაქი"><option value="">მთელი საქართველო</option></select></label>
+        <button class="btn blue" type="submit">ძიება</button>
+      </form>
+      <div class="js-quick" id="quick"></div>
+    </section>
+    <div class="js-layout">
+      <aside class="js-side" id="side" aria-label="ფილტრები"></aside>
+      <div>
+        <div class="js-bar"><div><b id="cnt">…</b> <span class="muted" id="cntL">ვაკანსია</span></div>
+          <div class="row" style="gap:8px"><button class="btn ghost sm js-ftoggle" type="button" id="openF">ფილტრები<span id="fn"></span></button>
+          <label class="js-sort"><span class="muted small">დალაგება</span><select id="sort"><option value="new">ახალი ჯერ</option><option value="fit">დამთხვევით</option><option value="sal">ხელფასით</option></select></label></div></div>
+        <div class="js-active" id="active"></div>
+        <div id="tip"></div>
+        <div class="grid" id="list"><div class="spin">იტვირთება…</div></div>
+      </div>
+    </div></div>`);
+  const [v, a, c] = await Promise.all([
+    sb.from('vacancies').select('id,title,city,employment_type,salary,created_at,requirements,description,companies(name,industry)').eq('status','open').order('created_at',{ascending:false}),
+    sb.from('applications').select('vacancy_id,status').eq('candidate_id', me.id),
+    sb.from('candidate_profiles').select('skills,headline').eq('user_id', me.id).maybeSingle()
   ]);
-  const cp = (await sb.from('candidate_profiles').select('skills,headline').eq('user_id', me.id).maybeSingle()).data || {};
-  const fc = document.getElementById('fc');
-  const q0 = new URLSearchParams(location.search).get('q'); if (q0) document.getElementById('q').value = q0;
-  [...new Set((v.data||[]).map(j => (j.city||'').trim()).filter(Boolean))].sort().forEach(c => fc.insertAdjacentHTML('beforeend', `<option>${esc(c)}</option>`));
   if (v.error) { document.getElementById('list').innerHTML = err(v.error); return; }
+  const cp = c.data || {};
   const applied = Object.fromEntries((a.data||[]).map(x => [x.vacancy_id, x.status]));
-  const draw = () => {
-    const q = document.getElementById('q').value.trim().toLowerCase(), c = fc.value, t = document.getElementById('ft').value;
-    const rows = v.data.filter(j => (!q || [j.title, j.companies?.name].join(' ').toLowerCase().includes(q)) && (!c || (j.city||'').trim() === c) && (!t || j.employment_type === t))
-      .map(j => ({ ...j, m: skillMatch(cp, j) })).sort((x, y) => (y.m ?? -1) - (x.m ?? -1));
-    document.getElementById('list').innerHTML = rows.length ? rows.map(j => `
-      <a class="card job" href="#job-${j.id}">
-        <div><h3>${esc(j.title)}${j.m ? ` <span class="match" title="თქვენი უნარების დამთხვევა ვაკანსიის მოთხოვნებთან">${j.m}% დამთხვევა</span>` : ''}</h3><div class="meta"><span>${esc(j.companies?.name)}</span>${j.city?`<span>${esc(j.city)}</span>`:''}<span>${TYPES[j.employment_type]||''}</span>${j.salary?`<span>${esc(j.salary)}</span>`:''}</div></div>
-        ${applied[j.id] ? badge(applied[j.id]) : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#97A0B5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'}
-      </a>`).join('') : `<div class="card empty">${(q||c||t) ? 'ვერაფერი მოიძებნა.' : 'ჯერ ვაკანსიები არ არის. მალე დაემატება!'}</div>`;
+  const jobs = v.data.map(j => ({ ...j, m: skillMatch(cp, j), sal: salaryNum(j.salary), city: (j.city||'').trim(), ind: (j.companies?.industry||'').trim() }));
+  const count = (key, fn) => { const o = {}; jobs.forEach(j => { const k = fn(j); if (k) o[k] = (o[k]||0) + 1; }); return Object.entries(o).sort((x, y) => y[1] - x[1]); };
+  const cities = count('city', j => j.city), inds = count('ind', j => j.ind), types = count('t', j => j.employment_type);
+  const fc = document.getElementById('fc');
+  cities.forEach(([k, n]) => fc.insertAdjacentHTML('beforeend', `<option value="${esc(k)}" ${st.city===k?'selected':''}>${esc(k)} (${n})</option>`));
+  document.getElementById('sort').value = st.sort;
+  if (!cp.skills) document.getElementById('tip').innerHTML = `<div class="msg tip" style="margin-bottom:14px">პროფილში ჩაწერე უნარები და თითოეულ ვაკანსიაზე დამთხვევის პროცენტს დაინახავ. <a href="#profile">პროფილის შევსება</a></div>`;
+  const maxSal = Math.max(0, ...jobs.map(j => j.sal || 0));
+  const step = 250, top = Math.max(step * 4, Math.ceil(maxSal / step) * step);
+
+  const side = document.getElementById('side');
+  side.innerHTML = `<div class="js-side-in">
+    <div class="js-side-head"><h2>ფილტრები</h2><button class="linkbtn" type="button" id="clr">გასუფთავება</button><button class="icon-btn js-close" type="button" id="closeF" aria-label="დახურვა">✕</button></div>
+    <fieldset><legend>დასაქმების ტიპი</legend>${Object.entries(TYPES).map(([k, t]) => { const n = (types.find(x => x[0] === k) || [0, 0])[1]; return `<label class="js-chk"><input type="checkbox" name="type" value="${k}" ${st.types.includes(k)?'checked':''}><span>${t}</span><small>${n}</small></label>`; }).join('')}</fieldset>
+    <fieldset><legend>მინიმალური ხელფასი</legend><div class="js-range"><input type="range" id="sal" min="0" max="${top}" step="${step}" value="${Math.min(st.minSal, top)}" aria-label="მინიმალური ხელფასი"><output id="salO"></output></div>
+      <label class="js-chk"><input type="checkbox" id="salOnly" ${st.salOnly?'checked':''}><span>მხოლოდ ხელფასით</span></label></fieldset>
+    ${inds.length ? `<fieldset><legend>სფერო</legend>${inds.map(([k, n]) => `<label class="js-chk"><input type="checkbox" name="ind" value="${esc(k)}" ${st.industries.includes(k)?'checked':''}><span>${esc(k)}</span><small>${n}</small></label>`).join('')}</fieldset>` : ''}
+    <fieldset><legend>სხვა</legend>
+      <label class="js-chk"><input type="checkbox" id="fresh" ${st.fresh?'checked':''}><span>ბოლო 7 დღე</span></label>
+      ${cp.skills ? `<label class="js-chk"><input type="checkbox" id="fit" ${st.fit?'checked':''}><span>დამთხვევა 50%-დან</span></label>` : ''}</fieldset>
+    <button class="btn blue js-apply" type="button" id="applyF">შედეგების ნახვა</button></div>`;
+
+  const quick = document.getElementById('quick');
+  const drawQuick = () => {
+    quick.innerHTML = [['remote', 'დისტანციური'], ['internship', 'სტაჟირება'], ['part_time', 'ნახევარი განაკვეთი']].map(([k, t]) => `<button type="button" class="js-chip ${st.types.includes(k)?'on':''}" data-type="${k}">${t}</button>`).join('')
+      + `<button type="button" class="js-chip ${st.fresh?'on':''}" data-x="fresh">ახალი, 7 დღე</button><button type="button" class="js-chip ${st.salOnly?'on':''}" data-x="salOnly">ხელფასით</button>`
+      + (cp.skills ? `<button type="button" class="js-chip ${st.fit?'on':''}" data-x="fit">ჩემზე მორგებული</button>` : '');
   };
-  if (!cp.skills) document.getElementById('list').insertAdjacentHTML('beforebegin', `<div class="msg tip" style="margin-bottom:14px">პროფილში უნარები ჩაწერეთ და თითოეულ ვაკანსიაზე დამთხვევის პროცენტს დაინახავთ. <a href="#profile">პროფილის შევსება</a></div>`);
+  const syncSide = () => {
+    side.querySelectorAll('[name=type]').forEach(i => i.checked = st.types.includes(i.value));
+    side.querySelectorAll('[name=ind]').forEach(i => i.checked = st.industries.includes(i.value));
+    ['fresh','salOnly','fit'].forEach(k => { const i = document.getElementById(k); if (i) i.checked = st[k]; });
+    document.getElementById('sal').value = st.minSal; fc.value = st.city; document.getElementById('q').value = st.q;
+    document.getElementById('salO').textContent = st.minSal ? `${st.minSal.toLocaleString('ka-GE')} ₾-დან` : 'ნებისმიერი';
+  };
+
+  const draw = () => {
+    const words = st.q.toLowerCase().split(/\s+/).filter(Boolean);
+    let rows = jobs.filter(j => {
+      const hay = [j.title, j.companies?.name, j.ind, j.requirements, j.city].join(' ').toLowerCase();
+      return words.every(w => hay.includes(w)) && (!st.city || j.city === st.city)
+        && (!st.types.length || st.types.includes(j.employment_type)) && (!st.industries.length || st.industries.includes(j.ind))
+        && (!st.minSal || (j.sal && j.sal >= st.minSal)) && (!st.salOnly || j.sal) && (!st.fresh || daysAgo(j.created_at) <= 7) && (!st.fit || (j.m || 0) >= 50);
+    });
+    rows.sort(st.sort === 'fit' ? (x, y) => (y.m ?? -1) - (x.m ?? -1) : st.sort === 'sal' ? (x, y) => (y.sal || 0) - (x.sal || 0) : (x, y) => new Date(y.created_at) - new Date(x.created_at));
+    document.getElementById('cnt').textContent = rows.length;
+    const pills = [];
+    if (st.q) pills.push(['q', `„${st.q}“`]);
+    if (st.city) pills.push(['city', st.city]);
+    st.types.forEach(t => pills.push(['type:' + t, TYPES[t]]));
+    st.industries.forEach(t => pills.push(['ind:' + t, t]));
+    if (st.minSal) pills.push(['minSal', `${st.minSal.toLocaleString('ka-GE')} ₾-დან`]);
+    if (st.salOnly) pills.push(['salOnly', 'ხელფასით']);
+    if (st.fresh) pills.push(['fresh', 'ბოლო 7 დღე']);
+    if (st.fit) pills.push(['fit', 'დამთხვევა 50%+']);
+    document.getElementById('active').innerHTML = pills.length ? pills.map(([k, t]) => `<button type="button" class="js-pill" data-rm="${esc(k)}" aria-label="ფილტრის მოხსნა: ${esc(t)}">${esc(t)}<span aria-hidden="true">✕</span></button>`).join('') + `<button type="button" class="linkbtn" data-rm="all">ყველას მოხსნა</button>` : '';
+    document.getElementById('fn').textContent = pills.length ? ` · ${pills.length}` : '';
+    drawQuick(); syncSide();
+    document.getElementById('list').innerHTML = rows.length ? rows.map(j => {
+      const co = j.companies?.name || '', fresh = daysAgo(j.created_at) <= 3;
+      return `<a class="card js-job" href="#job-${j.id}">
+        <span class="js-logo" style="background:${logoBg(co)}">${esc(initials(co))}</span>
+        <div class="js-main"><div class="js-t"><h3>${esc(j.title)}</h3>${fresh ? '<span class="js-new">ახალი</span>' : ''}</div>
+          <div class="meta"><span>${esc(co)}</span>${j.city?`<span>${esc(j.city)}</span>`:''}<span>${TYPES[j.employment_type]||''}</span></div>
+          <div class="js-tags">${j.salary?`<span class="js-tag sal">${esc(j.salary)}</span>`:''}${j.ind?`<span class="js-tag">${esc(j.ind)}</span>`:''}<span class="js-when">${ago(j.created_at)}</span></div></div>
+        <div class="js-right">${applied[j.id] ? badge(applied[j.id]) : j.m ? `<span class="js-match ${j.m>=50?'hi':''}" title="შენი უნარების დამთხვევა მოთხოვნებთან">${j.m}% დამთხვევა</span>` : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#97A0B5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'}</div>
+      </a>`;
+    }).join('') : `<div class="card empty"><h2 style="color:var(--ink)">${jobs.length ? 'ასეთი ვაკანსია ვერ მოიძებნა' : 'ჯერ ვაკანსიები არ არის'}</h2><p style="margin-top:6px">${jobs.length ? 'სცადე სხვა სიტყვა ან მოხსენი რამდენიმე ფილტრი.' : 'მალე დაემატება. პროფილი შეავსე, რომ მზად იყო.'}</p>${pills.length ? `<button class="btn ghost" style="margin-top:16px" type="button" data-rm="all">ფილტრების გასუფთავება</button>` : ''}</div>`;
+  };
+
+  const reset = () => Object.assign(st, { q: '', city: '', types: [], industries: [], minSal: 0, fresh: false, salOnly: false, fit: false });
+  const toggle = (arr, v) => { const i = arr.indexOf(v); i < 0 ? arr.push(v) : arr.splice(i, 1); };
+  let qT;
+  document.getElementById('q').addEventListener('input', e => { clearTimeout(qT); qT = setTimeout(() => { st.q = e.target.value.trim(); draw(); }, 180); });
+  document.getElementById('jsForm').onsubmit = e => { e.preventDefault(); st.q = document.getElementById('q').value.trim(); draw(); };
+  fc.onchange = () => { st.city = fc.value; draw(); };
+  document.getElementById('sort').onchange = e => { st.sort = e.target.value; draw(); };
+  side.addEventListener('change', e => {
+    const t = e.target;
+    if (t.name === 'type') toggle(st.types, t.value);
+    else if (t.name === 'ind') toggle(st.industries, t.value);
+    else if (['fresh','salOnly','fit'].includes(t.id)) st[t.id] = t.checked;
+    draw();
+  });
+  const sal = document.getElementById('sal');
+  sal.oninput = () => { st.minSal = +sal.value; document.getElementById('salO').textContent = st.minSal ? `${st.minSal.toLocaleString('ka-GE')} ₾-დან` : 'ნებისმიერი'; };
+  sal.onchange = () => draw();
+  quick.onclick = e => { const b = e.target.closest('button'); if (!b) return; if (b.dataset.type) toggle(st.types, b.dataset.type); else st[b.dataset.x] = !st[b.dataset.x]; draw(); };
+  document.getElementById('jsPage').addEventListener('click', e => {
+    const b = e.target.closest('[data-rm]'); if (!b) return;
+    const k = b.dataset.rm;
+    if (k === 'all') reset();
+    else if (k.startsWith('type:')) toggle(st.types, k.slice(5));
+    else if (k.startsWith('ind:')) toggle(st.industries, k.slice(4));
+    else if (k === 'q' || k === 'city') st[k] = '';
+    else if (k === 'minSal') st.minSal = 0;
+    else st[k] = false;
+    draw();
+  });
+  document.getElementById('clr').onclick = () => { reset(); draw(); };
+  const openF = () => { side.classList.add('open'); document.body.style.overflow = 'hidden'; };
+  const closeF = () => { side.classList.remove('open'); document.body.style.overflow = ''; };
+  document.getElementById('openF').onclick = openF;
+  document.getElementById('closeF').onclick = closeF;
+  document.getElementById('applyF').onclick = closeF;
   draw();
-  ['q','fc','ft'].forEach(id => document.getElementById(id).addEventListener('input', draw));
 }
 
 async function jobDetail(id){
